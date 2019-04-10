@@ -11,16 +11,18 @@
 </ion-header>
 
 <ion-content>
-    <ion-slides style="height: 100%" #slideAdd>
+    <ion-slides style="height: 100%;" #slideAdd>
         <ion-slide>
 
-            <ion-list>
+            <ion-list style="height: 100%; width: 100%">
                 <ion-item *ngFor="let aux of listNoticias">
-                    <h2>{{aux?.titulo}}</h2>
-                    <p>Categoria: {{aux?.categoria?.nome}} - Criado em: {{aux?.createdAt}}</p>
+                    <ion-label>
+                        <h2>{{aux?.titulo}}</h2>
+                        <p>Categoria: {{aux?.categoria?.nome}} - Criado em: {{aux?.createdAt}}</p>
+                    </ion-label>
 
                     <ion-buttons>
-                        <ion-button (click)="alterar()">Alterar</ion-button>
+                        <ion-button (click)="proximo(aux)">Alterar</ion-button>
                         <ion-button (click)="excluir()">Excluir</ion-button>
                     </ion-buttons>
                 </ion-item>
@@ -55,7 +57,7 @@
                         <ion-col>
                             <ion-item class="itemAdicionar">
                                 <ion-label>Categoria</ion-label>
-                                <ion-select [(ngModel)]="categoria">
+                                <ion-select [(ngModel)]="categoria_id">
                                     <ion-select-option *ngFor="let aux of listCategorias" [value]="aux.id">{{aux.nome}}
                                     </ion-select-option>
                                 </ion-select>
@@ -64,7 +66,7 @@
                         <ion-col>
                             <ion-item class="itemAdicionar">
                                 <ion-label>Posição</ion-label>
-                                <ion-select [(ngModel)]="posicao">
+                                <ion-select [(ngModel)]="posicao_id">
                                     <ion-select-option *ngFor="let aux of listPosicoes" [value]="aux.id">{{aux.nome}}
                                     </ion-select-option>
                                 </ion-select>
@@ -73,7 +75,7 @@
                     </ion-row>
                     <ion-row style="margin-top: 20px;">
                         <ion-col>
-                            <ion-button (click)="adicionar()">Adicionar Notícia</ion-button>
+                            <ion-button (click)="adicionar()" [disabled]="desabilitar()">Add. Notícia</ion-button>
                         </ion-col>
                         <ion-col>
                             <ion-button (click)="voltar()">Voltar</ion-button>

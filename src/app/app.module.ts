@@ -14,6 +14,9 @@ import { StorageService } from './services/storage/storage.service';
 import { AuthService } from './services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { ComponentsModule } from './components/components.module';
+import { ToastService } from './services/toast/toast.service';
+import { AlertService } from './services/alert/alert.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,6 +24,7 @@ import { IonicStorageModule } from '@ionic/storage';
     imports: [
         BrowserModule,
         HttpClientModule,
+        ComponentsModule,
         IonicModule.forRoot(),
         AppRoutingModule,
         IonicStorageModule.forRoot({
@@ -33,6 +37,8 @@ import { IonicStorageModule } from '@ionic/storage';
         QueryService,
         StorageService,
         AuthService,
+        ToastService,
+        AlertService,
         StatusBar,
         SplashScreen,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Posição</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let aux of listPosicoes">
+            <ion-label>
+                <h2>{{aux?.nome}}</h2>
+                <p>Ativo: {{aux?.ativado ? "Sim": "Não"}}</p>
+            </ion-label>
+
+            <ion-buttons>
+                <ion-button (click)="abrirModal(aux)">Alterar</ion-button>
+                <ion-button (click)="excluir(aux)">Excluir</ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab class="fabAdicionar" vertical="bottom" horizontal="end" slot="fixed" (click)="abrirModal()">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
