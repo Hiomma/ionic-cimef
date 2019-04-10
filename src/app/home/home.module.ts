@@ -5,9 +5,11 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   imports: [
+    CKEditorModule,
     CommonModule,
     FormsModule,
     IonicModule,

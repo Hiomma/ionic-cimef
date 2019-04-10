@@ -11,15 +11,78 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item *ngFor="let aux of listNoticias">
-            <h2>{{aux?.titulo}}</h2>
-            <p>Categoria: {{aux?.categoria?.nome}} - Criado em: {{aux?.createdAt}}</p>
+    <ion-slides style="height: 100%" #slideAdd>
+        <ion-slide>
 
-            <ion-buttons>
-                <ion-button (click)="alterar()">Alterar</ion-button>
-                <ion-button (click)="excluir()">Excluir</ion-button>
-            </ion-buttons>
-        </ion-item>
-    </ion-list>
+            <ion-list>
+                <ion-item *ngFor="let aux of listNoticias">
+                    <h2>{{aux?.titulo}}</h2>
+                    <p>Categoria: {{aux?.categoria?.nome}} - Criado em: {{aux?.createdAt}}</p>
+
+                    <ion-buttons>
+                        <ion-button (click)="alterar()">Alterar</ion-button>
+                        <ion-button (click)="excluir()">Excluir</ion-button>
+                    </ion-buttons>
+                </ion-item>
+            </ion-list>
+
+            <ion-fab class="fabAdicionar" vertical="bottom" horizontal="end" slot="fixed" (click)="proximo()">
+                <ion-fab-button>
+                    <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+
+        </ion-slide>
+
+        <ion-slide>
+            <div class="divAdicionar">
+                <ion-item class="itemAdicionar">
+                    <ion-label position="floating">Título</ion-label>
+                    <ion-input [(ngModel)]="titulo"></ion-input>
+                </ion-item>
+                <ion-item class="itemAdicionar">
+                    <ion-label position="floating">Manchete</ion-label>
+                    <ion-input [(ngModel)]="manchete"></ion-input>
+                </ion-item>
+
+                <div class="divEditor">
+                    <ckeditor [editor]="Editor" [(ngModel)]="texto"></ckeditor>
+                </div>
+
+
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item class="itemAdicionar">
+                                <ion-label>Categoria</ion-label>
+                                <ion-select [(ngModel)]="categoria">
+                                    <ion-select-option *ngFor="let aux of listCategorias" [value]="aux.id">{{aux.nome}}
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col>
+                            <ion-item class="itemAdicionar">
+                                <ion-label>Posição</ion-label>
+                                <ion-select [(ngModel)]="posicao">
+                                    <ion-select-option *ngFor="let aux of listPosicoes" [value]="aux.id">{{aux.nome}}
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row style="margin-top: 20px;">
+                        <ion-col>
+                            <ion-button (click)="adicionar()">Adicionar Notícia</ion-button>
+                        </ion-col>
+                        <ion-col>
+                            <ion-button (click)="voltar()">Voltar</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+        </ion-slide>
+    </ion-slides>
+
 </ion-content>
