@@ -7,12 +7,12 @@
             Notícias
         </ion-title>
     </ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar debounce="500" placeholder="Pesquise a Notícia" [(ngModel)]="pesquisa" (ionChange)="listar(pesquisa)" ></ion-searchbar>
 </ion-header>
 
 <ion-content>
     <ion-slides style="height: 100%;" #slideAdd>
-        <ion-slide>
+        <ion-slide style="overflow-y: scroll">
 
             <ion-list style="height: 100%; width: 100%">
                 <ion-item *ngFor="let aux of listNoticias">
@@ -36,44 +36,91 @@
 
         </ion-slide>
 
-        <ion-slide>
+        <ion-slide style="overflow-y: scroll">
             <div class="divAdicionar">
-                <ion-item class="itemAdicionar">
-                    <ion-label position="floating">Título</ion-label>
-                    <ion-input [(ngModel)]="titulo"></ion-input>
-                </ion-item>
-                <ion-item class="itemAdicionar">
-                    <ion-label position="floating">Manchete</ion-label>
-                    <ion-input [(ngModel)]="manchete"></ion-input>
-                </ion-item>
+                <div class="divDropDown">
+                    <div (click)="primeiroClicar()">
+                        <ion-label style="font-weight: bold">
+                            Notícia
+                            <ion-icon class="iconDropDown"
+                                [name]="primeiroClicado ? 'ios-arrow-dropright' : 'ios-arrow-dropdown'"></ion-icon>
+                        </ion-label>
+                    </div>
+                    <div *ngIf="primeiroClicado">
+                        <ion-item class="itemAdicionar">
+                            <ion-label position="stacked">Título</ion-label>
+                            <ion-input [(ngModel)]="titulo"></ion-input>
+                        </ion-item>
+                        <ion-item class="itemAdicionar">
+                            <ion-label position="stacked">Manchete</ion-label>
+                            <ion-input [(ngModel)]="manchete"></ion-input>
+                        </ion-item>
 
-                <div class="divEditor">
-                    <ckeditor [editor]="Editor" [(ngModel)]="texto"></ckeditor>
+                        <div class="divEditor">
+                            <ckeditor [editor]="Editor" [(ngModel)]="texto"></ckeditor>
+                        </div>
+                    </div>
                 </div>
 
 
-                <ion-grid>
+                <div class="divDropDown" style="margin-top: 40px;">
+                    <div (click)="segundoClicar()">
+                        <ion-label style="font-weight: bold">Informações Adicionais e Galeria
+                            <ion-icon class="iconDropDown"
+                                [name]="segundoClicado ? 'ios-arrow-dropright' : 'ios-arrow-dropdown'"></ion-icon>
+                        </ion-label>
+                    </div>
+                    <ion-grid *ngIf="segundoClicado">
+                        <ion-row>
+                            <ion-col>
+                                <ion-item class="itemAdicionar">
+                                    <ion-label>Categoria</ion-label>
+                                    <ion-select [(ngModel)]="categoria_id">
+                                        <ion-select-option *ngFor="let aux of listCategorias" [value]="aux.id">
+                                            {{aux.nome}}
+                                        </ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col>
+                                <ion-item class="itemAdicionar">
+                                    <ion-label>Posição</ion-label>
+                                    <ion-select [(ngModel)]="posicao_id">
+                                        <ion-select-option *ngFor="let aux of listPosicoes" [value]="aux.id">
+                                            {{aux.nome}}
+                                        </ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item class="itemAdicionar">
+                                    <ion-label position="stacked">URL Amigável</ion-label>
+                                    <ion-input [(ngModel)]="url"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col style="margin-top: 20px;">
+                                <ion-label style="font-weight: 500">Galeria de Fotos</ion-label>
+                                <input multiple="multiple" style="display: none" type="file"
+                                    (change)="arquivosSelecionados($event)" #fileInput>
+
+                                <div style="margin-top: 20px; overflow: hidden;">
+                                    <ion-label style="top: 10px; position: relative;">
+                                        {{imagensSelecionadas != null ? imagensSelecionadas.length : 0}}
+                                        Imagem(ns) selecionadas</ion-label>
+                                    <ion-button style="float: right;" (click)="fileInput.click()">Adicionar Fotos
+                                    </ion-button>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+
+                <ion-grid style="margin-top: 20px;">
                     <ion-row>
-                        <ion-col>
-                            <ion-item class="itemAdicionar">
-                                <ion-label>Categoria</ion-label>
-                                <ion-select [(ngModel)]="categoria_id">
-                                    <ion-select-option *ngFor="let aux of listCategorias" [value]="aux.id">{{aux.nome}}
-                                    </ion-select-option>
-                                </ion-select>
-                            </ion-item>
-                        </ion-col>
-                        <ion-col>
-                            <ion-item class="itemAdicionar">
-                                <ion-label>Posição</ion-label>
-                                <ion-select [(ngModel)]="posicao_id">
-                                    <ion-select-option *ngFor="let aux of listPosicoes" [value]="aux.id">{{aux.nome}}
-                                    </ion-select-option>
-                                </ion-select>
-                            </ion-item>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row style="margin-top: 20px;">
                         <ion-col>
                             <ion-button (click)="adicionar()" [disabled]="desabilitar()">Add. Notícia</ion-button>
                         </ion-col>
@@ -82,8 +129,8 @@
                         </ion-col>
                     </ion-row>
                 </ion-grid>
-            </div>
 
+            </div>
         </ion-slide>
     </ion-slides>
 

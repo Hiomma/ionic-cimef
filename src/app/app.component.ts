@@ -15,17 +15,17 @@ export class AppComponent {
         {
             title: 'Notícias',
             url: '/home',
-            icon: 'home'
+            icon: 'ios-paper'
         },
         {
             title: 'Categorias',
             url: '/categoria',
-            icon: 'home'
+            icon: 'ios-filing'
         },
         {
             title: 'Posições',
             url: '/posicao',
-            icon: 'home'
+            icon: 'ios-expand'
         },
     ];
 

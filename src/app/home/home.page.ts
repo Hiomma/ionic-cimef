@@ -16,9 +16,14 @@ export class HomePage {
     manchete: string = "";
     titulo: string = "";
     url: string = "";
-    imagem: any;
+    ativado: boolean = true;
     categoria_id: any;
     posicao_id: any;
+
+    imagensSelecionadas: Array<File>;
+
+    primeiroClicado: boolean = true;
+    segundoClicado: boolean = false;
 
     alterar: any = null;
 
@@ -39,12 +44,16 @@ export class HomePage {
         this.listar();
     }
 
-    listar(){
-        this.graphql.graphql(this.query.getNoticiasPosicoesCategorias("true")).then((data: any) => {
+    listar(pesquisa?) {
+        this.graphql.graphql(this.query.getNoticiasPosicoesCategorias("true", pesquisa)).then((data: any) => {
             this.listCategorias = data.data.categorias;
             this.listPosicoes = data.data.posicoes;
             this.listNoticias = data.data.noticias;
         })
+    }
+
+    arquivosSelecionados(event) {
+        this.imagensSelecionadas = event.target.files;
     }
 
     desabilitar() {
@@ -63,7 +72,7 @@ export class HomePage {
         if (aux) {
             this.posicao_id = aux.posicao.id;
             this.categoria_id = aux.categoria.id;
-                        
+
             this.titulo = aux.titulo;
             this.texto = aux.texto;
             this.manchete = aux.manchete;
@@ -73,7 +82,23 @@ export class HomePage {
         }
     }
 
-    async excluir(aux){
+    primeiroClicar(aux) {
+        this.primeiroClicado = !this.primeiroClicado;
+
+        if (this.primeiroClicado) {
+            this.segundoClicado = false;
+        }
+    }
+
+    segundoClicar(aux) {
+        this.segundoClicado = !this.segundoClicado;
+
+        if (this.segundoClicado) {
+            this.primeiroClicado = false;
+        }
+    }
+
+    async excluir(aux) {
         const alert = await this.alert.create({
             header: 'Alerta',
             message: "Você tem certeza que deseja deletar essa Notícia?",
@@ -105,9 +130,27 @@ export class HomePage {
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id })).then(() => {
-                                this.toast.mostrar("Noticia atualizada com sucesso!");
-                            })
+
+                            if (this.imagensSelecionadas) {
+                                const fd = new FormData();
+
+                                for (let aux of this.imagensSelecionadas) {
+                                    fd.append("image", aux, aux.name);
+                                }
+
+                                this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
+                                    this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then(() => {
+                                        this.toast.mostrar("Noticia atualizada com sucesso!");
+                                        this.voltar();
+                                    })
+                                })
+                            } else {
+                                this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then(() => {
+                                    this.toast.mostrar("Noticia atualizada com sucesso!");
+                                    this.voltar();
+                                })
+                            }
+
                         }
                     },
                     {
@@ -125,8 +168,20 @@ export class HomePage {
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.setNoticia({ titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id  })).then(() => {
-                                this.toast.mostrar("Noticia criada com sucesso!");
+                            this.graphql.graphql(this.query.setNoticia({ titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then((data: any) => {
+                                
+                                if(this.imagensSelecionadas){
+                                    const fd = new FormData();
+    
+                                    for (let aux of this.imagensSelecionadas) {
+                                        fd.append("image", aux, aux.name);
+                                    }
+    
+                                    this.graphql.post("api/imagem/" + data.data.createNoticia.id, fd).then(data => {
+                                        this.toast.mostrar("Noticia criada com sucesso!");
+                                        this.voltar();
+                                    });
+                                }
                             })
                         }
                     },
@@ -147,6 +202,7 @@ export class HomePage {
         this.texto = "";
         this.manchete = "";
         this.url = "";
+        this.imagensSelecionadas = null;
 
         this.alterar = null;
 
