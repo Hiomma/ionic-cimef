@@ -112,7 +112,7 @@ export class HomePage {
                         this.graphql.graphql(this.query.delNoticia(Number(aux.id))).then(data => {
                             this.listar();
                             this.toast.mostrar("A notícia foi excluida com sucesso!");
-                        });
+                        })
                     }
                 },
                 {
@@ -142,9 +142,10 @@ export class HomePage {
                                 }
 
                                 this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
+                                    this.voltar();
                                     this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then(() => {
                                         this.toast.mostrar("Noticia atualizada com sucesso!");
-                                        this.voltar();
+
                                     })
                                 })
                             } else {
@@ -172,7 +173,6 @@ export class HomePage {
                         text: "OK",
                         handler: () => {
                             this.graphql.graphql(this.query.setNoticia({ titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then((data: any) => {
-                                
                                 if(this.imagensSelecionadas){
                                     const fd = new FormData();
     
@@ -181,9 +181,12 @@ export class HomePage {
                                     }
     
                                     this.graphql.post("api/imagem/" + data.data.createNoticia.id, fd).then(data => {
-                                        this.toast.mostrar("Noticia criada com sucesso!");
                                         this.voltar();
+                                        this.toast.mostrar("Noticia criada com sucesso!");
                                     });
+                                }else{
+                                    this.voltar();
+                                    this.toast.mostrar("Noticia criada com sucesso!");
                                 }
                             })
                         }
@@ -210,6 +213,8 @@ export class HomePage {
         this.alterar = null;
 
         this.segundaTela = false;
+
+        this.listar();
 
         this.slideAdd.lockSwipes(false);
         this.slideAdd.slidePrev();
