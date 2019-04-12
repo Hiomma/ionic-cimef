@@ -6,7 +6,13 @@
     right: 5vw;
 }
 
+
 //Segundo Slide
+
+.labelCampo{
+    color: var(--ion-color-primary);
+    font-weight: bold;
+}
 
 .divDropDown{
     border: 1px solid #dedede;
@@ -45,3 +51,10 @@
     min-height: 300px;
 }
 
+@media (max-width: 420px){
+    .divAdicionar{
+        padding-left: 10px;
+        padding-right: 0px;
+        padding-top: 10px;
+    }
+}

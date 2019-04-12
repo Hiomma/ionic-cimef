@@ -10,11 +10,11 @@ export class QueryService {
 
     //Posicoes
 
-    getPosicoes(ativado: string = "") {
+    getPosicoes(ativado: string = "", filter: string = "") {
         if (ativado == "") {
-            return { query: "{ posicao { id nome ativado createdAt } }", variables: null }
+            return { query: "query rusbe($filter: String!){ posicoes(filter: $filter) { id nome ativado createdAt } }", variables: { filter: filter } }
         } else {
-            return { query: "query rusbe($ativado: Boolean!){ posicoes(ativado: $ativado) { id nome ativado createdAt } }", variables: { ativado: ativado == "true" ? true : false } }
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){ posicoes(ativado: $ativado, filter: $filter) { id nome ativado createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
         }
     }
 
@@ -32,11 +32,11 @@ export class QueryService {
 
     //Categorias
 
-    getCategorias(ativado: string = "") {
+    getCategorias(ativado: string = "", filter: string = "") {
         if (ativado == "") {
-            return { query: "{ categoria { id nome ativado createdAt } }", variables: null }
+            return { query: "query rusbe($filter: String!){ categorias(filter: $filter) { id nome ativado createdAt } }", variables: { filter: filter } }
         } else {
-            return { query: "query rusbe($ativado: Boolean!){ categorias(ativado: $ativado) { id nome ativado createdAt } }", variables: { ativado: ativado == "true" ? true : false } }
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){ categorias(ativado: $ativado,filter: $filter ) { id nome ativado createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
         }
     }
 

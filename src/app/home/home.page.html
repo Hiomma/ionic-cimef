@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -7,7 +7,8 @@
             Notícias
         </ion-title>
     </ion-toolbar>
-    <ion-searchbar debounce="500" placeholder="Pesquise a Notícia" [(ngModel)]="pesquisa" (ionChange)="listar(pesquisa)" ></ion-searchbar>
+    <ion-searchbar debounce="500" placeholder="Pesquise a Notícia" [(ngModel)]="pesquisa" (ionChange)="listar(pesquisa)"
+        style="background: var(--ion-color-primary)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
@@ -18,12 +19,12 @@
                 <ion-item *ngFor="let aux of listNoticias">
                     <ion-label>
                         <h2>{{aux?.titulo}}</h2>
-                        <p>Categoria: {{aux?.categoria?.nome}} - Criado em: {{aux?.createdAt}}</p>
+                        <p>Categoria: {{aux?.categoria?.nome}} - Criado em: {{aux?.createdAt | date:'dd/MM/yyyy'}}</p>
                     </ion-label>
 
-                    <ion-buttons>
-                        <ion-button (click)="proximo(aux)">Alterar</ion-button>
-                        <ion-button (click)="excluir()">Excluir</ion-button>
+                    <ion-buttons style="height: 100%">
+                        <ion-button class="buttonAlterar" (click)="proximo(aux)">Alterar</ion-button>
+                        <ion-button class="buttonCancelar" (click)="excluir()">Excluir</ion-button>
                     </ion-buttons>
                 </ion-item>
             </ion-list>
@@ -40,7 +41,7 @@
             <div class="divAdicionar">
                 <div class="divDropDown">
                     <div (click)="primeiroClicar()">
-                        <ion-label style="font-weight: bold">
+                        <ion-label style="font-weight: bold" color="primary">
                             Notícia
                             <ion-icon class="iconDropDown"
                                 [name]="primeiroClicado ? 'ios-arrow-dropright' : 'ios-arrow-dropdown'"></ion-icon>
@@ -48,12 +49,12 @@
                     </div>
                     <div *ngIf="primeiroClicado">
                         <ion-item class="itemAdicionar">
-                            <ion-label position="stacked">Título</ion-label>
-                            <ion-input [(ngModel)]="titulo"></ion-input>
+                            <ion-label class="labelCampo" position="stacked">Título</ion-label>
+                            <ion-input [(ngModel)]="titulo" placeholder="Digite o título..."></ion-input>
                         </ion-item>
                         <ion-item class="itemAdicionar">
-                            <ion-label position="stacked">Manchete</ion-label>
-                            <ion-input [(ngModel)]="manchete"></ion-input>
+                            <ion-label class="labelCampo" position="stacked">Manchete</ion-label>
+                            <ion-input [(ngModel)]="manchete" placeholder="Digite a manchete..."></ion-input>
                         </ion-item>
 
                         <div class="divEditor">
@@ -65,7 +66,7 @@
 
                 <div class="divDropDown" style="margin-top: 40px;">
                     <div (click)="segundoClicar()">
-                        <ion-label style="font-weight: bold">Informações Adicionais e Galeria
+                        <ion-label style="font-weight: bold" color="primary">Informações Adicionais e Galeria
                             <ion-icon class="iconDropDown"
                                 [name]="segundoClicado ? 'ios-arrow-dropright' : 'ios-arrow-dropdown'"></ion-icon>
                         </ion-label>
@@ -74,7 +75,7 @@
                         <ion-row>
                             <ion-col>
                                 <ion-item class="itemAdicionar">
-                                    <ion-label>Categoria</ion-label>
+                                    <ion-label class="labelCampo">Categoria</ion-label>
                                     <ion-select [(ngModel)]="categoria_id">
                                         <ion-select-option *ngFor="let aux of listCategorias" [value]="aux.id">
                                             {{aux.nome}}
@@ -84,7 +85,7 @@
                             </ion-col>
                             <ion-col>
                                 <ion-item class="itemAdicionar">
-                                    <ion-label>Posição</ion-label>
+                                    <ion-label class="labelCampo">Posição</ion-label>
                                     <ion-select [(ngModel)]="posicao_id">
                                         <ion-select-option *ngFor="let aux of listPosicoes" [value]="aux.id">
                                             {{aux.nome}}
@@ -96,42 +97,53 @@
                         <ion-row>
                             <ion-col>
                                 <ion-item class="itemAdicionar">
-                                    <ion-label position="stacked">URL Amigável</ion-label>
-                                    <ion-input [(ngModel)]="url"></ion-input>
+                                    <ion-label class="labelCampo" position="stacked">URL Amigável</ion-label>
+                                    <ion-input [(ngModel)]="url" placeholder="Digite a URL..."></ion-input>
                                 </ion-item>
                             </ion-col>
                         </ion-row>
                         <ion-row>
                             <ion-col style="margin-top: 20px;">
-                                <ion-label style="font-weight: 500">Galeria de Fotos</ion-label>
+                                <ion-label class="labelCampo" style="font-weight: 500">Galeria de Fotos</ion-label>
                                 <input multiple="multiple" style="display: none" type="file"
                                     (change)="arquivosSelecionados($event)" #fileInput>
 
-                                <div style="margin-top: 20px; overflow: hidden;">
-                                    <ion-label style="top: 10px; position: relative;">
-                                        {{imagensSelecionadas != null ? imagensSelecionadas.length : 0}}
-                                        Imagem(ns) selecionadas</ion-label>
-                                    <ion-button style="float: right;" (click)="fileInput.click()">Adicionar Fotos
-                                    </ion-button>
-                                </div>
+                                <ion-grid style="margin-top: 20px; overflow: hidden;">
+                                    <ion-row>
+                                        <ion-col>
+                                            <ion-label style="top: 10px; position: relative;">
+                                                {{imagensSelecionadas != null ? imagensSelecionadas.length : 0}}
+                                                Imagem(ns) selecionadas</ion-label>
+                                        </ion-col>
+                                        <ion-col>
+                                            <ion-button style="float: right;" (click)="fileInput.click()">Adicionar
+                                                Fotos
+                                            </ion-button>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
                 </div>
-
-                <ion-grid style="margin-top: 20px;">
-                    <ion-row>
-                        <ion-col>
-                            <ion-button (click)="adicionar()" [disabled]="desabilitar()">Add. Notícia</ion-button>
-                        </ion-col>
-                        <ion-col>
-                            <ion-button (click)="voltar()">Voltar</ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-
             </div>
         </ion-slide>
     </ion-slides>
 
 </ion-content>
+
+<ion-footer *ngIf="segundaTela">
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" class="buttonAlterar" (click)="adicionar()" [disabled]="desabilitar()">
+                        Add. Notícia</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" class="buttonCancelar" (click)="voltar()">Voltar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

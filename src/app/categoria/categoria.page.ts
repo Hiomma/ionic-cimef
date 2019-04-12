@@ -24,8 +24,8 @@ export class CategoriaPage implements OnInit {
         this.listar();
     }
 
-    listar() {
-        this.graphql.graphql(this.query.getCategorias("true")).then((data: any) => {
+    listar(pesquisa?) {
+        this.graphql.graphql(this.query.getCategorias("true", pesquisa)).then((data: any) => {
             this.listCategorias = data.data.categorias;
         })
     }
@@ -56,7 +56,8 @@ export class CategoriaPage implements OnInit {
     async abrirModal(aux?) {
         const modal = await this.modalController.create({
             component: AdicionarCategoriaComponent,
-            componentProps: { categoria: aux }
+            componentProps: { categoria: aux },
+            cssClass: "modalAdicionarCategoria"
         });
         await modal.present();
 

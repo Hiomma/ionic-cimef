@@ -68,3 +68,45 @@
   font-weight: 900;
   src: url('assets/fonts/Montserrat/Montserrat-Black.ttf');
 }
+
+.buttonAlterar{
+    border: 1px solid rgb(35, 207, 92);
+    color: rgb(35, 207, 92);
+    border-radius: 5px;
+    --background: transparent;
+    --transition: 0.5s;
+    transition: 0.5s;
+}
+
+.buttonAlterar:hover{
+    color: white;
+    background: rgb(35, 207, 92);
+    --transition: 0.5s;
+    transition: 0.5s;
+}
+
+.buttonCancelar{
+    border: 1px solid rgb(209, 44, 56);
+    color: rgb(209, 44, 56);
+    border-radius: 5px;
+    --background: transparent;
+    --transition: 0.5s;
+    transition: 0.5s;
+}
+
+.buttonCancelar:hover{
+    background: rgb(209, 44, 56);
+    color: white;
+    transition: 0.5s;
+    --transition: 0.5s;
+}
+
+.modalAdicionarPosicao .modal-wrapper{
+    width: 500px;
+    height: 300px;
+}
+
+.modalAdicionarCategoria .modal-wrapper{
+    width: 500px;
+    height: 300px;
+}

@@ -24,8 +24,8 @@ export class PosicaoPage implements OnInit {
         this.listar();
     }
 
-    listar() {
-        this.graphql.graphql(this.query.getPosicoes("true")).then((data: any) => {
+    listar(pesquisa?) {
+        this.graphql.graphql(this.query.getPosicoes("true", pesquisa)).then((data: any) => {
             this.listPosicoes = data.data.posicoes;
         })
     }
@@ -56,7 +56,8 @@ export class PosicaoPage implements OnInit {
     async abrirModal(aux?) {
         const modal = await this.modalController.create({
             component: AdicionarPosicaoComponent,
-            componentProps: { posicao: aux }
+            componentProps: { posicao: aux },
+            cssClass: "modalAdicionarPosicao"
         });
         await modal.present();
 

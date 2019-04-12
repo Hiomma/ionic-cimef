@@ -1,28 +1,34 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-title>Adicionar Posição</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-item>
-        <ion-label position="floating">Nome</ion-label>
-        <ion-input [(ngModel)]="nome"></ion-input>
+        <ion-label class="labelCampo" position="stacked">Nome</ion-label>
+        <ion-input [(ngModel)]="nome" placeholder="Digite o nome..."></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="floating">Ativado?</ion-label>
+        <ion-label class="labelCampo">Ativado?</ion-label>
         <ion-toggle [(ngModel)]="ativado"></ion-toggle>
     </ion-item>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-button [disabled]="desabilitar()" (click)="adicionar()">{{atualizar ? "Alt." : "Add."}} Posição
-                </ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-button (click)="cancelar()">Cancelar</ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" class="buttonAlterar" [disabled]="desabilitar()" (click)="adicionar()">
+                        {{atualizar ? "Alt." : "Add."}} Posição
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" class="buttonCancelar" (click)="cancelar()">Cancelar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

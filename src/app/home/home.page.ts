@@ -24,6 +24,7 @@ export class HomePage {
 
     primeiroClicado: boolean = true;
     segundoClicado: boolean = false;
+    segundaTela: boolean = false;
 
     alterar: any = null;
 
@@ -57,7 +58,7 @@ export class HomePage {
     }
 
     desabilitar() {
-        if (this.texto != "" && this.manchete != "" && this.titulo != "" && this.categoria_id && this.posicao_id) {
+        if (this.texto != "" && this.manchete != "" && this.titulo != "" && this.categoria_id && this.posicao_id && this.url != "") {
             return false;
         } else {
             return true;
@@ -68,6 +69,8 @@ export class HomePage {
         this.slideAdd.lockSwipes(false);
         this.slideAdd.slideNext();
         this.slideAdd.lockSwipes(true);
+
+        this.segundaTela = true;
 
         if (aux) {
             this.posicao_id = aux.posicao.id;
@@ -205,6 +208,8 @@ export class HomePage {
         this.imagensSelecionadas = null;
 
         this.alterar = null;
+
+        this.segundaTela = false;
 
         this.slideAdd.lockSwipes(false);
         this.slideAdd.slidePrev();
