@@ -7,7 +7,7 @@
             Notícias
         </ion-title>
     </ion-toolbar>
-    <ion-searchbar debounce="500" placeholder="Pesquise a Notícia" [(ngModel)]="pesquisa" (ionChange)="listar(pesquisa)"
+    <ion-searchbar *ngIf="!segundaTela" debounce="500" placeholder="Pesquise a Notícia" [(ngModel)]="pesquisa" (ionChange)="listar(pesquisa)"
         style="background: var(--ion-color-primary)"></ion-searchbar>
 </ion-header>
 
@@ -66,7 +66,7 @@
 
                 <div class="divDropDown" style="margin-top: 40px;">
                     <div (click)="segundoClicar()">
-                        <ion-label style="font-weight: bold" color="primary">Informações Adicionais e Galeria
+                        <ion-label style="font-weight: bold" color="primary">Inf. Adicionais e Galeria
                             <ion-icon class="iconDropDown"
                                 [name]="segundoClicado ? 'ios-arrow-dropright' : 'ios-arrow-dropdown'"></ion-icon>
                         </ion-label>
@@ -116,7 +116,7 @@
                                                 Imagem(ns) selecionadas</ion-label>
                                         </ion-col>
                                         <ion-col>
-                                            <ion-button style="float: right;" (click)="fileInput.click()">Adicionar
+                                            <ion-button style="float: right;" (click)="fileInput.click()">Add.
                                                 Fotos
                                             </ion-button>
                                         </ion-col>
@@ -138,7 +138,7 @@
             <ion-row>
                 <ion-col>
                     <ion-button expand="block" class="buttonAlterar" (click)="adicionar()" [disabled]="desabilitar()">
-                        Add. Notícia</ion-button>
+                        {{alterar == null ? "Add." : "Alt."}} Notícia</ion-button>
                 </ion-col>
                 <ion-col>
                     <ion-button expand="block" class="buttonCancelar" (click)="voltar()">Voltar</ion-button>
