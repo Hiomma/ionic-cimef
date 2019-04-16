@@ -13,6 +13,7 @@ import { ToastService } from '../services/toast/toast.service';
 export class PosicaoPage implements OnInit {
 
     listPosicoes: any = new Array();
+    pesquisa: any;
 
     constructor(private modalController: ModalController,
         private query: QueryService,

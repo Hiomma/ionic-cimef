@@ -1,5 +1,7 @@
 {
   "name": "cimef",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
