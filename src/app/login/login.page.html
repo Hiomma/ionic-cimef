@@ -1,0 +1,33 @@
+<ion-content scroll="false">
+
+    <div class="backgroundLogin">
+        <div class="login">
+            <div class="headerLogin">
+            </div>
+            <div class="conteudo">
+                <ion-list>
+                    <ion-item no-padding>
+                        <ion-label position="floating">Usuário</ion-label>
+                        <ion-input type="text" [(ngModel)]="email" name="username" #inserir></ion-input>
+                    </ion-item>
+                    <ion-item no-padding style="padding-top: 20px;">
+                        <ion-label position="floating">Senha</ion-label>
+                        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+                    </ion-item>
+                </ion-list>
+                <div no-padding>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col no-padding style="padding-top: 40px;">
+                                <ion-button fill="outline" expand="block" color="primary" (click)="login()">ACESSAR
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+                <div style="text-align: right; color: gray;">v1.0.0</div>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

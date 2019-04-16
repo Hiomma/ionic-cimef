@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  url: "https://node-cimef.herokuapp.com/"
+    production: false,
+    //   url: "https://node-cimef.herokuapp.com/"
+    url: "http://localhost:3001/"
 };
 
 /*

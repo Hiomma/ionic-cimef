@@ -7,12 +7,12 @@ import { StorageService } from '../storage/storage.service';
 })
 export class AuthService {
 
-    constructor(private api: GraphQlService,
+    constructor(private graphql: GraphQlService,
         private storage: StorageService) { }
 
     autenticar(usuario) {
         return new Promise((resolve, reject) => {
-            this.api.post("login", usuario, true).then(data => {
+            this.graphql.post("api/login", usuario, true).then(data => {
                 if (data) {
                     this.guardarUsuario(data);
                     resolve(data);
@@ -25,14 +25,14 @@ export class AuthService {
 
     guardarUsuario(ssn) {
         let dataHoje = new Date();
-        let data2Dias = new Date().setDate(dataHoje.getDate() + 2);
+        let data1Dias = new Date().setDate(dataHoje.getDate() + 1);
 
         let setting = {
             authenticated: true,
             dtultlogin: dataHoje,
-            dtexpires: data2Dias,
-            id: ssn.data.id,
-            token: ssn.data.token
+            dtexpires: data1Dias,
+            id: ssn.id,
+            token: ssn.token
         }
 
         this.storage.saveSetting('session', setting);

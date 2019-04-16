@@ -17,6 +17,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ComponentsModule } from './components/components.module';
 import { ToastService } from './services/toast/toast.service';
 import { AlertService } from './services/alert/alert.service';
+import { LoaderService } from './services/loader/loader.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { AlertService } from './services/alert/alert.service';
         AuthService,
         ToastService,
         AlertService,
+        LoaderService,
         StatusBar,
         SplashScreen,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

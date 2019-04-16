@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonSlides, AlertController } from '@ionic/angular';
+import { IonSlides, AlertController, MenuController } from '@ionic/angular';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { GraphQlService } from '../services/graphql/graph-ql.service';
 import { QueryService } from '../services/query/query.service';
@@ -38,11 +38,16 @@ export class HomePage {
     constructor(private graphql: GraphQlService,
         private toast: ToastService,
         private alert: AlertController,
+        private menuController: MenuController,
         private query: QueryService) { }
 
     ngOnInit() {
         this.slideAdd.lockSwipes(true);
         this.listar();
+    }
+
+    ionViewWillEnter() {
+        this.menuController.enable(true);
     }
 
     listar(pesquisa?) {
@@ -173,18 +178,18 @@ export class HomePage {
                         text: "OK",
                         handler: () => {
                             this.graphql.graphql(this.query.setNoticia({ titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then((data: any) => {
-                                if(this.imagensSelecionadas){
+                                if (this.imagensSelecionadas) {
                                     const fd = new FormData();
-    
+
                                     for (let aux of this.imagensSelecionadas) {
                                         fd.append("image", aux, aux.name);
                                     }
-    
+
                                     this.graphql.post("api/imagem/" + data.data.createNoticia.id, fd).then(data => {
                                         this.voltar();
                                         this.toast.mostrar("Noticia criada com sucesso!");
                                     });
-                                }else{
+                                } else {
                                     this.voltar();
                                     this.toast.mostrar("Noticia criada com sucesso!");
                                 }
