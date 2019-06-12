@@ -28,6 +28,8 @@ export class HomePage {
 
     alterar: any = null;
 
+    pesquisa: any;
+
     listNoticias: any = new Array();
     listCategorias: any = new Array();
     listPosicoes: any = new Array();
@@ -90,7 +92,7 @@ export class HomePage {
         }
     }
 
-    primeiroClicar(aux) {
+    primeiroClicar() {
         this.primeiroClicado = !this.primeiroClicado;
 
         if (this.primeiroClicado) {
@@ -98,7 +100,7 @@ export class HomePage {
         }
     }
 
-    segundoClicar(aux) {
+    segundoClicar() {
         this.segundoClicado = !this.segundoClicado;
 
         if (this.segundoClicado) {
