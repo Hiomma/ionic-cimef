@@ -1,3 +1,7 @@
+.divConteudo{
+    padding-left: 150px;
+}
+
 //********************************************************************************************************
 // SLIDE
 //********************************************************************************************************
@@ -5,7 +9,7 @@
 .backgroundSlide{
     position: absolute;
     height: 850px;
-    width: 1920px;
+    width: 100%;
     background: url("../../assets/imgs/slide1.png");
 }
 
@@ -39,6 +43,31 @@
     font-size: 18px;
 }
 
+.imgBarras{
+    margin-left: -11px;
+    position: relative;
+    top: calc(50% - 123px);
+}
+
+.divMaquina{
+    height: 430px;
+    position: relative;
+    top: calc(50% - 215px);
+}
+
+.imgMaquina{
+    position: absolute;
+    left: 35%;
+}
+
+.divProduto{
+    top: calc(50% - 215px);
+    position: relative;
+    text-align: justify;
+    padding-right: 140px;
+    padding-left: 50px;
+}
+
 //********************************************************************************************************
 // NOTICIAS
 //********************************************************************************************************
@@ -47,4 +76,101 @@
     background: #eeeeee;
     width: 100%;
     height: 680px;
+}
+
+.pNoticiaTitulo{
+    font-weight: bold;
+    font-size: 30px;
+    color: #545454;
+    text-align: center;
+    width: 100%;
+}
+
+.buttonNoticia{
+    --background: white;
+    --box-shadow: none;
+    width: 248px;
+    height: 36px;
+    text-transform: unset;
+    color: #545454;
+    --border-radius: 30px;
+    border: 1px solid #545454;
+    border-radius: 30px;
+}
+
+.imgNoticias{
+    height: 520px;
+    width: 402px;
+}
+
+//********************************************************************************************************
+// Localização
+//********************************************************************************************************
+
+.divLocalizacao{
+    height: 600px;
+    width: 100%;
+    background: url("../../assets/imgs/mapa.png");
+}
+
+.divLocalizacaoEscrita{
+    text-align: center;
+    height: 100px;
+    width: 100%;
+    top: calc(50% - 50px);
+    position: relative;
+}
+
+.pLocalizacao{
+    font-weight: bold;
+    font-size: 30px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.pLocalizacaoDescricao{
+    font-size: 20px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.buttonLocalizacao{
+    margin-top: 30px;
+    --background: white;
+    color: black;
+    height: 56px;
+    width: 256px;
+    font-size: 20px;
+    --box-shadow: none;
+    --border-radius: 30px;
+    text-transform: none;
+}
+
+//********************************************************************************************************
+// Footer
+//********************************************************************************************************
+
+.gridFooter{
+    padding-left: 150px;
+    padding-right: 150px;
+    background: #262626;
+    width: 100%;
+    height: 583px;
+    color: rgb(168,168,168);
+}
+
+.pMenuTitulo{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.divBordaTitulo{
+    border-bottom: 1px solid rgb(168,168,168);
+    width: 30px;
+}
+
+.pEndereco{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: 14px;
 }

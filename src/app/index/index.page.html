@@ -3,6 +3,10 @@
         <div class="backgroundSlide">
         </div>
         <div>
+            <div>
+                <img class="imgLogoTitulo" src="../../assets/imgs/logo-cimef-branca.png">
+            </div>
+
             <ion-button fill="clear" class="buttonSlide">Home</ion-button>
             <ion-button fill="clear" class="buttonSlide">Empresa</ion-button>
             <ion-button fill="clear" class="buttonSlide">Produtos</ion-button>
@@ -16,62 +20,108 @@
             55 (28) 3521-2433
         </div>
     </div>
-    <ion-grid>
-        <ion-row>
-            <ion-col>
 
+    <ion-grid style="height: 690px">
+        <ion-row style="height: 690px">
+            <ion-col size="5">
+                <div class="divMaquina">
+                    <img class="imgBarras" src="../../assets/imgs/barras.png">
+                    <img class="imgMaquina" src="../../assets/imgs/maquina.png">
+                </div>
             </ion-col>
             <ion-col>
-                <p class="pProduto">CONHEÇA NOSSOS PRODUTOS</p>
-                <p class="pDescricaoProduto">A Cimef é uma das maiores fabricantes de máquinas e soluções tecnológicas para o setor de rochas
-                    ornamentais. Com seu parque industrial instalado no coração do principal centro produtor,
-                    beneficiador e
-                    exportador de rochas ornamentais do país - Cachoeiro de Itapemirim - Espírito Santo, a Cimef se
-                    orgulha
-                    de trabalhar para inovar na qualidade e tecnologia das máquinas que produz. Confira abaixo nossa
-                    linha
-                    de produtos.</p>
+                <div class="divProduto">
+                    <p class="pProduto">CONHEÇA NOSSOS PRODUTOS</p>
+                    <p class="pDescricaoProduto">A Cimef é uma das maiores fabricantes de máquinas e soluções
+                        tecnológicas para o setor de rochas ornamentais. Com seu parque industrial instalado no coração
+                        do
+                        principal centro produtor, beneficiador e exportador de rochas ornamentais do país - Cachoeiro
+                        de
+                        Itapemirim - Espírito Santo, a Cimef se orgulha de trabalhar para inovar na qualidade e
+                        tecnologia
+                        das máquinas que produz. Confira abaixo nossa linha de produtos.</p>
 
-                <ion-button class="buttonSaibaMais">Saiba Mais</ion-button>
+                    <ion-button class="buttonSaibaMais">Saiba Mais</ion-button>
+                </div>
             </ion-col>
         </ion-row>
     </ion-grid>
+
     <ion-grid class="gridNoticias">
         <ion-row>
-            <p>Confira as últimas notícias</p>
+            <p class="pNoticiaTitulo">Confira as últimas notícias</p>
         </ion-row>
         <ion-row>
-            <ion-col>
-
-            </ion-col>
-            <ion-col>
-
-            </ion-col>
-            <ion-col>
-
+            <ion-col *ngFor="let aux of listNoticias">
+                <img class="imgNoticias" [src]="aux.imagem">
+                <p>{{aux.titulo}}</p>
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-button>Acesse todas as notícias</ion-button>
+            <ion-col style="justify-content: center; display: flex;">
+                <ion-button class="buttonNoticia">Acesse todas as notícias</ion-button>
+            </ion-col>
         </ion-row>
     </ion-grid>
-    <div>
-        <p>Localização</p>
-        <p>Acesse o mapa e saiba como chegar a nossa empresa.</p>
-        <ion-button>Explorar no mapa</ion-button>
+
+    <div class="divLocalizacao">
+        <div class="divLocalizacaoEscrita">
+            <p class="pLocalizacao">Localização</p>
+            <p class="pLocalizacaoDescricao">Acesse o mapa e saiba como chegar a nossa empresa.</p>
+            <ion-button class="buttonLocalizacao">Explorar no mapa</ion-button>
+        </div>
     </div>
-    <ion-grid>
-        <ion-col>
 
-        </ion-col>
-        <ion-col>
+    <ion-grid class="gridFooter">
+        <ion-row style="margin-top: 80px">
+            <ion-col>
+                <p class="pMenuTitulo">MENU</p>
+                <div class="divBordaTitulo"></div>
 
-        </ion-col>
-        <ion-col>
+                <ul style="padding-inline-start: 20px; font-size: 14px">
+                    <li>Home</li>
+                    <li>Institucional</li>
+                    <li>Equipamentos</li>
+                    <li>Serviços</li>
+                    <li>Notícias</li>
+                    <li>Localização</li>
+                    <li>Contato</li>
+                </ul>
+            </ion-col>
+            <ion-col>
+                <p class="pMenuTitulo">COMO CHEGAR</p>
+                <div class="divBordaTitulo"></div>
 
-        </ion-col>
-        <ion-col>
+                <div style="margin-top: 1em;">
+                    <p class="pEndereco">Av. Francisco Mardegan, 42 - Boa Vista</p>
+                    <p class="pEndereco">Cachoeiro de Itapemirim - ES - Brasil</p>
+                    <p class="pEndereco">CEP 29315-477</p>
+                    <p class="pEndereco">Caixa Postal - 22</p>
+                </div>
 
-        </ion-col>
+                <div style="margin-top: 1em;">
+                    <p class="pEndereco">Acesse o Mapa</p>
+                </div>
+            </ion-col>
+            <ion-col>
+                <p class="pMenuTitulo">ENTRE EM CONTATO</p>
+                <div class="divBordaTitulo"></div>
+
+                <div style="margin-top: 1em;">
+                    <p class="pEndereco"> 55 28 3521-2433 </p>
+                    <p class="pEndereco"> cimef@cimef.com.br </p>
+                </div>
+
+                <p class="pMenuTitulo" style="margin-top: 40px">MÍDIAS SOCIAIS</p>
+                <div class="divBordaTitulo"></div>
+
+                <div>
+                    ICONES ASKDJASLDJÇLAKSDJLASJDLJASDLÇKJA
+                </div>
+            </ion-col>
+            <ion-col>
+                LOGO ASDLKJASDLJASDLJASLDJLLASDJLASDJLSJD
+            </ion-col>
+        </ion-row>
     </ion-grid>
 </ion-content>
