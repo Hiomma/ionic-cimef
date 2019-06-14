@@ -1,4 +1,4 @@
-.divConteudo{
+.divConteudo {
     padding-left: 150px;
 }
 
@@ -6,84 +6,99 @@
 // SLIDE
 //********************************************************************************************************
 
-.backgroundCinza{
+.backgroundCinza {
     height: 850px;
     width: 1920px;
 }
 
-.buttonSlide{
+.aSlide {
     color: white;
     font-size: 14px;
+    margin-left: 20px;
 }
 
-.divToolbar{
+.divToolbar {
     position: absolute;
-    top: 0;
+    top: 30px;
     z-index: 999;
     width: 100%;
     display: inline-flex;
+    padding-left: 150px;
+    padding-right: 150px;
 }
 
-.divBotoes{
-    justify-content: center;
-    display: flex;
+.divBotoes {
+    padding-top: 16px;
+    width: 65%;
+    text-align: center;
 }
 
-.divContato{
+.divContato {
     display: inherit;
     color: white;
     font-size: 14px;
+    margin-top: 10px;
+    /* float: right; */
+    right: 150px;
+    position: absolute;
 }
 
-.iconContato{
+.iconContato {
     font-size: 30px;
     margin-right: 10px;
 }
 
-.iconTelefone{
-    font-size: 20px; 
-    margin-right: 10px;
+.iconTelefone {
+    font-size: 20px;
+    top: 5px;
+    position: relative;
+}
+
+.divBarrinha {
+    height: 40px;
+    border-left: 1px solid white;
+    margin-top: -5px;
 }
 
 //********************************************************************************************************
 // PRODUTOS
 //********************************************************************************************************
 
-.buttonSaibaMais{
+.buttonSaibaMais {
     --border-radius: 30px;
     font-size: 20px;
     height: 60px;
     width: 160px;
 }
 
-.pProduto{
+.pProduto {
     font-size: 50px;
     color: #666666;
 }
 
-.pDescricaoProduto{
+.pDescricaoProduto {
     color: #666666;
     font-size: 18px;
 }
 
-.imgBarras{
+.imgBarras {
     margin-left: -11px;
     position: relative;
     top: calc(50% - 123px);
 }
 
-.divMaquina{
+.divMaquina {
     height: 430px;
     position: relative;
     top: calc(50% - 215px);
 }
 
-.imgMaquina{
+.imgMaquina {
     position: absolute;
     left: 35%;
 }
 
-.divProduto{
+.divProduto {
     top: calc(50% - 215px);
     position: relative;
     text-align: justify;
@@ -95,13 +110,13 @@
 // NOTICIAS
 //********************************************************************************************************
 
-.gridNoticias{
+.gridNoticias {
     background: #eeeeee;
     width: 100%;
     height: 680px;
 }
 
-.pNoticiaTitulo{
+.pNoticiaTitulo {
     font-weight: bold;
     font-size: 30px;
     color: #545454;
@@ -109,7 +124,7 @@
     width: 100%;
 }
 
-.buttonNoticia{
+.buttonNoticia {
     --background: white;
     --box-shadow: none;
     width: 248px;
@@ -121,7 +136,7 @@
     border-radius: 30px;
 }
 
-.imgNoticias{
+.imgNoticias {
     height: 520px;
     width: 402px;
 }
@@ -130,13 +145,13 @@
 // Localização
 //********************************************************************************************************
 
-.divLocalizacao{
+.divLocalizacao {
     height: 600px;
     width: 100%;
     background: url("../../assets/imgs/mapa.png");
 }
 
-.divLocalizacaoEscrita{
+.divLocalizacaoEscrita {
     text-align: center;
     height: 100px;
     width: 100%;
@@ -144,20 +159,20 @@
     position: relative;
 }
 
-.pLocalizacao{
+.pLocalizacao {
     font-weight: bold;
     font-size: 30px;
     margin-block-start: 0;
     margin-block-end: 0;
 }
 
-.pLocalizacaoDescricao{
+.pLocalizacaoDescricao {
     font-size: 20px;
     margin-block-start: 0;
     margin-block-end: 0;
 }
 
-.buttonLocalizacao{
+.buttonLocalizacao {
     margin-top: 30px;
     --background: white;
     color: black;
@@ -173,26 +188,54 @@
 // Footer
 //********************************************************************************************************
 
-.gridFooter{
+.gridFooter {
     padding-left: 150px;
     padding-right: 150px;
     background: #262626;
     width: 100%;
     height: 583px;
-    color: rgb(168,168,168);
+    color: rgb(168, 168, 168);
 }
 
-.pMenuTitulo{
+.pMenuTitulo {
     font-size: 20px;
     font-weight: bold;
 }
 
-.divBordaTitulo{
-    border-bottom: 1px solid rgb(168,168,168);
+.divBordaTitulo {
+    border-bottom: 1px solid rgb(168, 168, 168);
     width: 30px;
 }
 
-.pEndereco{
+.pEndereco {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: 14px;
+}
+
+.iconFooter {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.colLogo {
+    padding-top: 25px;
+    text-align: right;
+}
+
+.imgBarrasFooter {
+    position: absolute;
+    right: 30px;
+}
+
+.divBarrasFooter {
+    width: 100%;
+    background: #262626;
+    height: 30px;
+}
+
+.pDireitos {
     margin-block-start: 0;
     margin-block-end: 0;
     font-size: 14px;
