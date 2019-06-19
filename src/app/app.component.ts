@@ -52,6 +52,7 @@ export class AppComponent {
 
         this.storage.loadSetting("session").then(data => {
             if (data) {
+        
                 if (window.location.href.indexOf("login") == -1) {
                     if (data.dtexpires < new Date().getTime()) {
                         this.router.navigate(["login"]);
@@ -59,14 +60,18 @@ export class AppComponent {
 
                         this.menuController.enable(false)
                     } else {
-                        this.menuController.enable(true)
+                        if (window.location.href.indexOf("categoria") != -1 || window.location.href.indexOf("home") != -1 || window.location.href.indexOf("posicao") != -1) {
+                            this.menuController.enable(true);
+                        }else{
+                            this.menuController.enable(false);
+                        }
                     }
                 } else {
                     this.storage.eraseData();
                     this.menuController.enable(false)
                 }
             } else {
-                if(window.location.href.indexOf("categoria") != -1 || window.location.href.indexOf("home") != -1 || window.location.href.indexOf("posicao") != -1){
+                if (window.location.href.indexOf("categoria") != -1 || window.location.href.indexOf("home") != -1 || window.location.href.indexOf("posicao") != -1) {
                     this.router.navigate(["login"]);
                     this.storage.eraseData();
                     this.menuController.enable(false)

@@ -73,4 +73,34 @@ export class QueryService {
     delNoticia(id: number) {
         return { query: "mutation rusbe($id:Int!) { deleteNoticia(id: $id) { id createdAt}}", variables: { id: id }, operationName: "rusbe" }
     }
+
+    //PaginaHome
+    getHome() {
+        return { query: "{ slides { id, nome, descricao, url, subdescricao, ativado, createdAt } noticias(first: 3) { id, titulo, manchete, texto, posicao{ id, nome, ativado, createdAt } imagem, ativado, categoria{ id, nome, ativado, createdAt } url, createdAt }}", variables: null }
+    }
+
+
+    //Slides
+
+    getSlides(ativado: string = "", filter: string = "") {
+        if (ativado == "") {
+            return { query: "query rusbe($filter: String!){ slides(filter: $filter) { id, nome, descricao, url, ativado, subdescricao, createdAt } }", variables: { filter: filter } }
+        } else {
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){ slides(ativado: $ativado, filter: $filter) { id, nome, descricao, url, ativado, subdescricao, createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
+        }
+    }
+
+    // setCategoria(categoria: any) {
+    //     return { query: "mutation rusbe($categoria: CategoriaInput!) { createCategoria(categoria: $categoria) { id nome ativado createdAt}}", variables: { "categoria": categoria }, operationName: "rusbe" }
+    // }
+
+    // updateCategoria(id: number, categoria: any) {
+    //     return { query: "mutation rusbe($id:Int!, $categoria: CategoriaInput!) { updateCategoria(id: $id, categoria: $categoria) { id nome ativado createdAt}}", variables: { id: id, categoria: categoria }, operationName: "rusbe" }
+    // }
+
+    // delCategoria(id: number) {
+    //     return { query: "mutation rusbe($id:Int!) { deleteCategoria(id: $id) { id nome ativado createdAt}}", variables: { id: id }, operationName: "rusbe" }
+    // }
 }
+
+

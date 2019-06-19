@@ -6,6 +6,36 @@
 // SLIDE
 //********************************************************************************************************
 
+.pSlideNome {
+    font-weight: bold;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.pSlideDescricao {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-size: 60px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.pSlideSubDescricao {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-top: 20px;
+}
+
+.divSlideNome {
+    position: absolute;
+    color: white;
+    text-align: initial;
+    left: 150px;
+    bottom: 150px;
+}
+
 .backgroundCinza {
     height: 850px;
     width: 1920px;
@@ -17,6 +47,7 @@
     color: white;
     font-size: 14px;
     margin-left: 20px;
+    text-transform: uppercase;
 }
 
 .divToolbar {
@@ -138,16 +169,36 @@
     border-radius: 30px;
 }
 
+.backgroundCinzaNoticia{
+    height: 402px;
+    width: 520px;
+    position: absolute;
+    background: rgba(30, 30, 30, 0.5);
+    top: 5px;
+}
+
 .imgNoticias {
-    height: 520px;
-    width: 402px;
+    height: 402px;
+    width: 520px;
+}
+
+.pTituloNoticia {
+    position: absolute;
+    bottom: 60px;
+    color: white;
+    left: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    width: 450px;
+    text-align: justify;
+    z-index: 99;
 }
 
 //********************************************************************************************************
 // Localização
 //********************************************************************************************************
 
-.imgLocalizacao{
+.imgLocalizacao {
     height: 600px;
     width: 100%;
 }

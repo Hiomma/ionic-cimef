@@ -1,9 +1,15 @@
 <ion-content>
     <div>
         <ion-slides>
-            <ion-slide>
-                <img class="imgSlide" src="../../assets/imgs/slide1.png">
+            <ion-slide *ngFor="let aux of listSlides">
+                <img class="imgSlide" [src]="aux.url">
                 <div class="backgroundCinza"></div>
+
+                <div class="divSlideNome">
+                    <p class="pSlideNome">{{aux.nome}}</p>
+                    <p class="pSlideDescricao">{{aux.descricao}}</p>
+                    <p class="pSlideSubDescricao">{{aux.subdescricao}}</p>
+                </div>
             </ion-slide>
         </ion-slides>
 
@@ -65,10 +71,11 @@
         <ion-row>
             <p class="pNoticiaTitulo">Confira as últimas notícias</p>
         </ion-row>
-        <ion-row>
+        <ion-row style="padding-left: 150px; padding-right: 150px;">
             <ion-col *ngFor="let aux of listNoticias">
                 <img class="imgNoticias" [src]="aux.imagem">
-                <p>{{aux.titulo}}</p>
+                <p class="pTituloNoticia">{{aux.titulo}}</p>
+                <div class="backgroundCinzaNoticia"></div>
             </ion-col>
         </ion-row>
         <ion-row>
