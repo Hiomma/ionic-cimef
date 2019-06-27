@@ -4,6 +4,7 @@ import { ToastService } from '../services/toast/toast.service';
 import { GraphQlService } from '../services/graphql/graph-ql.service';
 import { QueryService } from '../services/query/query.service';
 import { environment } from '../../environments/environment'
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-index',
@@ -18,6 +19,7 @@ export class IndexPage implements OnInit {
     constructor(private graphql: GraphQlService,
         private toast: ToastService,
         private alert: AlertController,
+        private router: Router,
         private menuController: MenuController,
         private query: QueryService) { }
 
@@ -37,6 +39,10 @@ export class IndexPage implements OnInit {
                 element.url = environment.url + element.url;
             })
         })
+    }
+
+    abrirPagina(rota) {
+        this.router.navigate([rota])
     }
 
 }

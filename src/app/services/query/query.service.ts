@@ -90,17 +90,17 @@ export class QueryService {
         }
     }
 
-    // setCategoria(categoria: any) {
-    //     return { query: "mutation rusbe($categoria: CategoriaInput!) { createCategoria(categoria: $categoria) { id nome ativado createdAt}}", variables: { "categoria": categoria }, operationName: "rusbe" }
-    // }
+    setSlide(slide: any) {
+        return { query: "mutation rusbe($slide: SlideInput!) { createSlide(slide: $slide) { id, nome, descricao, url, ativado, subdescricao, createdAt}}", variables: { "slide": slide }, operationName: "rusbe" }
+    }
 
-    // updateCategoria(id: number, categoria: any) {
-    //     return { query: "mutation rusbe($id:Int!, $categoria: CategoriaInput!) { updateCategoria(id: $id, categoria: $categoria) { id nome ativado createdAt}}", variables: { id: id, categoria: categoria }, operationName: "rusbe" }
-    // }
+    updateSlide(id: number, slide: any) {
+        return { query: "mutation rusbe($id:Int!, $slide: SlideInput!) { updateSlide(id: $id, slide: $slide) {id, nome, descricao, url, ativado, subdescricao, createdAt}}", variables: { id: id, slide: slide }, operationName: "rusbe" }
+    }
 
-    // delCategoria(id: number) {
-    //     return { query: "mutation rusbe($id:Int!) { deleteCategoria(id: $id) { id nome ativado createdAt}}", variables: { id: id }, operationName: "rusbe" }
-    // }
+    delSlides(id: number) {
+        return { query: "mutation rusbe($id:Int!) { deleteSlide(id: $id) { id, nome, descricao, url, ativado, subdescricao, createdAt}}", variables: { id: id }, operationName: "rusbe" }
+    }
 }
 
 

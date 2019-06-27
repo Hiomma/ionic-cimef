@@ -110,3 +110,57 @@
     width: 500px;
     height: 300px;
 }
+
+//********************************************************************************************************
+// TOOLBAR
+//********************************************************************************************************
+
+.divToolbar {
+    position: absolute;
+    top: 30px;
+    z-index: 999;
+    width: 100%;
+    display: inline-flex;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.aSlide {
+    color: white;
+    font-size: 14px;
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+
+.divBotoes {
+    padding-top: 16px;
+    width: 65%;
+    text-align: center;
+}
+
+.divContato {
+    display: inherit;
+    color: white;
+    font-size: 14px;
+    margin-top: 10px;
+    /* float: right; */
+    right: 150px;
+    position: absolute;
+}
+
+.iconContato {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.iconTelefone {
+    font-size: 20px;
+    top: 5px;
+    position: relative;
+}
+
+.divBarrinha {
+    height: 40px;
+    border-left: 1px solid white;
+    margin-top: -5px;
+}

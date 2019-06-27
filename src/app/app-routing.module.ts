@@ -14,7 +14,10 @@ const routes: Routes = [
     { path: 'categoria', loadChildren: './categoria/categoria.module#CategoriaPageModule' },
     { path: 'posicao', loadChildren: './posicao/posicao.module#PosicaoPageModule' },
     { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-    { path: 'index', loadChildren: './index/index.module#IndexPageModule' }
+    { path: 'index', loadChildren: './index/index.module#IndexPageModule' },  { path: 'slide', loadChildren: './slide/slide.module#SlidePageModule' },
+  { path: 'noticia', loadChildren: './noticia/noticia.module#NoticiaPageModule' },
+  { path: 'empresa', loadChildren: './empresa/empresa.module#EmpresaPageModule' }
+
 
 
 ];

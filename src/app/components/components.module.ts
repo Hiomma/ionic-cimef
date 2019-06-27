@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AdicionarCategoriaComponent } from './adicionar-categoria/adicionar-categoria.component';
 import { AdicionarPosicaoComponent } from './adicionar-posicao/adicionar-posicao.component';
+import { AdicionarSlideComponent } from './adicionar-slide/adicionar-slide.component';
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { AdicionarPosicaoComponent } from './adicionar-posicao/adicionar-posicao
         FormsModule,
         IonicModule
     ],
-    declarations: [AdicionarCategoriaComponent, AdicionarPosicaoComponent],
-    entryComponents: [AdicionarCategoriaComponent, AdicionarPosicaoComponent]
+    declarations: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent],
+    entryComponents: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent]
 })
 export class ComponentsModule { }
