@@ -45,4 +45,8 @@ export class IndexPage implements OnInit {
         this.router.navigate([rota])
     }
 
+    abrirUrl(url) {
+        window.open(url, "_blank")
+    }
+
 }

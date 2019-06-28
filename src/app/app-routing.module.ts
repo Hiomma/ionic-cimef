@@ -16,7 +16,13 @@ const routes: Routes = [
     { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'index', loadChildren: './index/index.module#IndexPageModule' },  { path: 'slide', loadChildren: './slide/slide.module#SlidePageModule' },
   { path: 'noticia', loadChildren: './noticia/noticia.module#NoticiaPageModule' },
-  { path: 'empresa', loadChildren: './empresa/empresa.module#EmpresaPageModule' }
+  { path: 'empresa', loadChildren: './empresa/empresa.module#EmpresaPageModule' },
+  { path: 'assistencia-tecnica', loadChildren: './assistencia-tecnica/assistencia-tecnica.module#AssistenciaTecnicaPageModule' },
+  { path: 'produto-pagina', loadChildren: './produto-pagina/produto-pagina.module#ProdutoPaginaPageModule' },
+  { path: 'depoimentos-pagina', loadChildren: './depoimentos-pagina/depoimentos-pagina.module#DepoimentosPaginaPageModule' },
+  { path: 'videos-pagina', loadChildren: './videos-pagina/videos-pagina.module#VideosPaginaPageModule' },
+  { path: 'noticia-pagina', loadChildren: './noticia-pagina/noticia-pagina.module#NoticiaPaginaPageModule' },
+  { path: 'fale-conosco', loadChildren: './fale-conosco/fale-conosco.module#FaleConoscoPageModule' }
 
 
 

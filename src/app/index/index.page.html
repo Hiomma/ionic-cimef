@@ -18,14 +18,14 @@
                 <img class="imgLogoTitulo" src="../../assets/imgs/logo-cimef-branca.png">
             </div>
             <div class="divBotoes">
-                <a class="aSlide">Home</a>
+                <a class="aSlide" (click)="abrirPagina('/')">Home</a>
                 <a class="aSlide" (click)="abrirPagina('/empresa')">Empresa</a>
-                <a class="aSlide">Produtos</a>
-                <a class="aSlide">Assistência Técnica</a>
-                <a class="aSlide">Depoimentos</a>
-                <a class="aSlide">Vídeos</a>
-                <a class="aSlide">Notícias</a>
-                <a class="aSlide">Fale Conosco</a>
+                <a class="aSlide" (click)="abrirPagina('/produto')">Produtos</a>
+                <a class="aSlide" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</a>
+                <a class="aSlide" (click)="abrirPagina('/depoimento')">Depoimentos</a>
+                <a class="aSlide" (click)="abrirPagina('/video')">Vídeos</a>
+                <a class="aSlide" (click)="abrirPagina('/noticia')">Notícias</a>
+                <a class="aSlide" (click)="abrirPagina('/fale-conosco')">Fale Conosco</a>
             </div>
             <div class="divContato">
                 <div style="margin-right: 25px;">
@@ -34,7 +34,8 @@
                 <div class="divBarrinha"></div>
                 <div style="margin-left: 25px;">
                     <ion-icon class="iconContato" name="logo-instagram"></ion-icon>
-                    <ion-icon class="iconContato" name="logo-facebook"></ion-icon>
+                    <ion-icon class="iconContato" name="logo-facebook"
+                        (click)="abrirUrl('https://www.facebook.com/cimef.metalurgia')"></ion-icon>
                 </div>
             </div>
         </div>
@@ -103,13 +104,13 @@
                 <div class="divBordaTitulo"></div>
 
                 <ul style="padding-inline-start: 20px; font-size: 14px">
-                    <li>Home</li>
-                    <li>Institucional</li>
-                    <li>Equipamentos</li>
-                    <li>Serviços</li>
-                    <li>Notícias</li>
-                    <li>Localização</li>
-                    <li>Contato</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/')">Home</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/empresa')">Empresa</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/produto')">Produtos</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/depoimento')">Depoimentos</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/noticia')">Notícias</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/fale-conosco')">Fale Conosco</li>
                 </ul>
             </ion-col>
             <ion-col>

@@ -101,6 +101,12 @@ export class QueryService {
     delSlides(id: number) {
         return { query: "mutation rusbe($id:Int!) { deleteSlide(id: $id) { id, nome, descricao, url, ativado, subdescricao, createdAt}}", variables: { id: id }, operationName: "rusbe" }
     }
+
+    //Empresas
+
+    getEmpresaDestaque() {
+        return { query: "{ empresas(ativado: true) { id, url, ativado, destaque, createdAt } empresasDestaque: empresas(ativado: true, destaque: true){ id, url, ativado, destaque, createdAt } }", variables: null }
+    }
 }
 
 
