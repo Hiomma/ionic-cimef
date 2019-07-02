@@ -5,15 +5,19 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
-  selector: 'app-adicionar-slide',
-  templateUrl: './adicionar-slide.component.html',
-  styleUrls: ['./adicionar-slide.component.scss'],
+    selector: 'app-adicionar-slide',
+    templateUrl: './adicionar-slide.component.html',
+    styleUrls: ['./adicionar-slide.component.scss'],
 })
 export class AdicionarSlideComponent implements OnInit {
 
     @Input() slide: any;
-    nome: string = "";
+    descricao: string = "";
+    subdescricao: string = "";
+    imagensSelecionadas: any;
+    arquivosSelecionados: any;
     ativado: boolean = true;
+    nome: string = "";
 
     atualizar: boolean = false;
 
@@ -25,15 +29,17 @@ export class AdicionarSlideComponent implements OnInit {
 
     ngOnInit() {
         if (this.slide) {
-            this.nome = this.slide.nome;
+            this.descricao = this.slide.descricao;
+            this.subdescricao = this.slide.subdescricao;
             this.ativado = this.slide.ativado;
+            this.nome = this.slide.nome;
 
             this.atualizar = true;
         }
     }
 
     desabilitar() {
-        if (this.nome != "") {
+        if (this.nome != "" && this.descricao != "" && this.subdescricao != "") {
             return false;
         } else {
             return true;

@@ -18,6 +18,7 @@ import { ComponentsModule } from './components/components.module';
 import { ToastService } from './services/toast/toast.service';
 import { AlertService } from './services/alert/alert.service';
 import { LoaderService } from './services/loader/loader.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
     declarations: [AppComponent],
@@ -43,7 +44,7 @@ import { LoaderService } from './services/loader/loader.service';
         LoaderService,
         StatusBar,
         SplashScreen,
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
     bootstrap: [AppComponent]
 })
