@@ -1,0 +1,95 @@
+<ion-content>
+    <div class="divToolbar">
+        <div>
+            <img class="imgLogoTitulo" src="../../assets/imgs/logo-cimef.png">
+        </div>
+        <div class="divBotoes">
+            <a class="aSlide" (click)="abrirPagina('/')">Home</a>
+            <a class="aSlide" (click)="abrirPagina('/empresa')">Empresa</a>
+            <a class="aSlide" (click)="abrirPagina('/produto-pagina')">Produtos</a>
+            <a class="aSlide" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</a>
+            <a class="aSlide" (click)="abrirPagina('/depoimentos-pagina')">Depoimentos</a>
+            <a class="aSlide" (click)="abrirPagina('/videos-pagina')">Vídeos</a>
+            <a class="aSlide" (click)="abrirPagina('/noticia-pagina')">Notícias</a>
+            <a class="aSlide" (click)="abrirPagina('/fale-conosco')">Fale Conosco</a>
+        </div>
+        <div class="divContato">
+            <div style="margin-right: 25px;">
+                <ion-icon class="iconTelefone" name="call"></ion-icon> 55 (28) 3521-2433
+            </div>
+            <div class="divBarrinha"></div>
+            <div style="margin-left: 25px;">
+                <ion-icon class="iconContato" name="logo-instagram"></ion-icon>
+                <ion-icon class="iconContato" name="logo-facebook"
+                    (click)="abrirUrl('https://www.facebook.com/cimef.metalurgia')"></ion-icon>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="divImgToolbar"></div>
+        <img class="imgToolbar" src="../../assets/imgs/tear.png">
+    </div>
+
+    <ng-content></ng-content>
+
+    <ion-grid class="gridFooter">
+        <ion-row style="margin-top: 80px">
+            <ion-col>
+                <p class="pMenuTitulo">MENU</p>
+                <div class="divBordaTitulo"></div>
+
+                <ul style="padding-inline-start: 20px; font-size: 14px">
+                    <li style="cursor:pointer" (click)="abrirPagina('/')">Home</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/empresa')">Empresa</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/produto-pagina')">Produtos</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/depoimentos-pagina')">Depoimentos</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/noticia-pagina')">Notícias</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/fale-conosco')">Fale Conosco</li>
+                </ul>
+            </ion-col>
+            <ion-col>
+                <p class="pMenuTitulo">COMO CHEGAR</p>
+                <div class="divBordaTitulo"></div>
+
+                <div style="margin-top: 1em;">
+                    <p class="pEndereco">Av. Francisco Mardegan, 42 - Boa Vista</p>
+                    <p class="pEndereco">Cachoeiro de Itapemirim - ES - Brasil</p>
+                    <p class="pEndereco">CEP 29315-477</p>
+                    <p class="pEndereco">Caixa Postal - 22</p>
+                </div>
+
+                <div style="margin-top: 1em;">
+                    <p class="pEndereco">Acesse o Mapa</p>
+                </div>
+            </ion-col>
+            <ion-col>
+                <p class="pMenuTitulo">ENTRE EM CONTATO</p>
+                <div class="divBordaTitulo"></div>
+
+                <div style="margin-top: 1em;">
+                    <p class="pEndereco"> 55 28 3521-2433 </p>
+                    <p class="pEndereco"> cimef@cimef.com.br </p>
+                </div>
+
+                <p class="pMenuTitulo" style="margin-top: 40px">MÍDIAS SOCIAIS</p>
+                <div class="divBordaTitulo"></div>
+
+                <div>
+                    <ion-icon class="iconFooter" name="logo-instagram"></ion-icon>
+                    <ion-icon class="iconFooter" name="logo-facebook"></ion-icon>
+                </div>
+            </ion-col>
+            <ion-col class="colLogo">
+                <img src="../../assets/imgs/logo-cimef-cinza.png">
+                <div style="margin-top: 20px">
+                    <p class="pDireitos">© 2019 Cimef Metalúrgica.</p>
+                    <p class="pDireitos">Todos Direitos Reservados</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div class="divBarrasFooter">
+        <img class="imgBarrasFooter" src="../../assets/imgs/footer-marca.png">
+    </div>
+</ion-content>

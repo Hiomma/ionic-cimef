@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-fale-conosco',
@@ -8,17 +7,8 @@ import { Router } from '@angular/router';
 })
 export class FaleConoscoPage implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor() { }
 
     ngOnInit() {
     }
-
-    abrirPagina(rota) {
-        this.router.navigate([rota])
-    }
-
-    abrirUrl(url) {
-        window.open(url, "_blank")
-    }
-
 }

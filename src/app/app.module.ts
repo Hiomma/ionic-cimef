@@ -19,14 +19,18 @@ import { ToastService } from './services/toast/toast.service';
 import { AlertService } from './services/alert/alert.service';
 import { LoaderService } from './services/loader/loader.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PipeModule } from './pipes/pipe.module';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent,
+    ],
     entryComponents: [],
     imports: [
         BrowserModule,
         HttpClientModule,
         ComponentsModule,
+        PipeModule,
         IonicModule.forRoot(),
         AppRoutingModule,
         IonicStorageModule.forRoot({

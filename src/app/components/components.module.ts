@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdicionarCategoriaComponent } from './adicionar-categoria/adicionar-categoria.component';
 import { AdicionarPosicaoComponent } from './adicionar-posicao/adicionar-posicao.component';
 import { AdicionarSlideComponent } from './adicionar-slide/adicionar-slide.component';
+import { HeaderFooterComponent } from './header-footer/header-footer.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AdicionarSlideComponent } from './adicionar-slide/adicionar-slide.compo
         FormsModule,
         IonicModule
     ],
-    declarations: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent],
-    entryComponents: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent]
+    declarations: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent, HeaderFooterComponent],
+    entryComponents: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent, HeaderFooterComponent],
+    exports: [HeaderFooterComponent]
 })
 export class ComponentsModule { }

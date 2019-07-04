@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { VideosPaginaPage } from './videos-pagina.page';
+import { PipeModule } from '../pipes/pipe.module';
+import { ComponentsModule } from '../components/components.module';
 
 const routes: Routes = [
   {
@@ -19,6 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipeModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [VideosPaginaPage]

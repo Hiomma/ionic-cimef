@@ -37,13 +37,4 @@ export class EmpresaPage implements OnInit {
             })
         })
     }
-
-    abrirPagina(rota) {
-        this.router.navigate([rota])
-    }
-
-    abrirUrl(url) {
-        window.open(url, "_blank")
-    }
-
 }

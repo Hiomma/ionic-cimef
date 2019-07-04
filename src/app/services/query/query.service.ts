@@ -107,6 +107,17 @@ export class QueryService {
     getEmpresaDestaque() {
         return { query: "{ empresas(ativado: true) { id, url, ativado, destaque, createdAt } empresasDestaque: empresas(ativado: true, destaque: true){ id, url, ativado, destaque, createdAt } }", variables: null }
     }
+
+    //Videos
+
+    getVideos(ativado: string = "", filter: string = "") {
+        if (ativado == "") {
+            return { query: "query rusbe($filter: String!){ videos(filter: $filter){ id, nome, url, ativado, createdAt}}", variables: { filter: filter } }
+        } else {
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){ videos(ativado: $ativado, filter: $filter) { id, nome, url, ativado, createdAt} }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
+        }
+    }
+
 }
 
 

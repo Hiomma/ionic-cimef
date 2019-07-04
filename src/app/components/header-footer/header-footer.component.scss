@@ -1,0 +1,42 @@
+//********************************************************************************************************
+// TOOLBAR
+//********************************************************************************************************
+
+.aSlide {
+    color: black;
+}
+
+.iconContato {
+    color: black;
+}
+
+.divContato {
+    color: black;
+}
+
+.iconTelefone {
+    color: black
+}
+
+.divBarrinha {
+    border-color: black;
+}
+
+.imgToolbar {
+    height: 300px;
+    width: 1920px;
+    object-fit: cover;
+}
+
+.divToolbar {
+    height: 150px;
+    position: relative;
+    padding-top: 15px;
+}
+
+.divImgToolbar {
+    background: rgba(30, 30, 30, 0.5);
+    position: absolute;
+    height: 300px;
+    width: 1920px;
+}

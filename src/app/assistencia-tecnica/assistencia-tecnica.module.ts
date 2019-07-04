@@ -6,21 +6,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AssistenciaTecnicaPage } from './assistencia-tecnica.page';
+import { ComponentsModule } from '../components/components.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AssistenciaTecnicaPage
-  }
+    {
+        path: '',
+        component: AssistenciaTecnicaPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [AssistenciaTecnicaPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ComponentsModule,
+        IonicModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [AssistenciaTecnicaPage]
 })
-export class AssistenciaTecnicaPageModule {}
+export class AssistenciaTecnicaPageModule { }
