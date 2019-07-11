@@ -1,0 +1,72 @@
+.divBackgroundDepoimento {
+    border-radius: 150px;
+    padding-left: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #dedede;
+    margin-top: 50px;
+    background: #262626;
+    color: #a8a8a8;
+    overflow: hidden;
+}
+
+.divAvatarDepoimento {
+    width: 200px;
+    float: left;
+}
+
+.divNomeDepoimento {
+    text-align: center;
+}
+
+.pNomeDepoimento {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.pDescricaoDepoimento {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.divDepoimento {
+    float: left;
+    width: 70%;
+    padding-left: 100px;
+    padding-right: 10%;
+    padding-top: 50px;
+    text-align: justify;
+}
+
+.imgAvatar {
+    border-radius: 50%;
+    width: 200px;
+    object-fit: cover;
+}
+
+.pDepoimento {
+    height: 100px;
+}
+
+.divListaDepoimentos {
+    padding-left: 150px;
+    padding-right: 150px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.pTituloDepoimento {
+    font-size: 50px;
+    color: #666666;
+    margin-block-end: 0;
+    margin-left: 5px;
+}
+
+.divLinhaEmbaixo {
+    border-bottom: 2px solid #666666;
+    width: 60px;
+    margin-left: 10px;
+    margin-top: 10px;
+}

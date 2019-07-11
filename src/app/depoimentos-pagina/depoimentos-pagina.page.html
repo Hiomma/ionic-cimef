@@ -1,2 +1,22 @@
 <app-header-footer style="height: 100%">
+    <div class="divListaDepoimentos">
+
+        <div>
+            <p class="pTituloDepoimento">DEPOIMENTOS</p>
+            <div class="divLinhaEmbaixo"></div>
+        </div>
+
+        <div *ngFor="let aux of listDepoimentos" class="divBackgroundDepoimento">
+            <div class="divAvatarDepoimento">
+                <img class="imgAvatar" [src]="aux.url">
+                <div class="divNomeDepoimento">
+                    <p class="pNomeDepoimento"> {{aux.nome}} </p>
+                    <p class="pDescricaoDepoimento">{{aux.descricao}}</p>
+                </div>
+            </div>
+            <div class="divDepoimento">
+                <p class="pDepoimento"> {{aux.depoimento}} </p>
+            </div>
+        </div>
+    </div>
 </app-header-footer>

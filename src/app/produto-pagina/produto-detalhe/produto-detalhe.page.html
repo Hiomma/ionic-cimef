@@ -1,0 +1,19 @@
+<app-header-footer style="height: 100%">
+    <div class="divProduto">
+        <div>
+            <p class="pTituloProduto">{{produto?.nome}}</p>
+            <div class="divLinhaEmbaixo"></div>
+        </div>
+
+        <div [innerHTML]="produto?.texto" class="divTextoProduto">
+        </div>
+
+        <div class="divImagemProduto" (click)="abrirImagem()">
+            <img [src]="produto?.imagem" class="imgProduto">
+            <div class="divBackgroundCinza">
+                <p class="pImagens">+50 imagens</p>
+                <p class="pSubTituloImagem">Click para Visualizar</p>
+            </div>
+        </div>
+    </div>
+</app-header-footer>

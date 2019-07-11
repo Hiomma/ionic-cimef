@@ -54,6 +54,18 @@ export class QueryService {
 
     //Noticias
 
+    getNoticia(url) {
+        return { query: "query rusbe($url: String!) { noticia(url: $url){ id, titulo, manchete, texto, imagens{ id, url, createdAt }, posicao{ id, nome, ativado, createdAt }, imagem, ativado, categoria{ id, nome, ativado, createdAt }, url, createdAt}} ", variables: { url: url } }
+    }
+
+    getNoticias(ativado: string = "", filter: string = "") {
+        if (ativado == "") {
+            return { query: "query rusbe($filter: String!) { noticias(filter: $filter){ id, titulo, manchete, texto, posicao{ id, nome, ativado, createdAt }, imagem, ativado, categoria{ id, nome, ativado, createdAt }, url, createdAt } }", variables: { filter: filter } }
+        } else {
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!) { noticias(filter: $filter){ id, titulo, manchete, texto, posicao{ id, nome, ativado, createdAt }, imagem, ativado, categoria{ id, nome, ativado, createdAt }, url, createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
+        }
+    }
+
     getNoticiasPosicoesCategorias(ativado: string = "", filter: string = "") {
         if (ativado == "") {
             return { query: " query rusbe($filter: String!){  noticias(filter: $filter) { id titulo manchete texto imagem url posicao { id nome ativado createdAt updatedAt } categoria { id nome ativado createdAt updatedAt } createdAt updatedAt  },  posicoes(ativado:true){ id nome ativado createdAt updatedAt  },  categorias(ativado:true){ id nome ativado createdAt updatedAt  }}", variables: { filter: filter } }
@@ -118,6 +130,26 @@ export class QueryService {
         }
     }
 
+    //Depoimentos
+
+    getDepoimentos(ativado: string = "", filter: string = "") {
+        if (ativado == "") {
+            return { query: "query rusbe($filter: String!) { depoimentos(filter: $filter) { id, nome, descricao, depoimento, url, ativado, createdAt } }", variables: { filter: filter } }
+        } else {
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){depoimentos(filter: $filter) { id, nome, descricao, depoimento, url, ativado, createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
+        }
+    }
+
+    //Produtos
+    getProdutos() {
+        return { query: "{ produtos(ativado: true) { id, nome, video, texto, imagem, imagens { id, url, createdAt }, ativado, createdAt } }", variables: null }
+    }
+
+    getProduto(id) {
+        return { query: "query rusbe($id: ID!){ produto(id: $id) { id, nome, video, texto, imagem, imagens { id, url, createdAt }, ativado, createdAt } }", variables: { id: id } }
+    }
+
 }
+
 
 

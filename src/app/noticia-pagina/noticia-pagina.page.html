@@ -1,2 +1,19 @@
 <app-header-footer style="height: 100%">
+    <div class="divListaNoticias">
+
+        <div>
+            <p class="pTituloNoticia">NOTÍCIAS</p>
+            <div class="divLinhaEmbaixo"></div>
+        </div>
+
+        <ion-grid class="gridNoticias">
+            <ion-row>
+                <ion-col *ngFor="let aux of listNoticias" size="4" (click)="abrirNoticia(aux)">
+                    <img class="imgNoticias" [src]="aux.imagem">
+                    <p class="pTitulo">{{aux.titulo}}</p>
+                    <div class="backgroundCinzaNoticia"></div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </app-header-footer>

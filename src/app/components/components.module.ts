@@ -7,6 +7,7 @@ import { AdicionarCategoriaComponent } from './adicionar-categoria/adicionar-cat
 import { AdicionarPosicaoComponent } from './adicionar-posicao/adicionar-posicao.component';
 import { AdicionarSlideComponent } from './adicionar-slide/adicionar-slide.component';
 import { HeaderFooterComponent } from './header-footer/header-footer.component';
+import { ModalImagemComponent } from './modal-imagem/modal-imagem.component';
 
 
 @NgModule({
@@ -15,8 +16,22 @@ import { HeaderFooterComponent } from './header-footer/header-footer.component';
         FormsModule,
         IonicModule
     ],
-    declarations: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent, HeaderFooterComponent],
-    entryComponents: [AdicionarCategoriaComponent, AdicionarPosicaoComponent, AdicionarSlideComponent, HeaderFooterComponent],
-    exports: [HeaderFooterComponent]
+    declarations: [
+        AdicionarCategoriaComponent,
+        AdicionarPosicaoComponent,
+        AdicionarSlideComponent,
+        HeaderFooterComponent,
+        ModalImagemComponent
+    ],
+    entryComponents: [
+        AdicionarCategoriaComponent,
+        AdicionarPosicaoComponent,
+        AdicionarSlideComponent,
+        HeaderFooterComponent,
+        ModalImagemComponent
+    ],
+    exports: [
+        HeaderFooterComponent
+    ]
 })
 export class ComponentsModule { }

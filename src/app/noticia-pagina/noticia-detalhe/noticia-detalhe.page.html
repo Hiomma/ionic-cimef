@@ -1,0 +1,19 @@
+<app-header-footer style="height: 100%">
+    <div class="divNoticia">
+        <div>
+            <p class="pTituloNoticia">{{noticia?.manchete}}</p>
+            <div class="divLinhaEmbaixo"></div>
+        </div>
+
+        <div [innerHTML]="noticia?.texto" class="divTextoNoticia">
+        </div>
+
+        <div class="divImagemNoticia" (click)="abrirImagem()">
+            <img [src]="noticia?.imagem" class="imgNoticia">
+            <div class="divBackgroundCinza">
+                <p class="pImagens">+50 imagens</p>
+                <p class="pSubTituloImagem">Click para Visualizar</p>
+            </div>
+        </div>
+    </div>
+</app-header-footer>

@@ -22,10 +22,9 @@ const routes: Routes = [
     { path: 'depoimentos-pagina', loadChildren: './depoimentos-pagina/depoimentos-pagina.module#DepoimentosPaginaPageModule' },
     { path: 'videos-pagina', loadChildren: './videos-pagina/videos-pagina.module#VideosPaginaPageModule' },
     { path: 'noticia-pagina', loadChildren: './noticia-pagina/noticia-pagina.module#NoticiaPaginaPageModule' },
-    { path: 'fale-conosco', loadChildren: './fale-conosco/fale-conosco.module#FaleConoscoPageModule' }
-
-
-
+    { path: 'fale-conosco', loadChildren: './fale-conosco/fale-conosco.module#FaleConoscoPageModule' },
+    { path: 'noticia-detalhe', loadChildren: './noticia-pagina/noticia-detalhe/noticia-detalhe.module#NoticiaDetalhePageModule' },
+    { path: 'produto-detalhe', loadChildren: './produto-pagina/produto-detalhe/produto-detalhe.module#ProdutoDetalhePageModule' }
 ];
 
 @NgModule({
