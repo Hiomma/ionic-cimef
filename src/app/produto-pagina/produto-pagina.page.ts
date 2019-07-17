@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 })
 export class ProdutoPaginaPage implements OnInit {
 
-    listProdutos: any;
+    listProdutos: any[] = [];
+    listCategorias: any;
 
     constructor(private graphql: GraphQlService,
         private menuController: MenuController,
@@ -26,11 +27,20 @@ export class ProdutoPaginaPage implements OnInit {
         this.menuController.enable(false);
 
         this.graphql.graphql(this.query.getProdutos()).then((data: any) => {
-            this.listProdutos = data.data.produtos;
+            this.listCategorias = data.data.categorias_produto;
+            let produtos: Array<any> = data.data.produtos;
 
-            this.listProdutos.forEach(element => {
+            produtos.forEach(element => {
                 element.imagem = environment.url + element.imagem;
             })
+
+            let i = 0;
+
+            for (let aux of this.listCategorias) {
+                console.log(aux, produtos);
+                this.listProdutos[i] = produtos.filter(element => { if (element.categoria.id == aux.id) { return element } })
+                i++;
+            }
         })
     }
 

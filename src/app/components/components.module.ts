@@ -8,6 +8,8 @@ import { AdicionarPosicaoComponent } from './adicionar-posicao/adicionar-posicao
 import { AdicionarSlideComponent } from './adicionar-slide/adicionar-slide.component';
 import { HeaderFooterComponent } from './header-footer/header-footer.component';
 import { ModalImagemComponent } from './modal-imagem/modal-imagem.component';
+import { AdicionarCategoriaProdutoComponent } from './adicionar-categoria-produto/adicionar-categoria-produto.component';
+import { AdicionarVideoComponent } from './adicionar-video/adicionar-video.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { ModalImagemComponent } from './modal-imagem/modal-imagem.component';
         IonicModule
     ],
     declarations: [
+        AdicionarCategoriaProdutoComponent,
+        AdicionarVideoComponent,
         AdicionarCategoriaComponent,
         AdicionarPosicaoComponent,
         AdicionarSlideComponent,
@@ -24,6 +28,8 @@ import { ModalImagemComponent } from './modal-imagem/modal-imagem.component';
         ModalImagemComponent
     ],
     entryComponents: [
+        AdicionarVideoComponent,
+        AdicionarCategoriaProdutoComponent,
         AdicionarCategoriaComponent,
         AdicionarPosicaoComponent,
         AdicionarSlideComponent,

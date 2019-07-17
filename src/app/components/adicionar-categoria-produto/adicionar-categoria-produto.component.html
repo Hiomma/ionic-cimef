@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Adicionar Categoria</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label class="labelCampo" position="stacked">Nome</ion-label>
+        <ion-input [(ngModel)]="nome" placeholder="Digite o nome..."></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label class="labelCampo">Ativado?</ion-label>
+        <ion-toggle [(ngModel)]="ativado"></ion-toggle>
+    </ion-item>
+
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" class="buttonAlterar" [disabled]="desabilitar()" (click)="adicionar()">
+                        {{atualizar ? "Alt." : "Add."}} Categoria
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" class="buttonCancelar" (click)="cancelar()">Cancelar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

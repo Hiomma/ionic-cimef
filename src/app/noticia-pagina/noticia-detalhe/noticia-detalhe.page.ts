@@ -37,7 +37,7 @@ export class NoticiaDetalhePage implements OnInit {
     async abrirImagem() {
         const modal = await this.modal.create({
             component: ModalImagemComponent,
-            componentProps: { noticia: this.noticia }
+            componentProps: { objeto: this.noticia }
         });
         await modal.present();
     }

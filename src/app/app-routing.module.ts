@@ -24,7 +24,12 @@ const routes: Routes = [
     { path: 'noticia-pagina', loadChildren: './noticia-pagina/noticia-pagina.module#NoticiaPaginaPageModule' },
     { path: 'fale-conosco', loadChildren: './fale-conosco/fale-conosco.module#FaleConoscoPageModule' },
     { path: 'noticia-detalhe', loadChildren: './noticia-pagina/noticia-detalhe/noticia-detalhe.module#NoticiaDetalhePageModule' },
-    { path: 'produto-detalhe', loadChildren: './produto-pagina/produto-detalhe/produto-detalhe.module#ProdutoDetalhePageModule' }
+    { path: 'produto-detalhe', loadChildren: './produto-pagina/produto-detalhe/produto-detalhe.module#ProdutoDetalhePageModule' },  { path: 'categoria-produto-crud', loadChildren: './categoria-produto-crud/categoria-produto-crud.module#CategoriaProdutoCrudPageModule' },
+  { path: 'produto-crud', loadChildren: './produto-crud/produto-crud.module#ProdutoCrudPageModule' },
+  { path: 'mensagem-crud', loadChildren: './mensagem-crud/mensagem-crud.module#MensagemCrudPageModule' },
+  { path: 'depoimento-crud', loadChildren: './depoimento-crud/depoimento-crud.module#DepoimentoCrudPageModule' },
+  { path: 'video-crud', loadChildren: './video-crud/video-crud.module#VideoCrudPageModule' }
+
 ];
 
 @NgModule({

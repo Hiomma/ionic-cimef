@@ -5,26 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProdutoDetalhePage } from './produto-detalhe.page';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { PipeModule } from 'src/app/pipes/pipe.module';
+import { DepoimentoCrudPage } from './depoimento-crud.page';
 
 const routes: Routes = [
   {
-    path: ':id',
-    component: ProdutoDetalhePage
+    path: '',
+    component: DepoimentoCrudPage
   }
 ];
 
 @NgModule({
   imports: [
-    ComponentsModule,
     CommonModule,
-    PipeModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProdutoDetalhePage]
+  declarations: [DepoimentoCrudPage]
 })
-export class ProdutoDetalhePageModule {}
+export class DepoimentoCrudPageModule {}

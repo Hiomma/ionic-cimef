@@ -36,6 +36,31 @@ export class AppComponent {
             icon: 'ios-expand'
         },
         {
+            title: 'Categorias do Produto',
+            url: '/categoria-produto-crud',
+            icon: 'ios-expand'
+        },
+        {
+            title: 'Produtos',
+            url: '/produto-crud',
+            icon: 'ios-expand'
+        },
+        {
+            title: 'Mensagens',
+            url: '/mensagem-crud',
+            icon: 'ios-expand'
+        },
+        {
+            title: 'Depoimentos',
+            url: '/depoimento-crud',
+            icon: 'ios-expand'
+        },
+        {
+            title: 'Videos',
+            url: '/video-crud',
+            icon: 'ios-expand'
+        },
+        {
             title: "Sair",
             url: "/login",
             icon: "log-out"

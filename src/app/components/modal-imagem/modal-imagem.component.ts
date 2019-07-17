@@ -8,13 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ModalImagemComponent implements OnInit {
 
-    @Input() noticia: any;
+    @Input() objeto: any;
     listImagens: Array<any> = new Array();
 
     constructor() { }
 
     ngOnInit() {
-        this.listImagens = JSON.parse(JSON.stringify(this.noticia.imagens));
+        this.listImagens = JSON.parse(JSON.stringify(this.objeto.imagens));
         this.listImagens.forEach(element => element.url = environment.url + element.url)
     }
 

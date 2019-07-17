@@ -5,15 +5,30 @@
             <div class="divLinhaEmbaixo"></div>
         </div>
 
-        <div [innerHTML]="produto?.texto" class="divTextoProduto">
-        </div>
+        <div style="overflow: hidden; margin-top: 40px">
+            <div style="float: left; width: 60%">
+                <div [innerHTML]="produto?.texto" class="divTextoProduto">
+                </div>
 
-        <div class="divImagemProduto" (click)="abrirImagem()">
-            <img [src]="produto?.imagem" class="imgProduto">
-            <div class="divBackgroundCinza">
-                <p class="pImagens">+50 imagens</p>
-                <p class="pSubTituloImagem">Click para Visualizar</p>
+                <div class="divImagemProduto" (click)="abrirImagem()">
+                    <img [src]="produto?.imagem" class="imgProduto">
+                    <div class="divBackgroundCinza">
+                        <p class="pImagens">+50 imagens</p>
+                        <p class="pSubTituloImagem">Click para Visualizar</p>
+                    </div>
+                </div>
+            </div>
+            <div style="float:right; width: 40%">
+                <div>
+                    <img [src]="produto?.tabela">
+                </div>
+                <div>
+                    <iframe style="margin-left: 10px;" width="560" height="315" [src]="produto?.video | safe"
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
             </div>
         </div>
+
     </div>
 </app-header-footer>
