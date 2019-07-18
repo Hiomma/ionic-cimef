@@ -1,9 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ProdutoCrud</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Produtos</ion-title>
+    </ion-toolbar>
+    <ion-searchbar debounce="500" placeholder="Pesquise o Produto" [(ngModel)]="pesquisa"
+        (ionChange)="listar(pesquisa)" style="background: var(--ion-color-primary)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
+    <ion-list>
+        <ion-item *ngFor="let aux of listProdutos">
+            <ion-label>
+                <h2>{{aux?.nome}}</h2>
+                <p>Categoria: {{aux?.categoria_produto?.nome}} - Ativo: {{aux?.ativado ? "Sim": "Não"}}</p>
+            </ion-label>
 
+            <ion-buttons>
+                <ion-button class="buttonAlterar" (click)="abrirModal(aux)">Alterar</ion-button>
+                <ion-button class="buttonCancelar" (click)="excluir(aux)">Excluir</ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab class="fabAdicionar" vertical="bottom" horizontal="end" slot="fixed" (click)="abrirModal()">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

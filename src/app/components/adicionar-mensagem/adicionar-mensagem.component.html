@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Adicionar Vídeo</ion-title>
+        <ion-title>Adicionar Mensagem</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -11,12 +11,16 @@
             <ion-input formControlName="nome" placeholder="Digite o título..."></ion-input>
         </ion-item>
         <ion-item class="itemAdicionar">
-            <ion-label class="labelCampo" position="stacked">URL</ion-label>
-            <ion-input formControlName="url" placeholder="Digite a manchete..."></ion-input>
+            <ion-label class="labelCampo" position="stacked">Titulo</ion-label>
+            <ion-input formControlName="titulo" placeholder="Digite a manchete..."></ion-input>
         </ion-item>
         <ion-item class="itemAdicionar">
-            <ion-label class="labelCampo">Ativado?</ion-label>
-            <ion-toggle formControlName="ativado"></ion-toggle>
+            <ion-label class="labelCampo" position="stacked">E-mail</ion-label>
+            <ion-input formControlName="email" placeholder="Digite a manchete..."></ion-input>
+        </ion-item>
+        <ion-item class="itemAdicionar">
+            <ion-label class="labelCampo" position="stacked">Mensagem</ion-label>
+            <ion-textarea formControlName="mensagem" placeholder="Digite a manchete..." rows="10"></ion-textarea>
         </ion-item>
     </form>
 </ion-content>
@@ -28,7 +32,7 @@
                 <ion-col>
                     <ion-button expand="block" class="buttonAlterar" [disabled]="resource.invalid"
                         (click)="adicionar()">
-                        {{atualizar ? "Alt." : "Add."}} Vìdeo
+                        {{atualizar ? "Alt." : "Add."}} Mensagem
                     </ion-button>
                 </ion-col>
                 <ion-col>

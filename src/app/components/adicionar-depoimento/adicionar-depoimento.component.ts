@@ -1,18 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { GraphQlService } from 'src/app/services/graphql/graph-ql.service';
 import { QueryService } from 'src/app/services/query/query.service';
 
 @Component({
-    selector: 'app-adicionar-video',
-    templateUrl: './adicionar-video.component.html',
-    styleUrls: ['./adicionar-video.component.scss'],
+    selector: 'app-adicionar-depoimento',
+    templateUrl: './adicionar-depoimento.component.html',
+    styleUrls: ['./adicionar-depoimento.component.scss'],
 })
-export class AdicionarVideoComponent implements OnInit {
+export class AdicionarDepoimentoComponent implements OnInit {
 
-    @Input() video: any;
+    @Input() depoimento: any;
     atualizar: boolean = false;
     resource: FormGroup;
 
@@ -27,14 +27,16 @@ export class AdicionarVideoComponent implements OnInit {
         this.resource = this.formBuilder.group({
             id: [""],
             nome: ["", [Validators.required, Validators.minLength(5)]],
+            descricao: ["", [Validators.required, Validators.minLength(5)]],
+            depoimento: ["", [Validators.required, Validators.minLength(5)]],
             url: ["", [Validators.required, Validators.minLength(5)]],
             ativado: [true, [Validators.required]],
             createdAt: [""]
         })
 
-        if (this.video) {
-            this.resource.setValue(this.video);
-                        
+        if (this.depoimento) {
+            this.resource.setValue(this.depoimento);
+
             this.atualizar = true;
         }
 
@@ -47,14 +49,14 @@ export class AdicionarVideoComponent implements OnInit {
         if (this.atualizar) {
             const alert = await this.alert.create({
                 header: 'Alerta',
-                message: "Você tem certeza que quer atualizar esse vídeo?",
+                message: "Você tem certeza que quer atualizar esse depoimento?",
                 buttons: [
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.updateVideo(Number(this.video.id), this.resource.value)).then(() => {
+                            this.graphql.graphql(this.query.updateDepoimento(Number(this.depoimento.id), this.resource.value)).then(() => {
                                 this.modalController.dismiss();
-                                this.toast.mostrar("Video atualizado com sucesso!");
+                                this.toast.mostrar("Depoimento atualizado com sucesso!");
                             })
                         }
                     },
@@ -68,14 +70,14 @@ export class AdicionarVideoComponent implements OnInit {
         } else {
             const alert = await this.alert.create({
                 header: 'Alerta',
-                message: "Você tem certeza que quer criar essa vídeo?",
+                message: "Você tem certeza que quer criar essa depoimento?",
                 buttons: [
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.setVideo(this.resource.value)).then(() => {
+                            this.graphql.graphql(this.query.setDepoimento(this.resource.value)).then(() => {
                                 this.modalController.dismiss();
-                                this.toast.mostrar("Video criada com sucesso!");
+                                this.toast.mostrar("Depoimento criada com sucesso!");
                             })
                         }
                     },

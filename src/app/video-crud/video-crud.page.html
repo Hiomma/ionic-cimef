@@ -5,8 +5,8 @@
         </ion-buttons>
         <ion-title>Vídeos</ion-title>
     </ion-toolbar>
-    <ion-searchbar debounce="500" placeholder="Pesquise um Video" [(ngModel)]="pesquisa"
-        (ionChange)="listar(pesquisa)" style="background: var(--ion-color-primary)"></ion-searchbar>
+    <ion-searchbar debounce="500" placeholder="Pesquise um Video" [(ngModel)]="pesquisa" (ionChange)="listar(pesquisa)"
+        style="background: var(--ion-color-primary)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
@@ -14,7 +14,7 @@
         <ion-item *ngFor="let aux of listVideos">
             <ion-label>
                 <h2>{{aux?.nome}}</h2>
-                <p>Ativo: {{aux?.ativado ? "Sim": "Não"}}</p>
+                <p>URL: {{aux?.url}} - Ativo: {{aux?.ativado ? "Sim": "Não"}}</p>
             </ion-label>
 
             <ion-buttons>

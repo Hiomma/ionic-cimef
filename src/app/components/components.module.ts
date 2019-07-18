@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 import { AdicionarCategoriaComponent } from './adicionar-categoria/adicionar-categoria.component';
@@ -10,15 +10,22 @@ import { HeaderFooterComponent } from './header-footer/header-footer.component';
 import { ModalImagemComponent } from './modal-imagem/modal-imagem.component';
 import { AdicionarCategoriaProdutoComponent } from './adicionar-categoria-produto/adicionar-categoria-produto.component';
 import { AdicionarVideoComponent } from './adicionar-video/adicionar-video.component';
+import { AdicionarDepoimentoComponent } from './adicionar-depoimento/adicionar-depoimento.component';
+import { AdicionarMensagemComponent } from './adicionar-mensagem/adicionar-mensagem.component';
+import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
 
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        IonicModule
+        IonicModule,
+        ReactiveFormsModule
     ],
     declarations: [
+        AdicionarProdutoComponent,
+        AdicionarMensagemComponent,
+        AdicionarDepoimentoComponent,
         AdicionarCategoriaProdutoComponent,
         AdicionarVideoComponent,
         AdicionarCategoriaComponent,
@@ -28,6 +35,9 @@ import { AdicionarVideoComponent } from './adicionar-video/adicionar-video.compo
         ModalImagemComponent
     ],
     entryComponents: [
+        AdicionarProdutoComponent,
+        AdicionarMensagemComponent,
+        AdicionarDepoimentoComponent,
         AdicionarVideoComponent,
         AdicionarCategoriaProdutoComponent,
         AdicionarCategoriaComponent,

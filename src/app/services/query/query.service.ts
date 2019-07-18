@@ -135,12 +135,12 @@ export class QueryService {
     }
 
     updateVideo(id: number, video: any) {
-        return { query: "mutation rusbe($id:Int!, $video: VideoInput!) { updateVideo(id: $id, video: $video) {id, nome, url, ativado, createdAt}}", variables: { id: id, vidieo: video }, operationName: "rusbe" }
+        return { query: "mutation rusbe($id:Int!, $video: VideoInput!) { updateVideo(id: $id, video: $video) {id, nome, url, ativado, createdAt}}", variables: { id: id, video: video }, operationName: "rusbe" }
     }
 
     delVideo(id: number) {
         return { query: "mutation rusbe($id:Int!) { deleteVideo(id: $id) { id, nome, url, ativado, createdAt}}", variables: { id: id }, operationName: "rusbe" }
-    }  
+    }
 
     //Depoimentos
 
@@ -148,7 +148,7 @@ export class QueryService {
         if (ativado == "") {
             return { query: "query rusbe($filter: String!) { depoimentos(filter: $filter) { id, nome, descricao, depoimento, url, ativado, createdAt } }", variables: { filter: filter } }
         } else {
-            return { query: "query rusbe($ativado: Boolean!, $filter: String!){depoimentos(filter: $filter) { id, nome, descricao, depoimento, url, ativado, createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){depoimentos(ativado: $ativado, filter: $filter) { id, nome, descricao, depoimento, url, ativado, createdAt } }", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
         }
     }
 
@@ -162,7 +162,7 @@ export class QueryService {
 
     delDepoimento(id: number) {
         return { query: "mutation rusbe($id:Int!) { deleteDepoimento(id: $id) { id, depoimento, nome, url, ativado, createdAt}}", variables: { id: id }, operationName: "rusbe" }
-    }  
+    }
 
     //Categorias dos Produtos
     getCategoriasProduto(ativado: string = "", filter: string = "") {
@@ -195,11 +195,32 @@ export class QueryService {
     }
 
 
-    //Fale Conosco
+    //Fale Conosco    
+    getMensagens(filter: string = "") {
+        return { query: "query rusbe($filter: String!){ mensagens(filter: $filter){ id, mensagem, nome, titulo, email, createdAt}}", variables: { filter: filter } }
+    }
+
+    getMensagem(ativado: string = "", filter: string = "") {
+        if (ativado == "") {
+            return { query: "query rusbe($filter: String!){ mensagem(filter: $filter){ id, mensagem, nome, titulo, email, createdAt} }", variables: { filter: filter } }
+        } else {
+            return { query: "query rusbe($ativado: Boolean!, $filter: String!){ mensagem(ativado: $ativado,filter: $filter ) { id, mensagem, nome, titulo, email, createdAt}}", variables: { ativado: ativado == "true" ? true : false, filter: filter } }
+        }
+    }
 
     setMensagem(mensagem: any) {
-        return { query: "mutation rusbe($mensagem: MensagemInput!){ createMensagem(mensagem:$mensagem){id, nome, titulo, email, mensagem, createdAt}}", variables: { "mensagem": mensagem }, operationName: "rusbe" }
+        return { query: "mutation rusbe($mensagem: MensagemInput!){ createMensagem(mensagem:$mensagem){ id, mensagem, nome, titulo, email, createdAt}}", variables: { "mensagem": mensagem }, operationName: "rusbe" }
     }
+
+    updateMensagem(id: number, mensagem: any) {
+        return { query: "mutation rusbe($id:Int!, $mensagem: MensagemInput!) { updateMensagem(id: $id, mensagem: $mensagem){ id, mensagem, nome, titulo, email, createdAt}}", variables: { id: id, mensagem: mensagem }, operationName: "rusbe" }
+    }
+
+    delMensagem(id: number) {
+        return { query: "mutation rusbe($id:Int!) { deleteMensagem(id: $id) { id, mensagem, nome, titulo, email, createdAt}}", variables: { id: id }, operationName: "rusbe" }
+    }
+
+
 }
 
 

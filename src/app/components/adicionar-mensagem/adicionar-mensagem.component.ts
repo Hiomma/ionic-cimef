@@ -1,18 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { GraphQlService } from 'src/app/services/graphql/graph-ql.service';
 import { QueryService } from 'src/app/services/query/query.service';
 
 @Component({
-    selector: 'app-adicionar-video',
-    templateUrl: './adicionar-video.component.html',
-    styleUrls: ['./adicionar-video.component.scss'],
+    selector: 'app-adicionar-mensagem',
+    templateUrl: './adicionar-mensagem.component.html',
+    styleUrls: ['./adicionar-mensagem.component.scss'],
 })
-export class AdicionarVideoComponent implements OnInit {
+export class AdicionarMensagemComponent implements OnInit {
 
-    @Input() video: any;
+    @Input() mensagem: any;
     atualizar: boolean = false;
     resource: FormGroup;
 
@@ -27,14 +27,15 @@ export class AdicionarVideoComponent implements OnInit {
         this.resource = this.formBuilder.group({
             id: [""],
             nome: ["", [Validators.required, Validators.minLength(5)]],
-            url: ["", [Validators.required, Validators.minLength(5)]],
-            ativado: [true, [Validators.required]],
+            titulo: ["", [Validators.required, Validators.minLength(5)]],
+            email: ["", [Validators.required, Validators.email, Validators.minLength(5)]],
+            mensagem: ["", [Validators.required, Validators.minLength(5)]],
             createdAt: [""]
         })
 
-        if (this.video) {
-            this.resource.setValue(this.video);
-                        
+        if (this.mensagem) {
+            this.resource.setValue(this.mensagem);
+
             this.atualizar = true;
         }
 
@@ -47,14 +48,14 @@ export class AdicionarVideoComponent implements OnInit {
         if (this.atualizar) {
             const alert = await this.alert.create({
                 header: 'Alerta',
-                message: "Você tem certeza que quer atualizar esse vídeo?",
+                message: "Você tem certeza que quer atualizar esse mensagem?",
                 buttons: [
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.updateVideo(Number(this.video.id), this.resource.value)).then(() => {
+                            this.graphql.graphql(this.query.updateMensagem(Number(this.mensagem.id), this.resource.value)).then(() => {
                                 this.modalController.dismiss();
-                                this.toast.mostrar("Video atualizado com sucesso!");
+                                this.toast.mostrar("Mensagem atualizado com sucesso!");
                             })
                         }
                     },
@@ -68,14 +69,14 @@ export class AdicionarVideoComponent implements OnInit {
         } else {
             const alert = await this.alert.create({
                 header: 'Alerta',
-                message: "Você tem certeza que quer criar essa vídeo?",
+                message: "Você tem certeza que quer criar essa mensagem?",
                 buttons: [
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.setVideo(this.resource.value)).then(() => {
+                            this.graphql.graphql(this.query.setMensagem(this.resource.value)).then(() => {
                                 this.modalController.dismiss();
-                                this.toast.mostrar("Video criada com sucesso!");
+                                this.toast.mostrar("Mensagem criada com sucesso!");
                             })
                         }
                     },
@@ -92,6 +93,5 @@ export class AdicionarVideoComponent implements OnInit {
     cancelar() {
         this.modalController.dismiss();
     }
-
 
 }

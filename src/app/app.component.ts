@@ -89,12 +89,6 @@ export class AppComponent {
                         this.storage.eraseData();
 
                         this.menuController.enable(false)
-                    } else {
-                        if (window.location.href.indexOf("categoria") != -1 || window.location.href.indexOf("home") != -1 || window.location.href.indexOf("posicao") != -1 || window.location.href.indexOf("slide") != -1) {
-                            this.menuController.enable(true);
-                        } else {
-                            this.menuController.enable(false);
-                        }
                     }
                 } else {
                     this.storage.eraseData();
