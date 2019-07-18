@@ -19,7 +19,7 @@
             </div>
             <div class="divBarrinha"></div>
             <div style="margin-left: 25px;">
-                <ion-icon class="iconContato" name="logo-instagram"></ion-icon>
+                <!-- <ion-icon class="iconContato" name="logo-instagram"></ion-icon> -->
                 <ion-icon class="iconContato" name="logo-facebook"
                     (click)="abrirUrl('https://www.facebook.com/cimef.metalurgia')"></ion-icon>
             </div>
@@ -60,7 +60,9 @@
                 </div>
 
                 <div style="margin-top: 1em;">
-                    <p class="pEndereco">Acesse o Mapa</p>
+                    <p class="pEndereco" style="cursor: pointer"
+                        (click)="abrirUrl('https://www.google.com/maps/place/Cimef/@-20.8326908,-41.1762133,15z/data=!4m2!3m1!1s0x0:0xe5a7a840a5786f10?sa=X&ved=2ahUKEwjA3dqGub3jAhVYEbkGHVhLBtcQ_BIwDXoECAsQCA')">
+                        Acesse o Mapa</p>
                 </div>
             </ion-col>
             <ion-col>
@@ -76,7 +78,7 @@
                 <div class="divBordaTitulo"></div>
 
                 <div>
-                    <ion-icon class="iconFooter" name="logo-instagram"></ion-icon>
+                    <!-- <ion-icon class="iconFooter" name="logo-instagram"></ion-icon> -->
                     <ion-icon class="iconFooter" name="logo-facebook"></ion-icon>
                 </div>
             </ion-col>

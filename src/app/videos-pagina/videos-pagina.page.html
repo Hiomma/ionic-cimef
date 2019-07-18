@@ -5,12 +5,21 @@
             <div class="divLinhaEmbaixo"></div>
         </div>
 
-        <ion-slides [options]="optionsSlide">
-            <ion-slide *ngFor="let aux of listVideos">
-                <iframe style="margin-left: 10px;" width="560" height="315" [src]="aux.url | safe" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </ion-slide>
-        </ion-slides>
+        <div>
+            <ion-slides [options]="optionsSlide" #slideFoto>
+                <ion-slide *ngFor="let aux of listVideos">
+                    <iframe style="margin-left: 10px;" width="560" height="315" [src]="aux.url | safe" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </ion-slide>
+            </ion-slides>
+
+            <div class="divSetaEsquerda" (click)="moverSlide(false)">
+                <ion-icon name="ios-arrow-dropleft"></ion-icon>
+            </div>
+            <div class="divSetaDireita" (click)="moverSlide(true)">
+                <ion-icon name="ios-arrow-dropright"></ion-icon>
+            </div>
+        </div>
     </div>
 </app-header-footer>

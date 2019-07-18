@@ -33,32 +33,32 @@ export class AppComponent {
         {
             title: 'Slides',
             url: '/slide',
-            icon: 'ios-expand'
+            icon: 'ios-albums'
         },
         {
             title: 'Categorias do Produto',
             url: '/categoria-produto-crud',
-            icon: 'ios-expand'
+            icon: 'ios-filing'
         },
         {
             title: 'Produtos',
             url: '/produto-crud',
-            icon: 'ios-expand'
+            icon: 'ios-basket'
         },
         {
             title: 'Mensagens',
             url: '/mensagem-crud',
-            icon: 'ios-expand'
+            icon: 'ios-chatboxes'
         },
         {
             title: 'Depoimentos',
             url: '/depoimento-crud',
-            icon: 'ios-expand'
+            icon: 'ios-bookmarks'
         },
         {
             title: 'Videos',
             url: '/video-crud',
-            icon: 'ios-expand'
+            icon: 'ios-videocam'
         },
         {
             title: "Sair",

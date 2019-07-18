@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController, MenuController } from '@ionic/angular';
-import { AdicionarProdutoComponent } from '../components/adicionar-mensagem/adicionar-mensagem.component';
+import { AdicionarProdutoComponent } from '../components/adicionar-produto/adicionar-produto.component';
 import { QueryService } from '../services/query/query.service';
 import { GraphQlService } from '../services/graphql/graph-ql.service';
 import { ToastService } from '../services/toast/toast.service';
@@ -29,7 +29,7 @@ export class ProdutoCrudPage implements OnInit {
     }
 
     listar(pesquisa?) {
-        this.graphql.graphql(this.query.getProdutos(pesquisa)).then((data: any) => {
+        this.graphql.graphql(this.query.getProdutos("true", pesquisa)).then((data: any) => {
             this.listProdutos = data.data.produtos;
         })
     }
@@ -44,7 +44,7 @@ export class ProdutoCrudPage implements OnInit {
                     handler: () => {
                         this.graphql.graphql(this.query.delProduto(Number(aux.id))).then(data => {
                             this.listar();
-                            this.toast.mostrar("O mensagem foi excluida com sucesso!");
+                            this.toast.mostrar("O produto foi excluido com sucesso!");
                         });
                     }
                 },
@@ -60,7 +60,7 @@ export class ProdutoCrudPage implements OnInit {
     async abrirModal(aux?) {
         const modal = await this.modalController.create({
             component: AdicionarProdutoComponent,
-            componentProps: { mensagem: aux },
+            componentProps: { produto: aux },
             cssClass: "modalAdicionarProduto"
         });
         await modal.present();

@@ -29,8 +29,6 @@ export class FaleConoscoPage implements OnInit {
         })
 
         this.menuController.enable(false);
-
-        setInterval(() => { console.log(this.resource) }, 1000)
     }
 
     enviarMensagem() {

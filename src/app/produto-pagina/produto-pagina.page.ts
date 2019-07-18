@@ -37,7 +37,6 @@ export class ProdutoPaginaPage implements OnInit {
             let i = 0;
 
             for (let aux of this.listCategorias) {
-                console.log(aux, produtos);
                 this.listProdutos[i] = produtos.filter(element => { if (element.categoria.id == aux.id) { return element } })
                 i++;
             }

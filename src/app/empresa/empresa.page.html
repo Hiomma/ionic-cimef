@@ -9,13 +9,20 @@
         <ion-grid styme="margin-top: 50px">
             <ion-row>
                 <ion-col size="6">
-                    <ion-slides>
+                    <ion-slides #slideFoto>
                         <ion-slide *ngFor="let aux of listEmpresas">
                             <img class="imgSlideEmpresa" [src]="aux.url">
                             <div class="divBotaoEsquerdo"></div>
                             <div class="divBotaoDireito"></div>
                         </ion-slide>
                     </ion-slides>
+
+                    <div class="divSetaEsquerda" (click)="moverSlide(false)">
+                        <ion-icon name="ios-arrow-dropleft"></ion-icon>
+                    </div>
+                    <div class="divSetaDireita" (click)="moverSlide(true)">
+                        <ion-icon name="ios-arrow-dropright"></ion-icon>
+                    </div>
                 </ion-col>
                 <ion-col size="6" class="colDescricao">
                     <p>A Cimef é uma das maiores fabricantes de máquinas e soluções tecnológicas para o setor de rochas

@@ -232,3 +232,23 @@
     bottom: 5vh;
     right: 5vw;
 }
+
+.divSetaEsquerda {
+    position: absolute;
+    font-size: 70px;
+    color: #2A3B72;
+    top: 240px;
+    left: -70px;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.divSetaDireita {
+    position: absolute;
+    font-size: 70px;
+    color: #2A3B72;
+    top: 240px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 99;
+}

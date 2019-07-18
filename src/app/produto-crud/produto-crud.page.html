@@ -14,7 +14,7 @@
         <ion-item *ngFor="let aux of listProdutos">
             <ion-label>
                 <h2>{{aux?.nome}}</h2>
-                <p>Categoria: {{aux?.categoria_produto?.nome}} - Ativo: {{aux?.ativado ? "Sim": "Não"}}</p>
+                <p>Categoria: {{aux?.categoria?.nome}} - Ativo: {{aux?.ativado ? "Sim": "Não"}}</p>
             </ion-label>
 
             <ion-buttons>
