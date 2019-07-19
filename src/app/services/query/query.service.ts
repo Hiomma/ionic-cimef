@@ -157,7 +157,7 @@ export class QueryService {
     }
 
     updateDepoimento(id: number, depoimento: any) {
-        return { query: "mutation rusbe($id:Int!, $depoimento: DepoimentoInput!) { updateDepoimento(id: $id, depoimento: $depoimento) {id, depoimento, nome, url, ativado, createdAt}}", variables: { id: id, vidieo: depoimento }, operationName: "rusbe" }
+        return { query: "mutation rusbe($id:Int!, $depoimento: DepoimentoInput!) { updateDepoimento(id: $id, depoimento: $depoimento) {id, depoimento, nome, url, ativado, createdAt}}", variables: { id: id, depoimento: depoimento }, operationName: "rusbe" }
     }
 
     delDepoimento(id: number) {

@@ -30,7 +30,7 @@ export class AdicionarDepoimentoComponent implements OnInit {
             nome: ["", [Validators.required, Validators.minLength(5)]],
             descricao: ["", [Validators.required, Validators.minLength(5)]],
             depoimento: ["", [Validators.required, Validators.minLength(5)]],
-            url: ["", [Validators.required, Validators.minLength(5)]],
+            url: [""],
             ativado: [true, [Validators.required]],
             createdAt: [""]
         })
@@ -99,7 +99,7 @@ export class AdicionarDepoimentoComponent implements OnInit {
                                 for (let aux of this.fotoSelecionada) {
                                     fd.append("image", aux, aux.name);
                                 }
-                                this.graphql.post("api/depoimento/imagem/" + data.data.createProduto.id, fd).then(data => {
+                                this.graphql.post("api/depoimento/imagem/" + data.data.createDepoimento.id, fd).then(data => {
                                     this.fotoSelecionada = null;
                                 });
 
