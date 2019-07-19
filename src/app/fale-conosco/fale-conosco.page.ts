@@ -32,8 +32,6 @@ export class FaleConoscoPage implements OnInit {
     }
 
     enviarMensagem() {
-        console.log(this.resource.errors)
-
         this.graphql.graphql(this.query.setMensagem(this.resource.value)).then((data: any) => {
             this.toast.mostrar("Sua mensagem foi enviada com sucesso!");
             this.resource.reset();

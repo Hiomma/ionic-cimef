@@ -32,6 +32,7 @@ export class ProdutoPaginaPage implements OnInit {
 
             produtos.forEach(element => {
                 element.imagem = environment.url + element.imagem;
+                element.tabela = environment.url + element.tabela;
             })
 
             let i = 0;

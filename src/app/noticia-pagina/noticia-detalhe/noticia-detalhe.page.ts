@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GraphQlService } from '../../services/graphql/graph-ql.service';
-import { MenuController, ModalController } from '@ionic/angular';
+import { MenuController, ModalController, IonSlides } from '@ionic/angular';
 import { QueryService } from '../../services/query/query.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -14,6 +14,9 @@ import { ModalImagemComponent } from 'src/app/components/modal-imagem/modal-imag
 })
 export class NoticiaDetalhePage implements OnInit {
 
+    @ViewChild('slideFoto') slideFoto: IonSlides
+
+    optionsSlide = { slidesPerView: 3, spaceBetween: 20 }
     noticia: any;
 
     constructor(private graphql: GraphQlService,
@@ -29,9 +32,13 @@ export class NoticiaDetalhePage implements OnInit {
         this.graphql.graphql(this.query.getNoticia(this.route.snapshot.paramMap.get("url"))).then((data: any) => {
             this.noticia = data.data.noticia;
             this.noticia.imagem = environment.url + this.noticia.imagem;
-            console.log(this.noticia)
 
+            for (let aux of this.noticia.imagens) {
+                aux.url = environment.url + aux.url;
+            }
         })
+
+        this.slideFoto.lockSwipes(true);
     }
 
     async abrirImagem() {
@@ -40,5 +47,17 @@ export class NoticiaDetalhePage implements OnInit {
             componentProps: { objeto: this.noticia }
         });
         await modal.present();
+    }
+
+    moverSlide(direita: boolean) {
+        if (direita) {
+            this.slideFoto.lockSwipes(false);
+            this.slideFoto.slideNext(500);
+            this.slideFoto.lockSwipes(true);
+        } else {
+            this.slideFoto.lockSwipes(false);
+            this.slideFoto.slidePrev(500);
+            this.slideFoto.lockSwipes(true);
+        }
     }
 }

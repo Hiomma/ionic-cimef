@@ -8,11 +8,17 @@
         <div [innerHTML]="noticia?.texto" class="divTextoNoticia">
         </div>
 
-        <div class="divImagemNoticia" (click)="abrirImagem()">
-            <img [src]="noticia?.imagem" class="imgNoticia">
-            <div class="divBackgroundCinza">
-                <p class="pImagens">+50 imagens</p>
-                <p class="pSubTituloImagem">Click para Visualizar</p>
+        <div style="margin-bottom: 50px; margin-top: 50px">
+            <ion-slides #slideFoto [options]="optionsSlide">
+                <ion-slide *ngFor="let aux of noticia?.imagens">
+                    <img class="imgNoticia" [src]="aux.url">
+                </ion-slide>
+            </ion-slides>
+            <div class="divSetaEsquerda" (click)="moverSlide(false)">
+                <ion-icon name="ios-arrow-dropleft"></ion-icon>
+            </div>
+            <div class="divSetaDireita" (click)="moverSlide(true)">
+                <ion-icon name="ios-arrow-dropright"></ion-icon>
             </div>
         </div>
     </div>

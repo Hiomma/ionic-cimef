@@ -1,3 +1,106 @@
-<p>
-  adicionar-produto works!
-</p>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Adicionar Produto</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="resource">
+        <ion-item class="itemAdicionar">
+            <ion-label class="labelCampo" position="stacked">Nome</ion-label>
+            <ion-input formControlName="nome" placeholder="Digite o título..."></ion-input>
+        </ion-item>
+        <ion-item class="itemAdicionar">
+            <ion-label class="labelCampo" position="stacked">Vídeo</ion-label>
+            <ion-input formControlName="video" placeholder="Digite a descrição..."></ion-input>
+        </ion-item>
+        <ion-item class="itemAdicionar">
+            <ion-label class="labelCampo">Categoria</ion-label>
+            <ion-select formControlName="categoria_id">
+                <ion-select-option *ngFor="let aux of listCategorias" [value]="aux.id">
+                    {{aux.nome}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item class="itemAdicionar">
+            <ion-label class="labelCampo">Ativado?</ion-label>
+            <ion-toggle formControlName="ativado"></ion-toggle>
+        </ion-item>
+
+        <ion-label class="labelCampo" style="font-weight: 500">Imagens da Galeria</ion-label>
+        <input style="display: none" type="file" (change)="galeriaProduto($event)" #fileInput>
+
+        <ion-grid style="margin-top: 20px; overflow: hidden;">
+            <ion-row>
+                <ion-col>
+                    <ion-label style="top: 10px; position: relative;">
+                        {{galeriaSelecionada != null ? galeriaSelecionada.length : 0}}
+                        Imagem(ns) selecionadas</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-button style="float: right;" (click)="fileInput.click()">Add.
+                        Fotos
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-label class="labelCampo" style="font-weight: 500">Tabela do Produto</ion-label>
+        <input style="display: none" type="file" (change)="tabelaProduto($event)" #fileInput3>
+
+        <ion-grid style="margin-top: 20px; overflow: hidden;">
+            <ion-row>
+                <ion-col>
+                    <ion-label style="top: 10px; position: relative;">
+                        {{tabelaSelecionada != null ? tabelaSelecionada.length : 0}}
+                        Imagem(ns) selecionadas</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-button style="float: right;" (click)="fileInput3.click()">Add.
+                        Fotos
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-label class="labelCampo" style="font-weight: 500">Imagem do Produto</ion-label>
+        <input style="display: none" type="file" (change)="imagemProduto($event)" #fileInput2>
+
+        <ion-grid style="margin-top: 20px; overflow: hidden;">
+            <ion-row>
+                <ion-col>
+                    <ion-label style="top: 10px; position: relative;">
+                        {{produtoSelecionado != null ? produtoSelecionado.length : 0}}
+                        Imagem(ns) selecionadas</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-button style="float: right;" (click)="fileInput2.click()">Add.
+                        Fotos
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <div class="divEditor">
+            <ckeditor [editor]="Editor" formControlName="texto"></ckeditor>
+        </div>
+    </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" class="buttonAlterar" [disabled]="resource.invalid"
+                        (click)="adicionar()">
+                        {{atualizar ? "Alt." : "Add."}} Produto
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" class="buttonCancelar" (click)="cancelar()">Cancelar</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

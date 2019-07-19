@@ -16,11 +16,14 @@ export class HomePage {
     manchete: string = "";
     titulo: string = "";
     url: string = "";
+    imagem: string = "";
     ativado: boolean = true;
     categoria_id: any;
     posicao_id: any;
 
     imagensSelecionadas: Array<File>;
+
+    arquivoImagemCapa: Array<File>;
 
     primeiroClicado: boolean = true;
     segundoClicado: boolean = false;
@@ -64,6 +67,10 @@ export class HomePage {
         this.imagensSelecionadas = event.target.files;
     }
 
+    fotoPrincipalSelecionada(event) {
+        this.arquivoImagemCapa = event.target.files;
+    }
+
     desabilitar() {
         if (this.texto != "" && this.manchete != "" && this.titulo != "" && this.categoria_id && this.posicao_id && this.url != "") {
             return false;
@@ -87,6 +94,7 @@ export class HomePage {
             this.texto = aux.texto;
             this.manchete = aux.manchete;
             this.url = aux.url;
+            this.imagem = aux.imagem;
 
             this.alterar = aux;
         }
@@ -141,22 +149,38 @@ export class HomePage {
                         text: "OK",
                         handler: () => {
 
-                            if (this.imagensSelecionadas) {
-                                const fd = new FormData();
+                            if (this.imagensSelecionadas || this.arquivoImagemCapa) {
 
-                                for (let aux of this.imagensSelecionadas) {
-                                    fd.append("image", aux, aux.name);
+
+                                if (this.arquivoImagemCapa) {
+                                    const fd2 = new FormData();
+                                    for (let aux of this.arquivoImagemCapa) {
+                                        fd2.append("image", aux, aux.name);
+                                    }
+
+                                    this.graphql.post("api/imagem/principal/" + this.alterar.id, fd2).then(data => {
+                                        this.arquivoImagemCapa = null;
+                                    });
                                 }
 
-                                this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
-                                    this.voltar();
-                                    this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then(() => {
-                                        this.toast.mostrar("Noticia atualizada com sucesso!");
+                                if (this.imagensSelecionadas) {
+                                    const fd = new FormData();
 
-                                    })
+                                    for (let aux of this.imagensSelecionadas) {
+                                        fd.append("image", aux, aux.name);
+                                    }
+                                    this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
+                                        this.imagensSelecionadas = null;
+                                    });
+                                }
+
+                                this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: this.imagem })).then(() => {
+                                    this.toast.mostrar("Noticia atualizada com sucesso!");
+
+                                    this.voltar();
                                 })
                             } else {
-                                this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then(() => {
+                                this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: this.imagem })).then(() => {
                                     this.toast.mostrar("Noticia atualizada com sucesso!");
                                     this.voltar();
                                 })
@@ -179,7 +203,7 @@ export class HomePage {
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.setNoticia({ titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then((data: any) => {
+                            this.graphql.graphql(this.query.setNoticia({ titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: this.imagem })).then((data: any) => {
                                 if (this.imagensSelecionadas) {
                                     const fd = new FormData();
 
@@ -190,6 +214,15 @@ export class HomePage {
                                     this.graphql.post("api/imagem/" + data.data.createNoticia.id, fd).then(data => {
                                         this.voltar();
                                         this.toast.mostrar("Noticia criada com sucesso!");
+                                    });
+
+
+                                    const fd2 = new FormData();
+                                    for (let aux of this.arquivoImagemCapa) {
+                                        fd2.append("image", aux, aux.name);
+                                    }
+                                    this.graphql.post("api/imagem/principal/" + data.data.createNoticia.id, fd2).then(data => {
+                                        this.voltar();
                                     });
                                 } else {
                                     this.voltar();

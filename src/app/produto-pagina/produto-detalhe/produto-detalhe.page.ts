@@ -27,9 +27,13 @@ export class ProdutoDetalhePage implements OnInit {
 
         this.graphql.graphql(this.query.getProduto(this.route.snapshot.paramMap.get("id"))).then((data: any) => {
             this.produto = data.data.produto;
-            this.produto.imagem = environment.url + this.produto.imagem;
             console.log(this.produto)
+            this.produto.imagem = environment.url + this.produto.imagem;
+            this.produto.tabela = environment.url + this.produto.tabela;
 
+            for (let aux of this.produto.imagens) {
+                aux.url = environment.url + aux.url;
+            }
         })
     }
 

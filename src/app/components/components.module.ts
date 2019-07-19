@@ -13,6 +13,7 @@ import { AdicionarVideoComponent } from './adicionar-video/adicionar-video.compo
 import { AdicionarDepoimentoComponent } from './adicionar-depoimento/adicionar-depoimento.component';
 import { AdicionarMensagemComponent } from './adicionar-mensagem/adicionar-mensagem.component';
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto
         CommonModule,
         FormsModule,
         IonicModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CKEditorModule,
     ],
     declarations: [
         AdicionarProdutoComponent,

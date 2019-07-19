@@ -51,3 +51,25 @@
     text-align: center;
     color: white;
 }
+
+.divSetaEsquerda {
+    position: absolute;
+    font-size: 70px;
+    color: #2A3B72;
+    top: unset;
+    right: unset;
+    left: 50px;
+    bottom: -180px;
+    cursor: pointer;
+}
+
+.divSetaDireita {
+    position: absolute;
+    font-size: 70px;
+    color: #2A3B72;
+    top: unset;
+    left: unset;
+    right: 50px;
+    bottom: -160px;
+    cursor: pointer;
+}

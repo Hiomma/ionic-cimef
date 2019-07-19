@@ -23,7 +23,7 @@ export class NoticiaPaginaPage implements OnInit {
         this.menuController.close();
         this.menuController.enable(false);
 
-        this.graphql.graphql(this.query.getNoticias()).then((data: any) => {
+        this.graphql.graphql(this.query.getNoticias("true")).then((data: any) => {
             this.listNoticias = data.data.noticias;
 
             this.listNoticias.forEach(element => {

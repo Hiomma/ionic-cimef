@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
     selector: 'app-modal-imagem',
@@ -8,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ModalImagemComponent implements OnInit {
 
+    @ViewChild('slideFoto') slideFoto: IonSlides
+
     @Input() objeto: any;
     listImagens: Array<any> = new Array();
 
@@ -15,7 +18,18 @@ export class ModalImagemComponent implements OnInit {
 
     ngOnInit() {
         this.listImagens = JSON.parse(JSON.stringify(this.objeto.imagens));
-        this.listImagens.forEach(element => element.url = environment.url + element.url)
+    }
+
+    moverSlide(direita: boolean) {
+        if (direita) {
+            this.slideFoto.lockSwipes(false);
+            this.slideFoto.slideNext(500);
+            this.slideFoto.lockSwipes(true);
+        } else {
+            this.slideFoto.lockSwipes(false);
+            this.slideFoto.slidePrev(500);
+            this.slideFoto.lockSwipes(true);
+        }
     }
 
 }

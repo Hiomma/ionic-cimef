@@ -15,6 +15,7 @@ export class AdicionarDepoimentoComponent implements OnInit {
     @Input() depoimento: any;
     atualizar: boolean = false;
     resource: FormGroup;
+    fotoSelecionada: any;
 
     constructor(private formBuilder: FormBuilder,
         private query: QueryService,
@@ -44,6 +45,11 @@ export class AdicionarDepoimentoComponent implements OnInit {
         this.resource.removeControl("createdAt");
     }
 
+    fotoDepoimento(event) {
+        this.fotoSelecionada = event.target.files;
+    }
+
+
     async adicionar() {
 
         if (this.atualizar) {
@@ -54,6 +60,18 @@ export class AdicionarDepoimentoComponent implements OnInit {
                     {
                         text: "OK",
                         handler: () => {
+                            if (this.fotoSelecionada) {
+                                const fd2 = new FormData();
+                                for (let aux of this.fotoSelecionada) {
+                                    fd2.append("image", aux, aux.name);
+                                }
+
+                                this.graphql.post("api/depoimento/imagem/" + this.depoimento.id, fd2).then(data => {
+                                    this.fotoSelecionada = null;
+                                });
+                            }
+
+
                             this.graphql.graphql(this.query.updateDepoimento(Number(this.depoimento.id), this.resource.value)).then(() => {
                                 this.modalController.dismiss();
                                 this.toast.mostrar("Depoimento atualizado com sucesso!");
@@ -75,7 +93,17 @@ export class AdicionarDepoimentoComponent implements OnInit {
                     {
                         text: "OK",
                         handler: () => {
-                            this.graphql.graphql(this.query.setDepoimento(this.resource.value)).then(() => {
+                            this.graphql.graphql(this.query.setDepoimento(this.resource.value)).then((data: any) => {
+                                const fd = new FormData();
+
+                                for (let aux of this.fotoSelecionada) {
+                                    fd.append("image", aux, aux.name);
+                                }
+                                this.graphql.post("api/depoimento/imagem/" + data.data.createProduto.id, fd).then(data => {
+                                    this.fotoSelecionada = null;
+                                });
+
+
                                 this.modalController.dismiss();
                                 this.toast.mostrar("Depoimento criada com sucesso!");
                             })

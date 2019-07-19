@@ -15,9 +15,9 @@ export class AdicionarSlideComponent implements OnInit {
     descricao: string = "";
     subdescricao: string = "";
     imagensSelecionadas: any;
-    arquivosSelecionados: any;
     ativado: boolean = true;
     nome: string = "";
+    url: string = "";
 
     atualizar: boolean = false;
 
@@ -33,6 +33,7 @@ export class AdicionarSlideComponent implements OnInit {
             this.subdescricao = this.slide.subdescricao;
             this.ativado = this.slide.ativado;
             this.nome = this.slide.nome;
+            this.url = this.slide.url;
 
             this.atualizar = true;
         }
@@ -46,76 +47,76 @@ export class AdicionarSlideComponent implements OnInit {
         }
     }
 
+    arquivosSelecionados(event) {
+        this.imagensSelecionadas = event.target.files;
+    }
+
+
     async adicionar() {
-        // if (this.atualizar) {
-        //     const alert = await this.alert.create({
-        //         header: 'Alerta',
-        //         message: "Você tem certeza que quer atualizar esse slide?",
-        //         buttons: [
-        //             {
-        //                 text: "OK",
-        //                 handler: () => {
-        //                     const fd = new FormData();
+        if (this.atualizar) {
+            const alert = await this.alert.create({
+                header: 'Alerta',
+                message: "Você tem certeza que quer atualizar esse slide?",
+                buttons: [
+                    {
+                        text: "OK",
+                        handler: () => {
+                            if (this.imagensSelecionadas) {
+                                const fd = new FormData();
 
-        //                     for (let aux of this.imagensSelecionadas) {
-        //                         fd.append("image", aux, aux.name);
-        //                     }
+                                for (let aux of this.imagensSelecionadas) {
+                                    fd.append("image", aux, aux.name);
+                                }
 
-        //                     this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
-        //                         this.voltar();
-        //                         this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: "" })).then(() => {
-        //                             this.toast.mostrar("Noticia atualizada com sucesso!");
+                                this.graphql.post("api/slide/imagem/" + this.slide.id, fd).then(data => {
 
-        //                         })
-        //                     })
+                                })
+                            }
 
+                            this.graphql.graphql(this.query.updateSlide(Number(this.slide.id), { nome: this.nome, descricao: this.descricao, subdescricao: this.subdescricao, ativado: this.ativado, url: this.url })).then(() => {
+                                this.toast.mostrar("Slide atualizado com sucesso!");
+                                this.cancelar();
+                            })
+                        }
+                    },
+                    {
+                        text: "Cancelar"
+                    }
+                ]
+            });
 
-        //                     this.graphql.graphql(this.query.updateSlide(Number(this.slide.id), { nome: this.nome, ativado: this.ativado })).then(() => {
-        //                         this.modalController.dismiss();
-        //                         this.toast.mostrar("Posição atualizada com sucesso!");
-        //                     })
-        //                 }
-        //             },
-        //             {
-        //                 text: "Cancelar"
-        //             }
-        //         ]
-        //     });
+            await alert.present();
+        } else {
+            const alert = await this.alert.create({
+                header: 'Alerta',
+                message: "Você tem certeza que quer criar esse slide?",
+                buttons: [
+                    {
+                        text: "OK",
+                        handler: () => {
+                            this.graphql.graphql(this.query.setSlide({ nome: this.nome, descricao: this.descricao, subdescricao: this.subdescricao, ativado: this.ativado, url: this.url })).then((data: any) => {
 
-        //     await alert.present();
-        // } else {
-        //     const alert = await this.alert.create({
-        //         header: 'Alerta',
-        //         message: "Você tem certeza que quer criar esse slide?",
-        //         buttons: [
-        //             {
-        //                 text: "OK",
-        //                 handler: () => {
-        //                     this.graphql.graphql(this.query.setSlide({ nome: this.nome, ativado: this.ativado })).then(() => {
-        //                         this.modalController.dismiss();
-        //                         this.toast.mostrar("Posição criada com sucesso!");
+                                const fd = new FormData();
 
-        //                         const fd = new FormData();
+                                for (let aux of this.imagensSelecionadas) {
+                                    fd.append("image", aux, aux.name);
+                                }
 
-        //                         for (let aux of this.imagensSelecionadas) {
-        //                             fd.append("image", aux, aux.name);
-        //                         }
+                                this.graphql.post("api/slide/imagem/" + data.data.createSlide.id, fd).then(data => {
+                                    this.cancelar();
+                                    this.toast.mostrar("Slide criado com sucesso!");
+                                });
+                            })
+                        }
+                    },
+                    {
+                        text: "Cancelar"
+                    }
+                ]
+            });
 
-        //                         this.graphql.post("api/imagem/" + data.data.createNoticia.id, fd).then(data => {
-        //                             this.voltar();
-        //                             this.toast.mostrar("Noticia criada com sucesso!");
-        //                         });
-        //                     })
-        //                 }
-        //             },
-        //             {
-        //                 text: "Cancelar"
-        //             }
-        //         ]
-        //     });
-
-        //     await alert.present();
-        // }
+            await alert.present();
+        }
     }
 
     cancelar() {

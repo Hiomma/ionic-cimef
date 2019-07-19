@@ -1,5 +1,36 @@
 .imgSlide {
-    width: 600px;
-    height: 600px;
-    object-fit: cover;
+    top: calc(100% - 500px);
+    position: relative;
+    max-height: 420px;
+}
+
+.backgroundToolbar{
+    --background: var(--ion-color-primary);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.divSetaDireita{
+    position: absolute;
+    font-size: 70px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    height: 73px;
+    top: 240px;
+    right: 25px;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.divSetaEsquerda{
+    position: absolute;
+    font-size: 70px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    height: 73px;
+    top: 240px;
+    left: 25px;
+    cursor: pointer;
+    z-index: 99;
 }

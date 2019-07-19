@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdicionarSlideComponent } from '../components/adicionar-slide/adicionar-slide.component';
 import { GraphQlService } from '../services/graphql/graph-ql.service';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, MenuController } from '@ionic/angular';
 import { QueryService } from '../services/query/query.service';
 import { ToastService } from '../services/toast/toast.service';
 
@@ -18,11 +18,13 @@ export class SlidePage implements OnInit {
     constructor(private modalController: ModalController,
         private query: QueryService,
         private toast: ToastService,
+        private menuController: MenuController,
         private alert: AlertController,
         private graphql: GraphQlService) { }
 
     ngOnInit() {
         this.listar();
+        this.menuController.enable(true);
     }
 
     listar(pesquisa?) {
@@ -57,7 +59,7 @@ export class SlidePage implements OnInit {
     async abrirModal(aux?) {
         const modal = await this.modalController.create({
             component: AdicionarSlideComponent,
-            componentProps: { posicao: aux },
+            componentProps: { slide: aux },
         });
         await modal.present();
 

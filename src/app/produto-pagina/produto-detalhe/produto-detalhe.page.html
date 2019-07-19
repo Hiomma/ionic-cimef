@@ -10,19 +10,25 @@
                 <div [innerHTML]="produto?.texto" class="divTextoProduto">
                 </div>
 
-                <div class="divImagemProduto" (click)="abrirImagem()">
-                    <img [src]="produto?.imagem" class="imgProduto">
-                    <div class="divBackgroundCinza">
-                        <p class="pImagens">+50 imagens</p>
-                        <p class="pSubTituloImagem">Click para Visualizar</p>
-                    </div>
-                </div>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col *ngFor="let aux of produto?.imagens" size="2" (click)="abrirImagem()"
+                            style="height: 200px">
+                            <div class="divImagemProduto">
+                                <img [src]="aux?.url" class="imgProduto">
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+
+
+
             </div>
             <div style="float:right; width: 40%">
                 <div>
                     <img [src]="produto?.tabela">
                 </div>
-                <div>
+                <div *ngIf="produto?.video">
                     <iframe style="margin-left: 10px;" width="560" height="315" [src]="produto?.video | safe"
                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>

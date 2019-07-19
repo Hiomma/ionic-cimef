@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Adicionar Posição</ion-title>
+        <ion-title>Adicionar Slide</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -12,15 +12,15 @@
     </ion-item>
     <ion-item class="itemAdicionar">
         <ion-label class="labelCampo" position="stacked">Descrição</ion-label>
-        <ion-input [(ngModel)]="descricao" placeholder="Digite a manchete..."></ion-input>
+        <ion-input [(ngModel)]="descricao" placeholder="Digite a Descrição..."></ion-input>
     </ion-item>
     <ion-item class="itemAdicionar">
         <ion-label class="labelCampo" position="stacked">Subdescrição</ion-label>
-        <ion-input [(ngModel)]="subdescricao" placeholder="Digite a manchete..."></ion-input>
+        <ion-input [(ngModel)]="subdescricao" placeholder="Digite a Subdescrição..."></ion-input>
     </ion-item>
     <ion-item class="itemAdicionar">
-        <ion-label class="labelCampo" position="stacked">Ativado</ion-label>
-        <ion-input [(ngModel)]="ativado" placeholder="Digite a manchete..."></ion-input>
+        <ion-label class="labelCampo">Ativado?</ion-label>
+        <ion-toggle [(ngModel)]="ativado"></ion-toggle>
     </ion-item>
 
     <ion-label class="labelCampo" style="font-weight: 500">Galeria de Fotos</ion-label>
@@ -48,7 +48,7 @@
             <ion-row>
                 <ion-col>
                     <ion-button expand="block" class="buttonAlterar" [disabled]="desabilitar()" (click)="adicionar()">
-                        {{atualizar ? "Alt." : "Add."}} Posição
+                        {{atualizar ? "Alt." : "Add."}} Slide
                     </ion-button>
                 </ion-col>
                 <ion-col>
