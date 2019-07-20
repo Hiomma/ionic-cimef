@@ -1,4 +1,15 @@
-<ion-content>
+<div *ngIf="width < 500">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>CIMEF</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ng-content></ng-content>
+
+</div>
+
+<ion-content *ngIf="width > 500">
     <div class="divToolbar">
         <div (click)="abrirPagina('/')">
             <img class="imgLogoTitulo" src="../../assets/imgs/logo-cimef.png">

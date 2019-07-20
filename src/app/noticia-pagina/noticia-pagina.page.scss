@@ -45,3 +45,18 @@
     text-align: justify;
     z-index: 99;
 }
+
+@media(max-width: 1700px) {
+    .divListaNoticias {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .backgroundCinzaNoticia {
+        width: calc(100% - 10px);
+    }
+
+    .pTituloNoticia {
+        font-size: 40px;
+    }
+}

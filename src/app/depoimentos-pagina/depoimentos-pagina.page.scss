@@ -43,6 +43,7 @@
 .imgAvatar {
     border-radius: 50%;
     width: 200px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -69,4 +70,11 @@
     width: 60px;
     margin-left: 10px;
     margin-top: 10px;
+}
+
+@media(max-width: 1700px) {
+    .divListaDepoimentos {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }

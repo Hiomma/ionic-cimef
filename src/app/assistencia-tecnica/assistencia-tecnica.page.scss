@@ -29,3 +29,14 @@
     margin-top: 5px;
     margin-bottom: 30px;
 }
+
+@media(max-width: 1700px) {
+    .divAssistencia {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .pAssistencia {
+        font-size: 40px;
+    }
+}

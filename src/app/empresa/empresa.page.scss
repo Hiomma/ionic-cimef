@@ -30,7 +30,7 @@
     height: 389px;
     width: 520px;
     object-position: center;
-    box-shadow: -4px 4px 45px -15px rgba(0,0,0,0.75);
+    box-shadow: -4px 4px 45px -15px rgba(0, 0, 0, 0.75);
 }
 
 .gridEmpresaDestaque {
@@ -50,3 +50,53 @@
     margin-top: 20px;
 }
 
+@media(max-width: 1700px) {
+    .pEmpresa {
+        font-size: 40px;
+    }
+
+    .divEmpresa {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .imgSlideEmpresa {
+        right: unset;
+        height: 450px;
+        width: 100%;
+    }
+
+    .colDescricao {
+        padding-left: 30px;
+    }
+
+    .divSetaEsquerda {
+        position: absolute;
+        font-size: 70px;
+        color: white;
+        top: 200px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        height: 72px;
+        cursor: pointer;
+        z-index: 99;
+    }
+
+    .divSetaDireita {
+        position: absolute;
+        font-size: 70px;
+        color: white;
+        top: 200px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        height: 72px;
+        cursor: pointer;
+        z-index: 99;
+    }
+
+    .gridEmpresaDestaque {
+        margin: unset;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}

@@ -72,7 +72,7 @@
         <ion-row>
             <p class="pNoticiaTitulo">Confira as últimas notícias</p>
         </ion-row>
-        <ion-row style="padding-left: 150px; padding-right: 150px;">
+        <ion-row class="rowNoticia">
             <ion-col *ngFor="let aux of listNoticias">
                 <img class="imgNoticias" [src]="aux.imagem">
                 <p class="pTituloNoticia">{{aux.titulo}}</p>

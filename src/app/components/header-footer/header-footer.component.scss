@@ -40,3 +40,28 @@
     height: 300px;
     width: 1920px;
 }
+
+@media(max-width: 1700px) {
+    .imgLogoTitulo {
+        width: 200px
+    }
+
+    .divToolbar {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .divContato {
+        right: 50px;
+    }
+
+    .aSlide {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
+    .gridFooter {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}

@@ -144,6 +144,11 @@
     z-index: 99;
 }
 
+.rowNoticia {
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
 //********************************************************************************************************
 // Localização
 //********************************************************************************************************
@@ -256,4 +261,67 @@
     margin-block-start: 0;
     margin-block-end: 0;
     font-size: 14px;
+}
+
+@media(max-width: 1700px) {
+    .imgLogoTitulo {
+        width: 200px;
+    }
+
+    .aSlide {
+        font-size: 12px;
+    }
+
+    .divToolbar {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .divContato {
+        font-size: 12px;
+        right: 50px;
+    }
+
+    .divSlideNome {
+        left: 50px;
+        bottom: 100px;
+    }
+
+    .pSlideNome {
+        font-size: 30px
+    }
+
+    .pSlideDescricao {
+        font-size: 50px
+    }
+
+    .imgMaquina {
+        left: 15%;
+    }
+
+    .pProduto {
+        font-size: 30px;
+    }
+
+    .pDescricaoProduto {
+        font-size: 16px;
+    }
+
+    .divProduto {
+        padding-left: 70px;
+    }
+
+    .backgroundCinzaNoticia {
+        width: calc(100% - 10px);
+    }
+
+    .rowNoticia {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .gridFooter {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }

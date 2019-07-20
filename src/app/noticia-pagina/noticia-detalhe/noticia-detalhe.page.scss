@@ -73,3 +73,24 @@
     bottom: -160px;
     cursor: pointer;
 }
+
+@media(max-width: 1700px) {
+    .divNoticia {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .pTituloNoticia {
+        font-size: 40px;
+    }
+
+    .divSetaEsquerda {
+        left: -5px;
+        bottom: -530px;
+    }
+
+    .divSetaDireita {
+        right: -5px;
+        bottom: -530px;
+    }
+}

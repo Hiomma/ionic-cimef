@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderFooterComponent implements OnInit {
 
-    constructor( private router: Router) { }
+    width = self.innerWidth;
+
+    constructor(private router: Router) { }
 
     ngOnInit() { }
 

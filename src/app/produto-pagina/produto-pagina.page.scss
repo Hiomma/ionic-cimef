@@ -45,3 +45,22 @@
     text-align: justify;
     z-index: 99;
 }
+
+@media(max-width: 1700px) {
+    .pTituloProduto {
+        font-size: 40px;
+    }
+
+    .divListaProdutos {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .backgroundCinzaProduto {
+        width: calc(100% - 10px);
+    }
+
+    .gridProdutos {
+        margin-top: 50px;
+    }
+}
