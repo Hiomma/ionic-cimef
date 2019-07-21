@@ -52,3 +52,30 @@
         bottom: -150px;
     }
 }
+
+@media(max-width: 1000px) {
+    .divVideo {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .divSetaEsquerda {
+        left: 20px;
+        bottom: 0px;
+        background: rgba(0, 0, 0, 0.3);
+        height: 70px;
+        color: white;
+    }
+
+    .divSetaDireita {
+        right: 20px;
+        bottom: 0px;
+        background: rgba(0, 0, 0, 0.3);
+        height: 70px;
+        color: white;
+    }
+
+    .pVideo {
+        font-size: 40px;
+    }
+}

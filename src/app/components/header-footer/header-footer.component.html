@@ -1,16 +1,18 @@
-<div *ngIf="width < 500">
+<div *ngIf="width < 1000">
     <ion-header>
         <ion-toolbar color="primary">
+            <ion-buttons slot="start">
+                <ion-menu-button autoHide="false" menu="celular" (click)="abrirMenu()"></ion-menu-button>
+            </ion-buttons>
             <ion-title>CIMEF</ion-title>
         </ion-toolbar>
     </ion-header>
 
-    <ng-content></ng-content>
-
 </div>
 
-<ion-content *ngIf="width > 500">
-    <div class="divToolbar">
+
+<ion-content>
+    <div class="divToolbar" *ngIf="width > 1000">
         <div (click)="abrirPagina('/')">
             <img class="imgLogoTitulo" src="../../assets/imgs/logo-cimef.png">
         </div>
@@ -41,9 +43,11 @@
         <img class="imgToolbar" src="../../assets/imgs/tear.png">
     </div>
 
-    <ng-content></ng-content>
+    <div>
+        <ng-content></ng-content>
+    </div>
 
-    <ion-grid class="gridFooter">
+    <ion-grid class="gridFooter" *ngIf="width > 1000">
         <ion-row style="margin-top: 80px">
             <ion-col>
                 <p class="pMenuTitulo">MENU</p>

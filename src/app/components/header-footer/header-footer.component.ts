@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
     selector: 'app-header-footer',
@@ -9,10 +10,17 @@ import { Router } from '@angular/router';
 export class HeaderFooterComponent implements OnInit {
 
     width = self.innerWidth;
+    teste;
 
-    constructor(private router: Router) { }
+    constructor(private router: Router,
+        private menuController: MenuController) { }
 
     ngOnInit() { }
+
+    async abrirMenu() {
+        this.menuController.enable(true, 'celular');
+        await this.menuController.open("celular")
+    }
 
     abrirPagina(rota) {
         this.router.navigate([rota])

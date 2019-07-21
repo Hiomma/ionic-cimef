@@ -27,8 +27,12 @@ export class VideosPaginaPage implements OnInit {
         this.graphql.graphql(this.query.getVideos()).then((data: any) => {
             this.listVideos = data.data.videos;
         })
-        
+
         this.slideFoto.lockSwipes(true);
+
+        if (window.innerWidth < 1000) {
+            this.optionsSlide = { slidesPerView: 1 }
+        }
     }
 
     moverSlide(direita: boolean) {

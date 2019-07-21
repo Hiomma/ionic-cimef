@@ -47,10 +47,30 @@
     padding-left: 10px;
 }
 
+.itemInput {
+    width: 90%;
+    --border-width: 0;
+}
+
 
 @media(max-width: 1700px) {
     .divFaleConosco {
         padding-left: 50px;
         padding-right: 50px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .divFaleConosco {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .pFaleConosco {
+        font-size: 40px;
+    }
+
+    .itemInput{
+        width: 100%;
     }
 }

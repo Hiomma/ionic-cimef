@@ -13,6 +13,48 @@ import { StorageService } from './services/storage/storage.service';
 })
 export class AppComponent {
 
+    celular = [
+        {
+            title: 'Home',
+            url: '/',
+            icon: 'ios-bookmarks'
+        },
+        {
+            title: 'Notícias',
+            url: '/noticia-pagina',
+            icon: 'ios-paper'
+        },
+        {
+            title: 'Empresa',
+            url: '/empresa',
+            icon: 'ios-briefcase'
+        },
+        {
+            title: 'Produtos',
+            url: '/produto-pagina',
+            icon: 'ios-basket'
+        },
+        {
+            title: 'Assistência Técnica',
+            url: '/assistencia-tecnica',
+            icon: 'ios-hammer'
+        },
+        {
+            title: 'Depoimentos',
+            url: '/depoimento-pagina',
+            icon: 'ios-chatboxes'
+        },
+        {
+            title: 'Videos',
+            url: '/videos-pagina',
+            icon: 'ios-videocam'
+        },
+        {
+            title: 'Fale Conosco',
+            url: '/fale-conosco',
+            icon: 'ios-chatboxes'
+        },
+    ]
 
     public appPages = [
         {
