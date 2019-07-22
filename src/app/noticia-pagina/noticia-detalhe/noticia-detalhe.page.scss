@@ -74,6 +74,12 @@
     cursor: pointer;
 }
 
+.divSlide {
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+}
+
 @media(max-width: 1700px) {
     .divNoticia {
         padding-left: 50px;
@@ -92,5 +98,34 @@
     .divSetaDireita {
         right: -5px;
         bottom: -530px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .divNoticia {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .divSetaEsquerda {
+        left: 0;
+        top: 150px;
+        height: 71px;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .divSetaDireita {
+        right: 0;
+        top: 150px;
+        height: 71px;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .divSlide {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        position: relative;
     }
 }

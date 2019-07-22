@@ -15,6 +15,9 @@ export class ProdutoDetalhePage implements OnInit {
 
     produto: any;
 
+    width = "560";
+    height = "315"
+
     constructor(private graphql: GraphQlService,
         private menuController: MenuController,
         private query: QueryService,
@@ -35,6 +38,11 @@ export class ProdutoDetalhePage implements OnInit {
                 aux.url = environment.url + aux.url;
             }
         })
+
+        if (window.innerWidth < 1000) {
+            this.width = "320";
+            this.height = "265";
+        }
     }
 
     async abrirImagem() {

@@ -62,3 +62,14 @@
         padding-right: 50px;
     }
 }
+
+@media(max-width: 1000px) {
+    .divProduto {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .divTextoProduto {
+        padding-right: 0px;
+    }
+}

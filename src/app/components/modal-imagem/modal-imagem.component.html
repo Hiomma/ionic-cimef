@@ -1,18 +1,16 @@
 <ion-header>
     <ion-toolbar class="backgroundToolbar">
-        Fotos
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="produto-pagina" (click)="voltar()"></ion-back-button>
+        </ion-buttons>Fotos
     </ion-toolbar>
 </ion-header>
-
-<div style="width: 600px;">
+<div class="divSlides">
     <ion-slides #slideFoto>
         <ion-slide *ngFor="let aux of listImagens">
-            <div style="height: 520px;">
-                <img [src]="aux.url" class="imgSlide">
-            </div>
+            <div><img [src]="aux.url" class="imgSlide"></div>
         </ion-slide>
     </ion-slides>
-
     <div class="divSetaEsquerda" (click)="moverSlide(false)">
         <ion-icon name="ios-arrow-dropleft"></ion-icon>
     </div>

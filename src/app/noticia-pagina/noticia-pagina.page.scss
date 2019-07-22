@@ -60,3 +60,11 @@
         font-size: 40px;
     }
 }
+
+
+@media(max-width: 1000px) {
+    .divListaNoticias {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

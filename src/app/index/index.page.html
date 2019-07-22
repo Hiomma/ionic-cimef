@@ -1,5 +1,7 @@
 <ion-content>
     <div>
+        <app-header-footer *ngIf="width < 1000"></app-header-footer>
+
         <ion-slides>
             <ion-slide *ngFor="let aux of listSlides">
                 <img class="imgSlide" [src]="aux.url">
@@ -7,13 +9,14 @@
 
                 <div class="divSlideNome">
                     <p class="pSlideNome">{{aux.nome}}</p>
-                    <p class="pSlideDescricao">{{aux.descricao}}</p>
-                    <p class="pSlideSubDescricao">{{aux.subdescricao}}</p>
+                    <p class="pSlideDescricao" *ngIf="width > 1000">{{aux.descricao}}</p>
+                    <p class="pSlideSubDescricao" *ngIf="width > 1000">{{aux.subdescricao}}</p>
                 </div>
             </ion-slide>
         </ion-slides>
 
-        <div class="divToolbar">
+
+        <div class="divToolbar" *ngIf="width > 1000">
             <div>
                 <img class="imgLogoTitulo" src="../../assets/imgs/logo-cimef-branca.png">
             </div>
@@ -42,9 +45,9 @@
 
     </div>
 
-    <ion-grid style="height: 690px">
-        <ion-row style="height: 690px">
-            <ion-col size="5">
+    <ion-grid class="gridProduto">
+        <ion-row class="rowProduto">
+            <ion-col size="5" *ngIf="width > 1000">
                 <div class="divMaquina">
                     <img class="imgBarras" src="../../assets/imgs/barras.png">
                     <img class="imgMaquina" src="../../assets/imgs/maquina.png">
@@ -62,7 +65,10 @@
                         tecnologia
                         das máquinas que produz. Confira abaixo nossa linha de produtos.</p>
 
-                    <ion-button class="buttonSaibaMais" (click)="abrirPagina('/produto-pagina')">Saiba Mais</ion-button>
+                    <div class="divSaibaMais">
+                        <ion-button class="buttonSaibaMais" (click)="abrirPagina('/produto-pagina')">Saiba Mais
+                        </ion-button>
+                    </div>
                 </div>
             </ion-col>
         </ion-row>
@@ -72,10 +78,17 @@
         <ion-row>
             <p class="pNoticiaTitulo">Confira as últimas notícias</p>
         </ion-row>
-        <ion-row class="rowNoticia">
-            <ion-col *ngFor="let aux of listNoticias">
+        <ion-row class="rowNoticia" *ngIf="width > 1000">
+            <ion-col *ngFor="let aux of listNoticias" size="12" size-sm="4">
                 <img class="imgNoticias" [src]="aux.imagem">
                 <p class="pTituloNoticia">{{aux.titulo}}</p>
+                <div class="backgroundCinzaNoticia"></div>
+            </ion-col>
+        </ion-row>
+        <ion-row class="rowNoticia" *ngIf="width < 1000">
+            <ion-col size="12">
+                <img class="imgNoticias" [src]="listNoticias[0].imagem">
+                <p class="pTituloNoticia">{{listNoticias[0].titulo}}</p>
                 <div class="backgroundCinzaNoticia"></div>
             </ion-col>
         </ion-row>
@@ -100,7 +113,7 @@
         </div>
     </div>
 
-    <ion-grid class="gridFooter">
+    <ion-grid class="gridFooter" *ngIf="width > 1000">
         <ion-row style="margin-top: 80px">
             <ion-col>
                 <p class="pMenuTitulo">MENU</p>
@@ -159,7 +172,7 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-    <div class="divBarrasFooter">
+    <div class="divBarrasFooter" *ngIf="width > 1000">
         <img class="imgBarrasFooter" src="../../assets/imgs/footer-marca.png">
     </div>
 </ion-content>

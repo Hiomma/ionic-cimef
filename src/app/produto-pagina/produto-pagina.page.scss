@@ -46,6 +46,14 @@
     z-index: 99;
 }
 
+.divLinhaEmbaixoProduto {
+    position: absolute;
+    margin-top: 110px;
+    width: 400px;
+    border-bottom: 2px solid #666666;
+    margin-left: 10px;
+}
+
 @media(max-width: 1700px) {
     .pTituloProduto {
         font-size: 40px;
@@ -62,5 +70,21 @@
 
     .gridProdutos {
         margin-top: 50px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .divListaProdutos {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .gridProdutos {
+        margin-top: 30px;
+    }
+
+    .divLinhaEmbaixoProduto {
+        width: 200px;
+        margin-top: 90px;
     }
 }

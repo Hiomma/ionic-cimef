@@ -4,18 +4,18 @@
     max-height: 420px;
 }
 
-.backgroundToolbar{
+.backgroundToolbar {
     --background: var(--ion-color-primary);
     color: white;
     font-weight: bold;
     text-align: center;
 }
 
-.divSetaDireita{
+.divSetaDireita {
     position: absolute;
     font-size: 70px;
     color: white;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     height: 73px;
     top: 240px;
     right: 25px;
@@ -23,14 +23,33 @@
     z-index: 99;
 }
 
-.divSetaEsquerda{
+.divSetaEsquerda {
     position: absolute;
     font-size: 70px;
     color: white;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     height: 73px;
     top: 240px;
     left: 25px;
     cursor: pointer;
     z-index: 99;
+}
+
+.divSlides {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+
+}
+
+@media(max-width: 1000px) {
+    .divSetaEsquerda {
+        top: 60px;
+    }
+
+    .divSetaDireita {
+        top: 60px;
+    }
 }

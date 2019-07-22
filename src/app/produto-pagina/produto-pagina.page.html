@@ -9,12 +9,12 @@
         <div *ngFor="let aux of listCategorias; let i = index">
             <div style="justify-content: center; display: flex;">
                 <p class="pTituloProduto" style="text-align: center">{{aux.nome}}</p>
-                <div class="divLinhaEmbaixo" style="position: absolute; margin-top: 110px; width: 400px"></div>
+                <div class="divLinhaEmbaixoProduto"></div>
             </div>
 
             <ion-grid class="gridProdutos">
                 <ion-row>
-                    <ion-col *ngFor="let aux of listProdutos[i]" size="4" (click)="abrirProduto(aux)">
+                    <ion-col *ngFor="let aux of listProdutos[i]" size="12" size-sm="4" (click)="abrirProduto(aux)">
                         <img class="imgProdutos" [src]="aux.imagem">
                         <p class="pTitulo">{{aux.nome}}</p>
                         <div class="backgroundCinzaProduto"></div>

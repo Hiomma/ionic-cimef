@@ -40,3 +40,10 @@
         font-size: 40px;
     }
 }
+
+@media(max-width: 1000px) {
+    .divAssistencia {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

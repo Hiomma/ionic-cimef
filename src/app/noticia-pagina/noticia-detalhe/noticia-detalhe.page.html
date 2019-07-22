@@ -8,7 +8,7 @@
         <div [innerHTML]="noticia?.texto" class="divTextoNoticia">
         </div>
 
-        <div style="margin-bottom: 50px; margin-top: 50px">
+        <div class="divSlide">
             <ion-slides #slideFoto [options]="optionsSlide">
                 <ion-slide *ngFor="let aux of noticia?.imagens">
                     <img class="imgNoticia" [src]="aux.url">

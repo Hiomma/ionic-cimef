@@ -16,7 +16,7 @@ export class NoticiaDetalhePage implements OnInit {
 
     @ViewChild('slideFoto') slideFoto: IonSlides
 
-    optionsSlide = { slidesPerView: 3, spaceBetween: 20 }
+    optionsSlide: any = { slidesPerView: 3, spaceBetween: 20 }
     noticia: any;
 
     constructor(private graphql: GraphQlService,
@@ -37,6 +37,10 @@ export class NoticiaDetalhePage implements OnInit {
                 aux.url = environment.url + aux.url;
             }
         })
+
+        if (window.innerWidth < 1000) {
+            this.optionsSlide = { slidesPerView: 1 }
+        }
 
         this.slideFoto.lockSwipes(true);
     }

@@ -15,10 +15,9 @@ export class IndexPage implements OnInit {
 
     listSlides: Array<any> = new Array;
     listNoticias: Array<any> = new Array;
+    width = self.innerWidth;
 
     constructor(private graphql: GraphQlService,
-        private toast: ToastService,
-        private alert: AlertController,
         private router: Router,
         private menuController: MenuController,
         private query: QueryService) { }

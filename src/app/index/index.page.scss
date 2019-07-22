@@ -263,6 +263,15 @@
     font-size: 14px;
 }
 
+
+.gridProduto {
+    height: 690px;
+}
+
+.rowProduto {
+    height: 690px
+}
+
 @media(max-width: 1700px) {
     .imgLogoTitulo {
         width: 200px;
@@ -323,5 +332,44 @@
     .gridFooter {
         padding-left: 50px;
         padding-right: 50px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .divToolbar {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .divSlideNome {
+        left: 20px;
+        bottom: 50px;
+    }
+
+    .pSlideNome {
+        font-size: 20px;
+    }
+
+    .divProduto {
+        padding-left: 10px;
+        padding-right: 10px;
+        top: 0;
+    }
+
+    .divSaibaMais {
+        justify-content: center;
+        display: flex;
+    }
+
+    .gridProduto {
+        height: 490px;
+    }
+
+    .rowProduto {
+        height: 490px
+    }
+
+    .imgLocalizacao {
+        object-fit: cover;
     }
 }

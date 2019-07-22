@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-modal-imagem',
@@ -14,7 +15,8 @@ export class ModalImagemComponent implements OnInit {
     @Input() objeto: any;
     listImagens: Array<any> = new Array();
 
-    constructor() { }
+    constructor(private route: Router,
+        private modalCtrl: ModalController) { }
 
     ngOnInit() {
         this.listImagens = JSON.parse(JSON.stringify(this.objeto.imagens));
@@ -32,4 +34,8 @@ export class ModalImagemComponent implements OnInit {
         }
     }
 
+    voltar() {
+        this.route.navigate(["/produto-pagina"]);
+        this.modalCtrl.dismiss();
+    }
 }

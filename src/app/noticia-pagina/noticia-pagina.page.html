@@ -8,7 +8,7 @@
 
         <ion-grid class="gridNoticias">
             <ion-row>
-                <ion-col *ngFor="let aux of listNoticias" size="4" (click)="abrirNoticia(aux)">
+                <ion-col *ngFor="let aux of listNoticias" size="12" size-sm="4" (click)="abrirNoticia(aux)">
                     <img class="imgNoticias" [src]="aux.imagem">
                     <p class="pTitulo">{{aux.titulo}}</p>
                     <div class="backgroundCinzaNoticia"></div>

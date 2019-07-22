@@ -5,36 +5,36 @@
             <div class="divLinhaEmbaixo"></div>
         </div>
 
-        <div style="overflow: hidden; margin-top: 40px">
-            <div style="float: left; width: 60%">
-                <div [innerHTML]="produto?.texto" class="divTextoProduto">
-                </div>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12" size-sm="8">
+                    <div [innerHTML]="produto?.texto" class="divTextoProduto">
+                    </div>
 
-                <ion-grid>
-                    <ion-row>
-                        <ion-col *ngFor="let aux of produto?.imagens" size="2" (click)="abrirImagem()"
-                            style="height: 200px">
-                            <div class="divImagemProduto">
-                                <img [src]="aux?.url" class="imgProduto">
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-
-
-
-            </div>
-            <div style="float:right; width: 40%">
-                <div>
-                    <img [src]="produto?.tabela">
-                </div>
-                <div *ngIf="produto?.video">
-                    <iframe style="margin-left: 10px;" width="560" height="315" [src]="produto?.video | safe"
-                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col *ngFor="let aux of produto?.imagens" size="4" size-sm="2" (click)="abrirImagem()"
+                                style="height: 200px">
+                                <div class="divImagemProduto">
+                                    <img [src]="aux?.url" class="imgProduto">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-col>
+                <ion-col size="12" size-sm="4">
+                    <div>
+                        <img [src]="produto?.tabela">
+                    </div>
+                    <div *ngIf="produto?.video">
+                        <iframe style="margin-left: 10px;" [width]="width" [height]="height" [src]="produto?.video | safe"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
     </div>
 </app-header-footer>

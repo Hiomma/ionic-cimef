@@ -41,7 +41,7 @@ export class AppComponent {
         },
         {
             title: 'Depoimentos',
-            url: '/depoimento-pagina',
+            url: '/depoimentos-pagina',
             icon: 'ios-chatboxes'
         },
         {
