@@ -14,6 +14,7 @@ import { AdicionarDepoimentoComponent } from './adicionar-depoimento/adicionar-d
 import { AdicionarMensagemComponent } from './adicionar-mensagem/adicionar-mensagem.component';
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MenuToolbarComponent } from './menu-toolbar/menu-toolbar.component';
 
 
 @NgModule({
@@ -34,9 +35,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         AdicionarPosicaoComponent,
         AdicionarSlideComponent,
         HeaderFooterComponent,
-        ModalImagemComponent
+        ModalImagemComponent,
+        MenuToolbarComponent
     ],
     entryComponents: [
+        MenuToolbarComponent,
         AdicionarProdutoComponent,
         AdicionarMensagemComponent,
         AdicionarDepoimentoComponent,

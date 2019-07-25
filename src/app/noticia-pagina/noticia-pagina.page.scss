@@ -1,6 +1,8 @@
 .divListaNoticias {
-    padding-left: 150px;
-    padding-right: 150px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pTituloNoticia {
@@ -19,11 +21,13 @@
 
 .gridNoticias {
     width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .backgroundCinzaNoticia {
     height: 402px;
-    width: 520px;
+    width: calc(100% - 10px);
     position: absolute;
     background: rgba(30, 30, 30, 0.5);
     top: 5px;
@@ -66,5 +70,6 @@
     .divListaNoticias {
         padding-left: 10px;
         padding-right: 10px;
+        width: 100%;
     }
 }

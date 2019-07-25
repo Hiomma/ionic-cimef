@@ -35,7 +35,7 @@ export class ModalImagemComponent implements OnInit {
     }
 
     voltar() {
-        this.route.navigate(["/produto-pagina"]);
+        this.route.navigate(["/produto"]);
         this.modalCtrl.dismiss();
     }
 }

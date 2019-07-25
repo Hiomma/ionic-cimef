@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, AlertController } from '@ionic/angular';
+import { MenuController, AlertController, PopoverController } from '@ionic/angular';
 import { ToastService } from '../services/toast/toast.service';
 import { GraphQlService } from '../services/graphql/graph-ql.service';
 import { QueryService } from '../services/query/query.service';
 import { environment } from '../../environments/environment'
 import { Router } from '@angular/router';
+import { MenuToolbarComponent } from '../components/menu-toolbar/menu-toolbar.component';
 
 @Component({
     selector: 'app-index',
@@ -20,6 +21,7 @@ export class IndexPage implements OnInit {
     constructor(private graphql: GraphQlService,
         private router: Router,
         private menuController: MenuController,
+        private popoverController: PopoverController,
         private query: QueryService) { }
 
     ngOnInit() {
@@ -40,12 +42,27 @@ export class IndexPage implements OnInit {
         })
     }
 
-    abrirPagina(rota) {
-        this.router.navigate([rota])
+    async abrirPagina(rota, ev?) {
+        if (rota == "/produto") {
+            const popover = await this.popoverController.create({
+                component: MenuToolbarComponent,
+                event: ev,
+                showBackdrop: false,
+                translucent: true,
+                cssClass: "popoverToolbar"
+            });
+            await popover.present();
+        } else {
+            this.router.navigate([rota])
+        }
     }
 
     abrirUrl(url) {
         window.open(url, "_blank")
+    }
+
+    abrirNoticia(aux) {
+        this.router.navigate(["noticia-detalhe/" + aux.url]);
     }
 
 }

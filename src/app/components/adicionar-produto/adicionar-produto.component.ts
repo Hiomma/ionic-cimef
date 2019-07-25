@@ -80,42 +80,42 @@ export class AdicionarProdutoComponent implements OnInit {
                     {
                         text: "OK",
                         handler: () => {
-
-                            if (this.galeriaSelecionada) {
-                                const fd2 = new FormData();
-                                for (let aux of this.galeriaSelecionada) {
-                                    fd2.append("image", aux, aux.name);
-                                }
-
-                                this.graphql.post("api/produto/principal/" + this.produto.id, fd2).then(data => {
-                                    this.galeriaSelecionada = null;
-                                });
-                            }
-
-                            if (this.tabelaSelecionada) {
-                                const fd = new FormData();
-
-                                for (let aux of this.tabelaSelecionada) {
-                                    fd.append("image", aux, aux.name);
-                                }
-                                this.graphql.post("api/produto/tabela/" + this.produto.id, fd).then(data => {
-                                    this.tabelaSelecionada = null;
-                                });
-                            }
-
-                            if (this.produtoSelecionado) {
-                                const fd3 = new FormData();
-
-                                for (let aux of this.produtoSelecionado) {
-                                    fd3.append("image", aux, aux.name);
-                                }
-                                this.graphql.post("api/produto/imagem/" + this.produto.id, fd3).then(data => {
-                                    this.produtoSelecionado = null;
-                                });
-                            }
-
-
                             this.graphql.graphql(this.query.updateProduto(Number(this.produto.id), this.resource.value)).then(() => {
+                                if (this.galeriaSelecionada) {
+                                    const fd2 = new FormData();
+                                    for (let aux of this.galeriaSelecionada) {
+                                        fd2.append("image", aux, aux.name);
+                                    }
+
+                                    this.graphql.post("api/produto/principal/" + this.produto.id, fd2).then(data => {
+                                        this.galeriaSelecionada = null;
+                                    });
+                                }
+
+                                if (this.tabelaSelecionada) {
+                                    const fd = new FormData();
+
+                                    for (let aux of this.tabelaSelecionada) {
+                                        fd.append("image", aux, aux.name);
+                                    }
+                                    this.graphql.post("api/produto/tabela/" + this.produto.id, fd).then(data => {
+                                        this.tabelaSelecionada = null;
+                                    });
+                                }
+
+                                if (this.produtoSelecionado) {
+                                    const fd3 = new FormData();
+
+                                    for (let aux of this.produtoSelecionado) {
+                                        fd3.append("image", aux, aux.name);
+                                    }
+                                    this.graphql.post("api/produto/imagem/" + this.produto.id, fd3).then(data => {
+                                        this.produtoSelecionado = null;
+                                    });
+                                }
+
+
+
                                 this.modalController.dismiss();
                                 this.toast.mostrar("Produto atualizado com sucesso!");
                             })

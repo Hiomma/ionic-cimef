@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, PopoverController } from '@ionic/angular';
+import { MenuToolbarComponent } from '../menu-toolbar/menu-toolbar.component';
 
 @Component({
     selector: 'app-header-footer',
@@ -13,6 +14,7 @@ export class HeaderFooterComponent implements OnInit {
     teste;
 
     constructor(private router: Router,
+        private popoverController: PopoverController,
         private menuController: MenuController) { }
 
     ngOnInit() { }
@@ -22,8 +24,19 @@ export class HeaderFooterComponent implements OnInit {
         await this.menuController.open("celular")
     }
 
-    abrirPagina(rota) {
-        this.router.navigate([rota])
+    async abrirPagina(rota, ev?) {
+        if (rota == "/produto") {
+            const popover = await this.popoverController.create({
+                component: MenuToolbarComponent,
+                event: ev,
+                showBackdrop: false,
+                translucent: true,
+                cssClass: "popoverToolbar"
+            });
+            await popover.present();
+        } else {
+            this.router.navigate([rota])
+        }
     }
 
     abrirUrl(url) {

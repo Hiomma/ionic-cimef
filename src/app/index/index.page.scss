@@ -65,27 +65,27 @@
 }
 
 .imgBarras {
-    margin-left: -11px;
-    position: relative;
+    margin-left: -200px;
+    position: absolute;
     top: calc(50% - 123px);
 }
 
 .divMaquina {
     height: 430px;
-    position: relative;
+    position: absolute;
     top: calc(50% - 215px);
+    width: 100%;
 }
 
 .imgMaquina {
     position: absolute;
-    left: 35%;
+    left: 0;
 }
 
 .divProduto {
-    top: calc(50% - 215px);
+    top: calc(50% - 279px);
     position: relative;
     text-align: justify;
-    padding-right: 140px;
     padding-left: 50px;
 }
 
@@ -94,9 +94,11 @@
 //********************************************************************************************************
 
 .gridNoticias {
-    background: #eeeeee;
-    width: 100%;
     height: 680px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pNoticiaTitulo {
@@ -121,7 +123,7 @@
 
 .backgroundCinzaNoticia {
     height: 402px;
-    width: 520px;
+    width: calc(100% - 10px);
     position: absolute;
     background: rgba(30, 30, 30, 0.5);
     top: 5px;
@@ -266,6 +268,7 @@
 
 .gridProduto {
     height: 690px;
+    width: 1140px
 }
 
 .rowProduto {
@@ -363,6 +366,7 @@
 
     .gridProduto {
         height: 490px;
+        width: unset;
     }
 
     .rowProduto {
@@ -371,5 +375,14 @@
 
     .imgLocalizacao {
         object-fit: cover;
+    }
+
+    .rowNoticia {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .gridNoticias {
+        width: 100%;
     }
 }

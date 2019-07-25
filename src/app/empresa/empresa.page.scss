@@ -3,8 +3,11 @@
 //********************************************************************************************************
 
 .divEmpresa {
-    padding-left: 150px;
-    padding-right: 150px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: justify;
 }
 
 .pEmpresa {
@@ -23,6 +26,7 @@
 
 .colDescricao {
     font-size: 14px;
+    padding-left: 30px;
 }
 
 .imgEmpresaDestaque {
@@ -34,10 +38,7 @@
 }
 
 .gridEmpresaDestaque {
-    margin-top: 100px;
-    margin-left: 150px;
-    margin-right: 150px;
-    margin-bottom: 150px;
+    width: 1140px
 }
 
 .imgSlideEmpresa {
@@ -46,8 +47,21 @@
     object-fit: cover;
     object-position: center;
     position: relative;
-    right: 43px;
     margin-top: 20px;
+}
+
+.divSetaDireita {
+    height: 70px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.divSetaEsquerda {
+    height: 70px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
 }
 
 @media(max-width: 1700px) {
@@ -105,12 +119,14 @@
     .divEmpresa {
         padding-left: 10px;
         padding-right: 10px;
+        width: unset;
     }
 
     .gridEmpresaDestaque {
         margin: unset;
         padding-left: unset;
         padding-right: unset;
+        width: 100%;
     }
 
     .colDescricao {

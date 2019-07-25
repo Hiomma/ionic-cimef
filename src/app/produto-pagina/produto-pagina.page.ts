@@ -3,7 +3,7 @@ import { GraphQlService } from '../services/graphql/graph-ql.service';
 import { MenuController } from '@ionic/angular';
 import { QueryService } from '../services/query/query.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
 })
 export class ProdutoPaginaPage implements OnInit {
 
-    listProdutos: any[] = [];
-    listCategorias: any;
+    listProdutos: any = [];
 
     constructor(private graphql: GraphQlService,
         private menuController: MenuController,
-        private route: Router,
+        private router: Router,
+        private route: ActivatedRoute,
         private query: QueryService) { }
 
 
@@ -26,26 +26,20 @@ export class ProdutoPaginaPage implements OnInit {
         this.menuController.close();
         this.menuController.enable(false);
 
-        this.graphql.graphql(this.query.getProdutos()).then((data: any) => {
-            this.listCategorias = data.data.categorias_produto;
-            let produtos: Array<any> = data.data.produtos;
-
-            produtos.forEach(element => {
-                element.imagem = environment.url + element.imagem;
-                element.tabela = environment.url + element.tabela;
+        this.route.params.subscribe((data: any) => {
+            this.graphql.graphql(this.query.getProdutosById(data.id)).then((data: any) => {
+                this.listProdutos = data.data.produtos;
+                this.listProdutos.forEach(element => {
+                    element.imagem = environment.url + element.imagem;
+                    element.tabela = environment.url + element.tabela;
+                })
             })
-
-            let i = 0;
-
-            for (let aux of this.listCategorias) {
-                this.listProdutos[i] = produtos.filter(element => { if (element.categoria.id == aux.id) { return element } })
-                i++;
-            }
         })
+
     }
 
     abrirProduto(aux) {
-        this.route.navigate(["produto-detalhe/" + aux.id]);
+        this.router.navigate(["produto-detalhe/" + aux.id]);
     }
 
 }

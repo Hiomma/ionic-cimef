@@ -6,22 +6,21 @@
             <div class="divLinhaEmbaixo"></div>
         </div>
 
-        <div *ngFor="let aux of listCategorias; let i = index">
-            <div style="justify-content: center; display: flex;">
-                <p class="pTituloProduto" style="text-align: center">{{aux.nome}}</p>
-                <div class="divLinhaEmbaixoProduto"></div>
-            </div>
 
-            <ion-grid class="gridProdutos">
-                <ion-row>
-                    <ion-col *ngFor="let aux of listProdutos[i]" size="12" size-sm="4" (click)="abrirProduto(aux)">
-                        <img class="imgProdutos" [src]="aux.imagem">
-                        <p class="pTitulo">{{aux.nome}}</p>
-                        <div class="backgroundCinzaProduto"></div>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+        <div style="justify-content: center; display: flex;">
+            <p class="pTituloProduto" style="text-align: center">{{listProdutos[0]?.categoria.nome}}</p>
+            <div class="divLinhaEmbaixoProduto"></div>
         </div>
+
+        <ion-grid class="gridProdutos">
+            <ion-row>
+                <ion-col *ngFor="let aux of listProdutos" size="12" size-sm="4" (click)="abrirProduto(aux)">
+                    <img class="imgProdutos" [src]="aux.imagem">
+                    <p class="pTitulo">{{aux.nome}}</p>
+                    <div class="backgroundCinzaProduto"></div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
     </div>
 </app-header-footer>

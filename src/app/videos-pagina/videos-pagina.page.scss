@@ -3,8 +3,10 @@
 //********************************************************************************************************
 
 .divVideo {
-    padding-left: 150px;
-    padding-right: 150px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
     margin-bottom: 100px;
 }
 
@@ -25,15 +27,20 @@
 }
 
 .divSetaDireita {
-    right: 70px;
-    bottom: 180px;
+    bottom: 110px;
     top: unset;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    height: 70px;
 }
 
 .divSetaEsquerda {
-    left: 70px;
-    bottom: 180px;
+    bottom: 110px;
     top: unset;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    height: 70px;
+    left: 10px;
 }
 
 @media(max-width: 1700px) {
@@ -57,19 +64,20 @@
     .divVideo {
         padding-left: 10px;
         padding-right: 10px;
+        width: 100%;
     }
 
     .divSetaEsquerda {
-        left: 20px;
-        bottom: 0px;
+        left: 10px;
+        bottom: 120px;
         background: rgba(0, 0, 0, 0.3);
         height: 70px;
         color: white;
     }
 
     .divSetaDireita {
-        right: 20px;
-        bottom: 0px;
+        right: 0px;
+        bottom: 120px;
         background: rgba(0, 0, 0, 0.3);
         height: 70px;
         color: white;

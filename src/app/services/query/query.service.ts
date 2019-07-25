@@ -194,6 +194,10 @@ export class QueryService {
         }
     }
 
+    getProdutosById(id) {
+        return { query: "query rusbe($ativado: Boolean!, $id: ID!){ produtos(ativado: $ativado, categoria_id: $id) { id, nome, video, texto,tabela, imagem, categoria{id, nome}, imagens { id, url, createdAt }, ativado, createdAt } }", variables: { ativado: true, id: id } }
+    }
+
     getProduto(id) {
         return { query: "query rusbe($id: ID!){ produto(id: $id) { id, nome, video, texto,tabela, imagem, categoria{id}, imagens { id, url, createdAt }, ativado, createdAt } }", variables: { id: id } }
     }

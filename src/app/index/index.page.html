@@ -23,7 +23,7 @@
             <div class="divBotoes">
                 <a class="aSlide" (click)="abrirPagina('/')">Home</a>
                 <a class="aSlide" (click)="abrirPagina('/empresa')">Empresa</a>
-                <a class="aSlide" (click)="abrirPagina('/produto-pagina')">Produtos</a>
+                <a class="aSlide" (click)="abrirPagina('/produto', $event)">Produtos</a>
                 <a class="aSlide" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</a>
                 <a class="aSlide" (click)="abrirPagina('/depoimentos-pagina')">Depoimentos</a>
                 <a class="aSlide" (click)="abrirPagina('/videos-pagina')">Vídeos</a>
@@ -66,7 +66,7 @@
                         das máquinas que produz. Confira abaixo nossa linha de produtos.</p>
 
                     <div class="divSaibaMais">
-                        <ion-button class="buttonSaibaMais" (click)="abrirPagina('/produto-pagina')">Saiba Mais
+                        <ion-button class="buttonSaibaMais" (click)="abrirPagina('/produto')">Saiba Mais
                         </ion-button>
                     </div>
                 </div>
@@ -74,31 +74,33 @@
         </ion-row>
     </ion-grid>
 
-    <ion-grid class="gridNoticias">
-        <ion-row>
-            <p class="pNoticiaTitulo">Confira as últimas notícias</p>
-        </ion-row>
-        <ion-row class="rowNoticia" *ngIf="width > 1000">
-            <ion-col *ngFor="let aux of listNoticias" size="12" size-sm="4">
-                <img class="imgNoticias" [src]="aux.imagem">
-                <p class="pTituloNoticia">{{aux.titulo}}</p>
-                <div class="backgroundCinzaNoticia"></div>
-            </ion-col>
-        </ion-row>
-        <ion-row class="rowNoticia" *ngIf="width < 1000">
-            <ion-col size="12">
-                <img class="imgNoticias" [src]="listNoticias[0].imagem">
-                <p class="pTituloNoticia">{{listNoticias[0].titulo}}</p>
-                <div class="backgroundCinzaNoticia"></div>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col style="justify-content: center; display: flex;">
-                <ion-button class="buttonNoticia" (click)="abrirPagina('/noticia-pagina')">Acesse todas as notícias
-                </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <div style="background: #eeeeee;">
+        <ion-grid class="gridNoticias">
+            <ion-row>
+                <p class="pNoticiaTitulo">Confira as últimas notícias</p>
+            </ion-row>
+            <ion-row *ngIf="width > 1000">
+                <ion-col *ngFor="let aux of listNoticias" size="12" size-sm="4" (click)="abrirNoticia(aux)">
+                    <img class="imgNoticias" [src]="aux.imagem">
+                    <p class="pTituloNoticia">{{aux.titulo}}</p>
+                    <div class="backgroundCinzaNoticia"></div>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="width < 1000">
+                <ion-col size="12">
+                    <img class="imgNoticias" [src]="listNoticias[0]?.imagem" (click)="abrirNoticia(listNoticias[0])">
+                    <p class="pTituloNoticia">{{listNoticias[0]?.titulo}}</p>
+                    <div class="backgroundCinzaNoticia"></div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col style="justify-content: center; display: flex;">
+                    <ion-button class="buttonNoticia" (click)="abrirPagina('/noticia-pagina')">Acesse todas as notícias
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 
     <div class="divLocalizacao">
         <img class="imgLocalizacao" src="../../assets/imgs/mapa.png">
@@ -122,7 +124,7 @@
                 <ul style="padding-inline-start: 20px; font-size: 14px">
                     <li style="cursor:pointer" (click)="abrirPagina('/')">Home</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/empresa')">Empresa</li>
-                    <li style="cursor:pointer" (click)="abrirPagina('/produto-pagina')">Produtos</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/produto', $event)">Produtos</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/depoimentos-pagina')">Depoimentos</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/noticia-pagina')">Notícias</li>

@@ -5,7 +5,7 @@
             <div class="divLinhaEmbaixo"></div>
         </div>
 
-        <div>
+        <div style="position: relative">
             <ion-slides [options]="optionsSlide" #slideFoto>
                 <ion-slide *ngFor="let aux of listVideos">
                     <iframe style="margin-left: 10px;" width="560" height="315" [src]="aux.url | safe" frameborder="0"

@@ -1,6 +1,8 @@
 .divNoticia {
-    padding-left: 150px;
-    padding-right: 150px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pTituloNoticia {
@@ -55,29 +57,31 @@
 .divSetaEsquerda {
     position: absolute;
     font-size: 70px;
-    color: #2A3B72;
+    color: white;
+    background: rgba(0,0,0,0.4);
     top: unset;
     right: unset;
-    left: 50px;
-    bottom: -180px;
+    height: 70px;
+    bottom: 160px;
     cursor: pointer;
 }
 
 .divSetaDireita {
     position: absolute;
     font-size: 70px;
-    color: #2A3B72;
+    color: white;
+    background: rgba(0,0,0,0.4);
     top: unset;
     left: unset;
-    right: 50px;
-    bottom: -160px;
+    height: 70px;
+    bottom: 160px;
     cursor: pointer;
 }
 
 .divSlide {
     margin-bottom: 50px;
     margin-top: 50px;
-
+    position: relative;
 }
 
 @media(max-width: 1700px) {
@@ -103,6 +107,7 @@
 
 @media(max-width: 1000px) {
     .divNoticia {
+        width: 100%;
         padding-left: 10px;
         padding-right: 10px;
     }

@@ -19,7 +19,7 @@
         <div class="divBotoes">
             <a class="aSlide" (click)="abrirPagina('/')">Home</a>
             <a class="aSlide" (click)="abrirPagina('/empresa')">Empresa</a>
-            <a class="aSlide" (click)="abrirPagina('/produto-pagina')">Produtos</a>
+            <a class="aSlide" (click)="abrirPagina('/produto', $event)">Produtos</a>
             <a class="aSlide" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</a>
             <a class="aSlide" (click)="abrirPagina('/depoimentos-pagina')">Depoimentos</a>
             <a class="aSlide" (click)="abrirPagina('/videos-pagina')">Vídeos</a>
@@ -56,7 +56,7 @@
                 <ul style="padding-inline-start: 20px; font-size: 14px">
                     <li style="cursor:pointer" (click)="abrirPagina('/')">Home</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/empresa')">Empresa</li>
-                    <li style="cursor:pointer" (click)="abrirPagina('/produto-pagina')">Produtos</li>
+                    <li style="cursor:pointer" (click)="abrirPagina('/produto')">Produtos</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/assistencia-tecnica')">Assistência Técnica</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/depoimentos-pagina')">Depoimentos</li>
                     <li style="cursor:pointer" (click)="abrirPagina('/noticia-pagina')">Notícias</li>

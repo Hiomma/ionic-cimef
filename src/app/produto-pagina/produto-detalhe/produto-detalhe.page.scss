@@ -1,6 +1,8 @@
 .divProduto {
-    padding-left: 150px;
-    padding-right: 150px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .pTituloProduto {
@@ -67,6 +69,7 @@
     .divProduto {
         padding-left: 10px;
         padding-right: 10px;
+        width: 100%;
     }
 
     .divTextoProduto {

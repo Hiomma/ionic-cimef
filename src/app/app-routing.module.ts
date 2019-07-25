@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'slide', loadChildren: './slide/slide.module#SlidePageModule' },
     { path: 'empresa', loadChildren: './empresa/empresa.module#EmpresaPageModule' },
     { path: 'assistencia-tecnica', loadChildren: './assistencia-tecnica/assistencia-tecnica.module#AssistenciaTecnicaPageModule' },
-    { path: 'produto-pagina', loadChildren: './produto-pagina/produto-pagina.module#ProdutoPaginaPageModule' },
+    { path: 'produto/:id', loadChildren: './produto-pagina/produto-pagina.module#ProdutoPaginaPageModule' },
     { path: 'depoimentos-pagina', loadChildren: './depoimentos-pagina/depoimentos-pagina.module#DepoimentosPaginaPageModule' },
     { path: 'videos-pagina', loadChildren: './videos-pagina/videos-pagina.module#VideosPaginaPageModule' },
     { path: 'noticia-pagina', loadChildren: './noticia-pagina/noticia-pagina.module#NoticiaPaginaPageModule' },

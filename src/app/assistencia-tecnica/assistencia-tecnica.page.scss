@@ -3,9 +3,11 @@
 //********************************************************************************************************
 
 .divAssistencia {
-    padding-left: 150px;
-    padding-right: 150px;
-    margin-bottom: 100px;
+    width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 50px;
 }
 
 
@@ -45,5 +47,6 @@
     .divAssistencia {
         padding-left: 10px;
         padding-right: 10px;
+        width: 100%;
     }
 }

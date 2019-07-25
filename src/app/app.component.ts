@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 
-import { Platform, MenuController } from '@ionic/angular';
+import { Platform, MenuController, PopoverController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/storage/storage.service';
+import { MenuToolbarComponent } from './components/menu-toolbar/menu-toolbar.component';
+import { GraphQlService } from './services/graphql/graph-ql.service';
+import { QueryService } from './services/query/query.service';
 
 @Component({
     selector: 'app-root',
@@ -31,7 +34,7 @@ export class AppComponent {
         },
         {
             title: 'Produtos',
-            url: '/produto-pagina',
+            url: '/produto',
             icon: 'ios-basket'
         },
         {
@@ -115,8 +118,11 @@ export class AppComponent {
         private statusBar: StatusBar,
         private router: Router,
         private storage: StorageService,
+        private graphql: GraphQlService,
+        private query: QueryService,
         private auth: AuthService,
-        private menuController: MenuController
+        private menuController: MenuController,
+        private popoverController: PopoverController
     ) {
         this.initializeApp();
 
@@ -144,6 +150,25 @@ export class AppComponent {
                 }
             }
         })
+
+        if (self.innerWidth < 1000) {
+            let i = 0;
+            for (let aux of this.celular) {
+                if (aux.url == "/produto") {
+                    this.graphql.graphql(this.query.getCategoriasProduto("true")).then((data: any) => {
+                        let categorias = data.data.categorias_produto;
+                        this.celular.splice(i, 1);
+
+                        for (let aux of categorias) {
+                            this.celular.unshift({ title: "Produtos - " + aux.nome, icon: "ios-basket", url: "/produto/" + aux.id })
+                        }
+                    })
+                    break;
+
+                }
+                i++;
+            }
+        }
     }
 
     initializeApp() {
@@ -153,12 +178,23 @@ export class AppComponent {
         });
     }
 
-    irPagina(url) {
+    async irPagina(url, ev?) {
         if (url == "/login") {
             this.auth.destruirUsuario();
             this.menuController.enable(false);
         }
 
-        this.router.navigate([url]);
+        if (url == "/produto") {
+            const popover = await this.popoverController.create({
+                component: MenuToolbarComponent,
+                event: ev,
+                showBackdrop: false,
+                translucent: true,
+                cssClass: "popoverToolbar"
+            });
+            await popover.present();
+        } else {
+            this.router.navigate([url]);
+        }
     }
 }
