@@ -64,9 +64,10 @@ export class AdicionarSlideComponent implements OnInit {
                             this.graphql.graphql(this.query.updateSlide(Number(this.slide.id), { nome: this.nome, descricao: this.descricao, subdescricao: this.subdescricao, ativado: this.ativado, url: this.url })).then(() => {
                                 if (this.imagensSelecionadas) {
                                     const fd = new FormData();
-
+                                    let i = 0;
                                     for (let aux of this.imagensSelecionadas) {
-                                        fd.append("image", aux, aux.name);
+                                        fd.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                        i++;
                                     }
 
                                     this.graphql.post("api/slide/imagem/" + this.slide.id, fd).then(data => {

@@ -83,11 +83,14 @@ export class AdicionarProdutoComponent implements OnInit {
                             this.graphql.graphql(this.query.updateProduto(Number(this.produto.id), this.resource.value)).then(() => {
                                 if (this.galeriaSelecionada) {
                                     const fd2 = new FormData();
+
+                                    let i = 0;
                                     for (let aux of this.galeriaSelecionada) {
-                                        fd2.append("image", aux, aux.name);
+                                        fd2.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                        i++
                                     }
 
-                                    this.graphql.post("api/produto/principal/" + this.produto.id, fd2).then(data => {
+                                    this.graphql.post("api/produto/imagem/" + this.produto.id, fd2).then(data => {
                                         this.galeriaSelecionada = null;
                                     });
                                 }
@@ -95,8 +98,10 @@ export class AdicionarProdutoComponent implements OnInit {
                                 if (this.tabelaSelecionada) {
                                     const fd = new FormData();
 
+                                    let i = 0;
                                     for (let aux of this.tabelaSelecionada) {
-                                        fd.append("image", aux, aux.name);
+                                        fd.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                        i++
                                     }
                                     this.graphql.post("api/produto/tabela/" + this.produto.id, fd).then(data => {
                                         this.tabelaSelecionada = null;
@@ -106,10 +111,12 @@ export class AdicionarProdutoComponent implements OnInit {
                                 if (this.produtoSelecionado) {
                                     const fd3 = new FormData();
 
+                                    let i = 0;
                                     for (let aux of this.produtoSelecionado) {
-                                        fd3.append("image", aux, aux.name);
+                                        fd3.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                        i++;
                                     }
-                                    this.graphql.post("api/produto/imagem/" + this.produto.id, fd3).then(data => {
+                                    this.graphql.post("api/produto/principal/" + this.produto.id, fd3).then(data => {
                                         this.produtoSelecionado = null;
                                     });
                                 }

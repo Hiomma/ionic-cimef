@@ -154,8 +154,10 @@ export class HomePage {
 
                                     if (this.arquivoImagemCapa) {
                                         const fd2 = new FormData();
+                                        let i = 0;
                                         for (let aux of this.arquivoImagemCapa) {
-                                            fd2.append("image", aux, aux.name);
+                                            fd2.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                            i++;
                                         }
 
                                         this.graphql.post("api/imagem/principal/" + this.alterar.id, fd2).then(data => {
@@ -166,8 +168,10 @@ export class HomePage {
                                     if (this.imagensSelecionadas) {
                                         const fd = new FormData();
 
+                                        let i = 0;
                                         for (let aux of this.imagensSelecionadas) {
-                                            fd.append("image", aux, aux.name);
+                                            fd.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                            i++;
                                         }
                                         this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
                                             this.imagensSelecionadas = null;

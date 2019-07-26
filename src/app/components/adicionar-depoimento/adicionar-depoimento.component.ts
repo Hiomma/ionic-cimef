@@ -63,8 +63,11 @@ export class AdicionarDepoimentoComponent implements OnInit {
                             this.graphql.graphql(this.query.updateDepoimento(Number(this.depoimento.id), this.resource.value)).then(() => {
                                 if (this.fotoSelecionada) {
                                     const fd2 = new FormData();
+
+                                    let i = 0;
                                     for (let aux of this.fotoSelecionada) {
-                                        fd2.append("image", aux, new Date().getTime() + "." + aux.name.split(".")[1]);
+                                        fd2.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
+                                        i++;
                                     }
 
                                     this.graphql.post("api/depoimento/imagem/" + this.depoimento.id, fd2).then(data => {

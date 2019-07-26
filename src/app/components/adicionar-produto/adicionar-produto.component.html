@@ -28,7 +28,7 @@
         </ion-item>
 
         <ion-label class="labelCampo" style="font-weight: 500">Imagens da Galeria</ion-label>
-        <input style="display: none" type="file" (change)="galeriaProduto($event)" #fileInput>
+        <input multiple="multiple" style="display: none" type="file" (change)="galeriaProduto($event)" #fileInput>
 
         <ion-grid style="margin-top: 20px; overflow: hidden;">
             <ion-row>
