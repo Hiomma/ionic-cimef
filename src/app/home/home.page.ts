@@ -150,31 +150,31 @@ export class HomePage {
                         handler: () => {
 
                             if (this.imagensSelecionadas || this.arquivoImagemCapa) {
-
-
-                                if (this.arquivoImagemCapa) {
-                                    const fd2 = new FormData();
-                                    for (let aux of this.arquivoImagemCapa) {
-                                        fd2.append("image", aux, aux.name);
-                                    }
-
-                                    this.graphql.post("api/imagem/principal/" + this.alterar.id, fd2).then(data => {
-                                        this.arquivoImagemCapa = null;
-                                    });
-                                }
-
-                                if (this.imagensSelecionadas) {
-                                    const fd = new FormData();
-
-                                    for (let aux of this.imagensSelecionadas) {
-                                        fd.append("image", aux, aux.name);
-                                    }
-                                    this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
-                                        this.imagensSelecionadas = null;
-                                    });
-                                }
-
                                 this.graphql.graphql(this.query.updateNoticia(Number(this.alterar.id), { titulo: this.titulo, texto: this.texto, manchete: this.manchete, url: this.url, posicao_id: this.posicao_id, categoria_id: this.categoria_id, ativado: this.ativado, imagem: this.imagem })).then(() => {
+
+                                    if (this.arquivoImagemCapa) {
+                                        const fd2 = new FormData();
+                                        for (let aux of this.arquivoImagemCapa) {
+                                            fd2.append("image", aux, aux.name);
+                                        }
+
+                                        this.graphql.post("api/imagem/principal/" + this.alterar.id, fd2).then(data => {
+                                            this.arquivoImagemCapa = null;
+                                        });
+                                    }
+
+                                    if (this.imagensSelecionadas) {
+                                        const fd = new FormData();
+
+                                        for (let aux of this.imagensSelecionadas) {
+                                            fd.append("image", aux, aux.name);
+                                        }
+                                        this.graphql.post("api/imagem/" + this.alterar.id, fd).then(data => {
+                                            this.imagensSelecionadas = null;
+                                        });
+                                    }
+
+
                                     this.toast.mostrar("Noticia atualizada com sucesso!");
 
                                     this.voltar();

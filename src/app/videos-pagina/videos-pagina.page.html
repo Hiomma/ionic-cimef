@@ -14,10 +14,10 @@
                 </ion-slide>
             </ion-slides>
 
-            <div class="divSetaEsquerda" (click)="moverSlide(false)">
+            <div class="divSetaEsquerda" (click)="moverSlide(false)" *ngIf="listVideos.length > 3">
                 <ion-icon name="ios-arrow-dropleft"></ion-icon>
             </div>
-            <div class="divSetaDireita" (click)="moverSlide(true)">
+            <div class="divSetaDireita" (click)="moverSlide(true)" *ngIf="listVideos.length > 3">
                 <ion-icon name="ios-arrow-dropright"></ion-icon>
             </div>
         </div>

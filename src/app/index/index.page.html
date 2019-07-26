@@ -80,7 +80,8 @@
                 <p class="pNoticiaTitulo">Confira as últimas notícias</p>
             </ion-row>
             <ion-row *ngIf="width > 1000">
-                <ion-col *ngFor="let aux of listNoticias" size="12" size-sm="4" (click)="abrirNoticia(aux)">
+                <ion-col *ngFor="let aux of listNoticias" size="12" size-sm="4"
+                    style="padding-left: 15px; padding-right: 15px;" (click)="abrirNoticia(aux)">
                     <img class="imgNoticias" [src]="aux.imagem">
                     <p class="pTituloNoticia">{{aux.titulo}}</p>
                     <div class="backgroundCinzaNoticia"></div>

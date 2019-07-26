@@ -60,19 +60,18 @@ export class AdicionarDepoimentoComponent implements OnInit {
                     {
                         text: "OK",
                         handler: () => {
-                            if (this.fotoSelecionada) {
-                                const fd2 = new FormData();
-                                for (let aux of this.fotoSelecionada) {
-                                    fd2.append("image", aux, aux.name);
+                            this.graphql.graphql(this.query.updateDepoimento(Number(this.depoimento.id), this.resource.value)).then(() => {
+                                if (this.fotoSelecionada) {
+                                    const fd2 = new FormData();
+                                    for (let aux of this.fotoSelecionada) {
+                                        fd2.append("image", aux, new Date().getTime() + "." + aux.name.split(".")[1]);
+                                    }
+
+                                    this.graphql.post("api/depoimento/imagem/" + this.depoimento.id, fd2).then(data => {
+                                        this.fotoSelecionada = null;
+                                    });
                                 }
 
-                                this.graphql.post("api/depoimento/imagem/" + this.depoimento.id, fd2).then(data => {
-                                    this.fotoSelecionada = null;
-                                });
-                            }
-
-
-                            this.graphql.graphql(this.query.updateDepoimento(Number(this.depoimento.id), this.resource.value)).then(() => {
                                 this.modalController.dismiss();
                                 this.toast.mostrar("Depoimento atualizado com sucesso!");
                             })

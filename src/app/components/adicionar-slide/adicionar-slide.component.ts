@@ -61,19 +61,18 @@ export class AdicionarSlideComponent implements OnInit {
                     {
                         text: "OK",
                         handler: () => {
-                            if (this.imagensSelecionadas) {
-                                const fd = new FormData();
+                            this.graphql.graphql(this.query.updateSlide(Number(this.slide.id), { nome: this.nome, descricao: this.descricao, subdescricao: this.subdescricao, ativado: this.ativado, url: this.url })).then(() => {
+                                if (this.imagensSelecionadas) {
+                                    const fd = new FormData();
 
-                                for (let aux of this.imagensSelecionadas) {
-                                    fd.append("image", aux, aux.name);
+                                    for (let aux of this.imagensSelecionadas) {
+                                        fd.append("image", aux, aux.name);
+                                    }
+
+                                    this.graphql.post("api/slide/imagem/" + this.slide.id, fd).then(data => {
+                                    })
                                 }
 
-                                this.graphql.post("api/slide/imagem/" + this.slide.id, fd).then(data => {
-
-                                })
-                            }
-
-                            this.graphql.graphql(this.query.updateSlide(Number(this.slide.id), { nome: this.nome, descricao: this.descricao, subdescricao: this.subdescricao, ativado: this.ativado, url: this.url })).then(() => {
                                 this.toast.mostrar("Slide atualizado com sucesso!");
                                 this.cancelar();
                             })
