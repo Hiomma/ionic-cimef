@@ -16,7 +16,6 @@ export class AdicionarProdutoComponent implements OnInit {
     atualizar: boolean = false;
     resource: FormGroup;
     produtoSelecionado: any;
-    tabelaSelecionada: any;
     galeriaSelecionada: any;
 
     listCategorias: any;
@@ -36,7 +35,6 @@ export class AdicionarProdutoComponent implements OnInit {
             nome: ["", [Validators.required, Validators.minLength(5)]],
             video: [""],
             categoria_id: ["", [Validators.required]],
-            tabela: [""],
             imagem: [""],
             texto: ["", [Validators.required, Validators.minLength(5)]],
             ativado: [true, [Validators.required]],
@@ -60,10 +58,6 @@ export class AdicionarProdutoComponent implements OnInit {
 
     galeriaProduto(event) {
         this.galeriaSelecionada = event.target.files;
-    }
-
-    tabelaProduto(event) {
-        this.tabelaSelecionada = event.target.files;
     }
 
     imagemProduto(event) {
@@ -92,19 +86,6 @@ export class AdicionarProdutoComponent implements OnInit {
 
                                     this.graphql.post("api/produto/imagem/" + this.produto.id, fd2).then(data => {
                                         this.galeriaSelecionada = null;
-                                    });
-                                }
-
-                                if (this.tabelaSelecionada) {
-                                    const fd = new FormData();
-
-                                    let i = 0;
-                                    for (let aux of this.tabelaSelecionada) {
-                                        fd.append("image", aux, new Date().getTime() + i + "." + aux.name.split(".")[1]);
-                                        i++
-                                    }
-                                    this.graphql.post("api/produto/tabela/" + this.produto.id, fd).then(data => {
-                                        this.tabelaSelecionada = null;
                                     });
                                 }
 
@@ -146,15 +127,6 @@ export class AdicionarProdutoComponent implements OnInit {
 
 
                             this.graphql.graphql(this.query.setProduto(this.resource.value)).then((data: any) => {
-                                const fd = new FormData();
-
-                                for (let aux of this.tabelaSelecionada) {
-                                    fd.append("image", aux, aux.name);
-                                }
-                                this.graphql.post("api/produto/tabela/" + data.data.createProduto.id, fd).then(data => {
-                                    this.tabelaSelecionada = null;
-                                });
-
                                 const fd2 = new FormData();
                                 for (let aux of this.galeriaSelecionada) {
                                     fd2.append("image", aux, aux.name);
